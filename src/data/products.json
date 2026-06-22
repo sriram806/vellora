@@ -1,0 +1,1854 @@
+[
+  {
+    "id": "vellora-signature-tee",
+    "name": "Signature Silk-Cotton Tee",
+    "description": "Crafted from an ultra-premium blend of organic cotton and mulberry silk, this structured tee offers a subtle sheen and an incredibly soft handle. Designed with a clean-cut neckband and a relaxed, editorial silhouette.",
+    "price": 180,
+    "originalPrice": 240,
+    "category": "t-shirts",
+    "collection": "Aether",
+    "images": [
+      "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=800&auto=format&fit=crop"
+    ],
+    "details": [
+      "70% Organic Cotton, 30% Mulberry Silk",
+      "Heavyweight 240 GSM fabric with drape",
+      "Seamless collar detailing",
+      "Made in Italy"
+    ],
+    "reviews": [
+      {
+        "name": "Alessandro V.",
+        "rating": 5,
+        "comment": "The drape on this t-shirt is unlike anything else. Truly luxury.",
+        "date": "2026-05-14"
+      },
+      {
+        "name": "Sophia K.",
+        "rating": 4.8,
+        "comment": "Incredibly soft, fits perfectly. Highly recommend.",
+        "date": "2026-06-01"
+      }
+    ],
+    "rating": 4.9,
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "colors": [
+      "Midnight Black",
+      "Chalk White",
+      "Slate Gray"
+    ],
+    "inStock": true,
+    "featured": true,
+    "trending": true,
+    "newArrival": true
+  },
+  {
+    "id": "luminal-drape-tshirt",
+    "name": "Luminal Fluid Drape Tee",
+    "description": "An avant-garde interpretation of the classic t-shirt, featuring an asymmetrical hem and a flowing fluid silhouette crafted from sustainable bamboo-viscose blend.",
+    "price": 220,
+    "category": "t-shirts",
+    "collection": "Luminal",
+    "images": [
+      "https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?w=800&auto=format&fit=crop"
+    ],
+    "details": [
+      "80% Bamboo Viscose, 20% Recycled Polyester",
+      "Flowing mid-weight fabric",
+      "Asymmetric styling and flat-lock seams",
+      "Made in Portugal"
+    ],
+    "reviews": [
+      {
+        "name": "Liam H.",
+        "rating": 5,
+        "comment": "Unique silhouette, looks amazing under a cropped jacket.",
+        "date": "2026-04-20"
+      }
+    ],
+    "rating": 5,
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "colors": [
+      "Platinum Silver",
+      "Cream",
+      "Midnight Black"
+    ],
+    "inStock": true,
+    "featured": false,
+    "trending": true,
+    "newArrival": true
+  },
+  {
+    "id": "sartorial-pima-tee",
+    "name": "Sartorial Pima Cotton Tee",
+    "description": "Engineered with double-mercerized Peruvian Pima cotton, this structured t-shirt maintains its sharp shape and deep color throughout wear. A absolute foundation piece.",
+    "price": 160,
+    "category": "t-shirts",
+    "collection": "Sartorial Nomad",
+    "images": [
+      "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?w=800&auto=format&fit=crop"
+    ],
+    "details": [
+      "100% Double-Mercerized Peruvian Pima Cotton",
+      "Medium weight 210 GSM structured knit",
+      "Reinforced neck lining",
+      "Made in Peru"
+    ],
+    "reviews": [],
+    "rating": 4.7,
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "colors": [
+      "Chalk White",
+      "Olive Drab",
+      "Midnight Black"
+    ],
+    "inStock": true,
+    "featured": false,
+    "trending": false,
+    "newArrival": false
+  },
+  {
+    "id": "zenith-oversized-tee",
+    "name": "Zenith Heavyweight Tee",
+    "description": "An architectural, oversized fit t-shirt constructed from 320 GSM French terry cotton. Featuring dropped shoulders and clean, minimalist stitching.",
+    "price": 240,
+    "category": "t-shirts",
+    "collection": "Zenith",
+    "images": [
+      "https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=800&auto=format&fit=crop"
+    ],
+    "details": [
+      "100% Long-staple French Terry Cotton",
+      "Ultra-heavyweight 320 GSM structure",
+      "Dropped shoulders, wide sleeves",
+      "Made in Japan"
+    ],
+    "reviews": [
+      {
+        "name": "Hiroshi T.",
+        "rating": 4.9,
+        "comment": "Perfect boxy fit. The fabric weight is incredible.",
+        "date": "2026-05-30"
+      }
+    ],
+    "rating": 4.9,
+    "sizes": [
+      "S",
+      "M",
+      "L"
+    ],
+    "colors": [
+      "Slate Gray",
+      "Midnight Black",
+      "Sand"
+    ],
+    "inStock": true,
+    "featured": true,
+    "trending": false,
+    "newArrival": true
+  },
+  {
+    "id": "minimalist-wool-tee",
+    "name": "Aether Merino Wool Tee",
+    "description": "Crafted from superfine 17.5-micron Merino wool, this temperature-regulating tee is exceptionally breathable and features natural odor resistance. Finished with raw-edge detailing.",
+    "price": 260,
+    "category": "t-shirts",
+    "collection": "Aether",
+    "images": [
+      "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?w=800&auto=format&fit=crop"
+    ],
+    "details": [
+      "100% Superfine Merino Wool",
+      "17.5 micron ultra-soft fibers",
+      "Raw edge detailing at cuffs and hem",
+      "Made in Italy"
+    ],
+    "reviews": [],
+    "rating": 4.5,
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "colors": [
+      "Midnight Black",
+      "Espresso",
+      "Platinum Silver"
+    ],
+    "inStock": true,
+    "featured": false,
+    "trending": true,
+    "newArrival": false
+  },
+  {
+    "id": "sartorial-pleated-trousers",
+    "name": "Sartorial Pleated Trousers",
+    "description": "High-rise pleated trousers tailored in Italy from a luxurious blend of virgin wool and cashmere. Designed with an elegant fluid drape, belt loops, and side adjusters.",
+    "price": 580,
+    "category": "pants",
+    "collection": "Sartorial Nomad",
+    "images": [
+      "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1509551388413-e18d0ac5d495?w=800&auto=format&fit=crop"
+    ],
+    "details": [
+      "90% Virgin Wool, 10% Cashmere",
+      "Double pleated front with pressed creases",
+      "Side adjustable tabs, button fastening",
+      "Unfinished hem for custom tailoring",
+      "Made in Italy"
+    ],
+    "reviews": [
+      {
+        "name": "Marcus E.",
+        "rating": 5,
+        "comment": "Exceptional tailoring. The wool blend feels like butter.",
+        "date": "2026-05-18"
+      }
+    ],
+    "rating": 5,
+    "sizes": [
+      "46",
+      "48",
+      "50",
+      "52",
+      "54"
+    ],
+    "colors": [
+      "Charcoal Gray",
+      "Midnight Black",
+      "Taupe"
+    ],
+    "inStock": true,
+    "featured": true,
+    "trending": true,
+    "newArrival": true
+  },
+  {
+    "id": "aether-cropped-trousers",
+    "name": "Aether Cropped Wool Pants",
+    "description": "Modern slim-fit trousers cropped at the ankle, crafted from lightweight fresco wool. Perfect for smart-casual styling with sneakers or dress boots.",
+    "price": 450,
+    "category": "pants",
+    "collection": "Aether",
+    "images": [
+      "https://images.unsplash.com/photo-1517462964-21fdcec3f25b?w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?w=800&auto=format&fit=crop"
+    ],
+    "details": [
+      "100% Fresco Virgin Wool",
+      "Ankle-cropped, tapered leg",
+      "Discreet side pockets and zip fly",
+      "Made in Portugal"
+    ],
+    "reviews": [],
+    "rating": 4.6,
+    "sizes": [
+      "46",
+      "48",
+      "50",
+      "52"
+    ],
+    "colors": [
+      "Midnight Black",
+      "Navy Blue"
+    ],
+    "inStock": true,
+    "featured": false,
+    "trending": false,
+    "newArrival": false
+  },
+  {
+    "id": "luminal-cargo-pants",
+    "name": "Luminal Technical Cargo Pants",
+    "description": "Futuristic utility trousers cut from water-repellent Italian nylon-blend memory fabric. Features ergonomic pocket layouts and adjustable drawstring cuffs.",
+    "price": 490,
+    "category": "pants",
+    "collection": "Luminal",
+    "images": [
+      "https://images.unsplash.com/photo-1509551388413-e18d0ac5d495?w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1517462964-21fdcec3f25b?w=800&auto=format&fit=crop"
+    ],
+    "details": [
+      "70% Nylon, 30% Cotton Memory Fabric",
+      "Water-repellent, wind-resistant matte finish",
+      "Laser-cut cargo pockets with magnetic closures",
+      "Adjustable ankle cuffs with bungee cord toggles",
+      "Made in Japan"
+    ],
+    "reviews": [
+      {
+        "name": "Kenji S.",
+        "rating": 4.9,
+        "comment": "The fabric holds shape beautifully. Amazing hardware details.",
+        "date": "2026-06-12"
+      }
+    ],
+    "rating": 4.9,
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "colors": [
+      "Slate Gray",
+      "Midnight Black",
+      "Olive Drab"
+    ],
+    "inStock": true,
+    "featured": true,
+    "trending": true,
+    "newArrival": true
+  },
+  {
+    "id": "zenith-wide-pants",
+    "name": "Zenith Wide-Leg Linen Pants",
+    "description": "Ultra-relaxed wide-leg pants crafted from heavy Irish linen. Designed with a comfortable elasticated drawstring waist and raw edge hem lines.",
+    "price": 380,
+    "category": "pants",
+    "collection": "Zenith",
+    "images": [
+      "https://images.unsplash.com/photo-1517462964-21fdcec3f25b?w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?w=800&auto=format&fit=crop"
+    ],
+    "details": [
+      "100% Premium Irish Linen",
+      "High-waisted, wide-leg style",
+      "Elasticated waist with leather drawstring details",
+      "Made in Ireland"
+    ],
+    "reviews": [],
+    "rating": 4.8,
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L"
+    ],
+    "colors": [
+      "Cream",
+      "Midnight Black",
+      "Natural Linen"
+    ],
+    "inStock": true,
+    "featured": false,
+    "trending": false,
+    "newArrival": true
+  },
+  {
+    "id": "sartorial-drawstring-trousers",
+    "name": "Sartorial Leisure Wool Trousers",
+    "description": "Bridging tailoring and comfort, these trousers feature a smart pressed crease on the front with an elasticated waistband and internal drawstrings. Wool-silk knit fabric.",
+    "price": 520,
+    "category": "pants",
+    "collection": "Sartorial Nomad",
+    "images": [
+      "https://images.unsplash.com/photo-1517462964-21fdcec3f25b?w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?w=800&auto=format&fit=crop"
+    ],
+    "details": [
+      "85% Virgin Wool, 15% Silk",
+      "Elasticated waist, hook-and-bar zip fly",
+      "Slanted side pockets, back buttoned pockets",
+      "Made in Italy"
+    ],
+    "reviews": [],
+    "rating": 4.7,
+    "sizes": [
+      "46",
+      "48",
+      "50",
+      "52",
+      "54"
+    ],
+    "colors": [
+      "Espresso",
+      "Midnight Black",
+      "Chalk White"
+    ],
+    "inStock": true,
+    "featured": false,
+    "trending": true,
+    "newArrival": false
+  },
+  {
+    "id": "vellora-court-sneaker",
+    "name": "Aether Calfskin Court Sneaker",
+    "description": "A masterclass in minimalism. Our signature low-top sneaker is handcrafted in Italy from full-grain calfskin leather, lined with butter-soft lambskin, and set on a durable Margom rubber sole.",
+    "price": 490,
+    "originalPrice": 620,
+    "category": "sneakers",
+    "collection": "Aether",
+    "images": [
+      "https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1608231387042-66d1773070a5?w=800&auto=format&fit=crop"
+    ],
+    "details": [
+      "100% Italian Full-Grain Calfskin Leather upper",
+      "Full lambskin leather lining and cushioned footbed",
+      "Original Margom Italian vulcanized rubber cupsole",
+      "Hand-painted gold foil branding on heel",
+      "Made in Italy"
+    ],
+    "reviews": [
+      {
+        "name": "Jean-Pierre D.",
+        "rating": 5,
+        "comment": "Absolutely perfect. True minimal luxury. Takes a few days to break in, then like a glove.",
+        "date": "2026-05-10"
+      },
+      {
+        "name": "Emily R.",
+        "rating": 4.7,
+        "comment": "Clean lines, goes with literally anything. The leather quality is outstanding.",
+        "date": "2026-06-03"
+      }
+    ],
+    "rating": 4.9,
+    "sizes": [
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "colors": [
+      "Chalk White",
+      "Midnight Black",
+      "Chalk White / Platinum"
+    ],
+    "inStock": true,
+    "featured": true,
+    "trending": true,
+    "newArrival": true
+  },
+  {
+    "id": "luminal-knit-runner",
+    "name": "Luminal Knit Trainer",
+    "description": "Constructed from recycled ocean plastics, this lightweight running shoe blends tech-wear functionality with luxury style. Featuring a bio-based EVA cushioned midsole.",
+    "price": 460,
+    "category": "sneakers",
+    "collection": "Luminal",
+    "images": [
+      "https://images.unsplash.com/photo-1549298916-b41d501d3772?w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=800&auto=format&fit=crop"
+    ],
+    "details": [
+      "100% Recycled Technical Knit upper",
+      "Laminated TPU reinforcing overlays",
+      "Custom carbon-fiber shank for structural support",
+      "Vibram Megagrip traction outsole",
+      "Made in Germany"
+    ],
+    "reviews": [],
+    "rating": 4.8,
+    "sizes": [
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "colors": [
+      "Midnight Black",
+      "Volt Silver",
+      "Cream"
+    ],
+    "inStock": true,
+    "featured": true,
+    "trending": false,
+    "newArrival": true
+  },
+  {
+    "id": "zenith-suede-runner",
+    "name": "Zenith Retro Suede Runner",
+    "description": "Inspired by 70s athletic wear, this runner is crafted from fine English split-suede and Japanese nylon. Hand-assembled with vintage-toned rubber outsoles.",
+    "price": 420,
+    "category": "sneakers",
+    "collection": "Zenith",
+    "images": [
+      "https://images.unsplash.com/photo-1549298916-b41d501d3772?w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=800&auto=format&fit=crop"
+    ],
+    "details": [
+      "Premium English Calf Suede & Japanese Nylon",
+      "Cork-lined orthotic insoles",
+      "Dual-density EVA midsole",
+      "Custom waffle rubber grip tread",
+      "Made in the UK"
+    ],
+    "reviews": [
+      {
+        "name": "James B.",
+        "rating": 4.8,
+        "comment": "So comfortable and retro. The suede is high quality.",
+        "date": "2026-04-12"
+      }
+    ],
+    "rating": 4.8,
+    "sizes": [
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "colors": [
+      "Taupe",
+      "Sage Green",
+      "Slate Gray"
+    ],
+    "inStock": true,
+    "featured": false,
+    "trending": true,
+    "newArrival": false
+  },
+  {
+    "id": "sartorial-leather-boot",
+    "name": "Sartorial Chelsea Leather Boot",
+    "description": "A refined Chelsea boot crafted from polished French calf leather, featuring custom elasticated side panels and stacked leather heels.",
+    "price": 680,
+    "category": "sneakers",
+    "collection": "Sartorial Nomad",
+    "images": [
+      "https://images.unsplash.com/photo-1549298916-b41d501d3772?w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=800&auto=format&fit=crop"
+    ],
+    "details": [
+      "French box-calf leather upper",
+      "Blake-stitched leather sole",
+      "Elastic side panels, leather pull tabs",
+      "Stacked leather heel with rubber tap",
+      "Made in France"
+    ],
+    "reviews": [],
+    "rating": 4.9,
+    "sizes": [
+      "40",
+      "41",
+      "42",
+      "43",
+      "44"
+    ],
+    "colors": [
+      "Midnight Black",
+      "Burgundy"
+    ],
+    "inStock": true,
+    "featured": false,
+    "trending": false,
+    "newArrival": false
+  },
+  {
+    "id": "zenith-chunky-sneaker",
+    "name": "Zenith Sculpted Sole Sneaker",
+    "description": "An architectural silhouette featuring a multi-layered panel upper of mesh, calfskin, and nubuck, resting on a lightweight, oversized wave-sole unit.",
+    "price": 620,
+    "category": "sneakers",
+    "collection": "Zenith",
+    "images": [
+      "https://images.unsplash.com/photo-1560769629-975ec94e6a86?w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1549298916-b41d501d3772?w=800&auto=format&fit=crop"
+    ],
+    "details": [
+      "Calfskin, nubuck, and breathable mesh paneling",
+      "Architectural oversized EVA rubber sole",
+      "Padded collar and tongue, reflective details",
+      "Made in Italy"
+    ],
+    "reviews": [],
+    "rating": 4.6,
+    "sizes": [
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "colors": [
+      "Chalk White / Gray",
+      "Midnight Black",
+      "Cream / Ice"
+    ],
+    "inStock": true,
+    "featured": false,
+    "trending": true,
+    "newArrival": true
+  },
+  {
+    "id": "aether-cashmere-overcoat",
+    "name": "Aether Double-Breasted Cashmere Coat",
+    "description": "The ultimate luxury statement. Structured double-breasted overcoat tailored from 100% Italian cashmere. Unlined construction with hand-rolled edges.",
+    "price": 2400,
+    "category": "outerwear",
+    "collection": "Aether",
+    "images": [
+      "https://images.unsplash.com/photo-1483985988355-763728e1935b?w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?w=800&auto=format&fit=crop"
+    ],
+    "details": [
+      "100% Pure Italian Cashmere",
+      "Double-breasted buttoning, peak lapels",
+      "Hand-finished seams and rolled hems",
+      "Interior zip passport pockets",
+      "Made in Italy"
+    ],
+    "reviews": [
+      {
+        "name": "David L.",
+        "rating": 5,
+        "comment": "This is an heirloom item. The fabric weight is heavy yet soft.",
+        "date": "2026-05-22"
+      }
+    ],
+    "rating": 5,
+    "sizes": [
+      "48",
+      "50",
+      "52",
+      "54"
+    ],
+    "colors": [
+      "Camel",
+      "Midnight Black",
+      "Charcoal Gray"
+    ],
+    "inStock": true,
+    "featured": true,
+    "trending": true,
+    "newArrival": true
+  },
+  {
+    "id": "luminal-cropped-bomber",
+    "name": "Luminal Cropped Shell Bomber",
+    "description": "A modern cropped bomber jacket constructed from dense wind-proof technical satin fabric, filled with premium ethical white goose down.",
+    "price": 890,
+    "category": "outerwear",
+    "collection": "Luminal",
+    "images": [
+      "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1544025162-d76694265947?w=800&auto=format&fit=crop"
+    ],
+    "details": [
+      "100% Recycled Nylon Technical Satin shell",
+      "90/10 RDS Goose Down filling, 800 fill power",
+      "Heavy Riri matte-black metal zippers",
+      "Ribbed collar, cuffs, and hem in wool-elastane",
+      "Made in Japan"
+    ],
+    "reviews": [],
+    "rating": 4.8,
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "colors": [
+      "Midnight Black",
+      "Bronze",
+      "Slate Gray"
+    ],
+    "inStock": true,
+    "featured": true,
+    "trending": true,
+    "newArrival": false
+  },
+  {
+    "id": "sartorial-suede-jacket",
+    "name": "Sartorial Nomad Suede Overshirt",
+    "description": "Tailored from butter-soft French goat suede, this unlined overshirt functions beautifully as a light outer jacket or mid-layer. Detailed with horn buttons.",
+    "price": 1450,
+    "category": "outerwear",
+    "collection": "Sartorial Nomad",
+    "images": [
+      "https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=800&auto=format&fit=crop"
+    ],
+    "details": [
+      "100% French Kid Suede",
+      "Classic collar, button front fastening",
+      "Single-button cuffs, chest patch pocket",
+      "Made in Spain"
+    ],
+    "reviews": [],
+    "rating": 4.9,
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "colors": [
+      "Sand Suede",
+      "Cognac",
+      "Charcoal Suede"
+    ],
+    "inStock": true,
+    "featured": false,
+    "trending": false,
+    "newArrival": true
+  },
+  {
+    "id": "zenith-wool-blazer",
+    "name": "Zenith Structured Wool Blazer",
+    "description": "An architectural structured blazer crafted from high-twist wool twill. Finished with sharp peak lapels and padded shoulders for a dramatic silhouette.",
+    "price": 950,
+    "category": "outerwear",
+    "collection": "Zenith",
+    "images": [
+      "https://images.unsplash.com/photo-1544025162-d76694265947?w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1483985988355-763728e1935b?w=800&auto=format&fit=crop"
+    ],
+    "details": [
+      "100% High-Twist Merino Wool Twill",
+      "Fully lined with cupro",
+      "Structured padded shoulders, double vent",
+      "Single button closure",
+      "Made in Japan"
+    ],
+    "reviews": [],
+    "rating": 4.7,
+    "sizes": [
+      "46",
+      "48",
+      "50",
+      "52"
+    ],
+    "colors": [
+      "Midnight Black",
+      "Chalk White"
+    ],
+    "inStock": true,
+    "featured": false,
+    "trending": true,
+    "newArrival": false
+  },
+  {
+    "id": "aether-trench-coat",
+    "name": "Aether Technical Trench Coat",
+    "description": "A technical reimagination of the classic trench, constructed from laminated cotton-gabardine that is fully waterproof and windproof.",
+    "price": 1100,
+    "category": "outerwear",
+    "collection": "Aether",
+    "images": [
+      "https://images.unsplash.com/photo-1483985988355-763728e1935b?w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?w=800&auto=format&fit=crop"
+    ],
+    "details": [
+      "3-layer laminated cotton-gabardine shell",
+      "Taped internal waterproof seams",
+      "Adjustable storm flap and waist belt",
+      "Made in Germany"
+    ],
+    "reviews": [],
+    "rating": 4.8,
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "colors": [
+      "Khaki Beige",
+      "Midnight Black"
+    ],
+    "inStock": true,
+    "featured": false,
+    "trending": false,
+    "newArrival": false
+  },
+  {
+    "id": "vellora-calfskin-tote",
+    "name": "Aether Calfskin Holdall Tote",
+    "description": "A luxury travel essential, handcrafted from structured French calfskin leather. Featuring raw edge seams and a spacious, suede-lined interior.",
+    "price": 1250,
+    "category": "accessories",
+    "collection": "Aether",
+    "images": [
+      "https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=800&auto=format&fit=crop"
+    ],
+    "details": [
+      "100% French Calfskin Leather",
+      "Premium Italian brass hardware, matte black finish",
+      "Contrast suede interior with zip pocket",
+      "Leather shoulder strap included",
+      "Dimensions: 45cm x 30cm x 18cm",
+      "Made in Italy"
+    ],
+    "reviews": [
+      {
+        "name": "Elena P.",
+        "rating": 5,
+        "comment": "Perfect travel bag. The calf leather is incredibly durable and thick.",
+        "date": "2026-04-18"
+      }
+    ],
+    "rating": 5,
+    "sizes": [
+      "One Size"
+    ],
+    "colors": [
+      "Midnight Black",
+      "Taupe Leather"
+    ],
+    "inStock": true,
+    "featured": true,
+    "trending": true,
+    "newArrival": true
+  },
+  {
+    "id": "luminal-sunglasses",
+    "name": "Luminal Sculpted Acetate Sunglasses",
+    "description": "Avant-garde sunglasses handmade from Japanese cured bio-acetate. Designed with flat black lenses and thick architectural temples.",
+    "price": 320,
+    "category": "accessories",
+    "collection": "Luminal",
+    "images": [
+      "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=800&auto=format&fit=crop"
+    ],
+    "details": [
+      "100% Japanese Bio-Acetate frames",
+      "Carl Zeiss CR-39 scratch-resistant lenses",
+      "100% UVA/UVB protection",
+      "Custom 5-barrel metal hinges",
+      "Made in Japan"
+    ],
+    "reviews": [],
+    "rating": 4.8,
+    "sizes": [
+      "One Size"
+    ],
+    "colors": [
+      "Polished Black",
+      "Crystal Clear",
+      "Tortoise Shell"
+    ],
+    "inStock": true,
+    "featured": true,
+    "trending": true,
+    "newArrival": true
+  },
+  {
+    "id": "sartorial-cashmere-scarf",
+    "name": "Sartorial Fine-Weave Cashmere Scarf",
+    "description": "An incredibly light and warm scarf woven in Scotland from 100% pure cashmere, featuring short eyelash fringe details.",
+    "price": 280,
+    "category": "accessories",
+    "collection": "Sartorial Nomad",
+    "images": [
+      "https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=800&auto=format&fit=crop"
+    ],
+    "details": [
+      "100% Cashmere",
+      "Fine open-weave construction",
+      "Short eyelash fringe at ends",
+      "Made in Scotland"
+    ],
+    "reviews": [],
+    "rating": 4.9,
+    "sizes": [
+      "One Size"
+    ],
+    "colors": [
+      "Heather Gray",
+      "Oatmeal",
+      "Midnight Black"
+    ],
+    "inStock": true,
+    "featured": false,
+    "trending": false,
+    "newArrival": false
+  },
+  {
+    "id": "zenith-leather-belt",
+    "name": "Zenith Minimal Brass Belt",
+    "description": "Cut from thick bridle leather, this belt features an elegant hand-cast solid brass buckle in a custom organic shape.",
+    "price": 180,
+    "category": "accessories",
+    "collection": "Zenith",
+    "images": [
+      "https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1509695507497-903c140c43b0?w=800&auto=format&fit=crop"
+    ],
+    "details": [
+      "100% English Bridle Leather (4mm thickness)",
+      "Solid hand-cast brass buckle",
+      "Width: 3cm",
+      "Made in the UK"
+    ],
+    "reviews": [],
+    "rating": 4.6,
+    "sizes": [
+      "80",
+      "85",
+      "90",
+      "95",
+      "100"
+    ],
+    "colors": [
+      "Tan Leather",
+      "Midnight Black"
+    ],
+    "inStock": true,
+    "featured": false,
+    "trending": false,
+    "newArrival": false
+  },
+  {
+    "id": "vellora-coin-pouch",
+    "name": "Aether Zip Leather Card Holder",
+    "description": "A compact card and coin carrier handcrafted in France from cross-grain Saffiano leather, secured by a heavy Riri zipper.",
+    "price": 240,
+    "category": "accessories",
+    "collection": "Aether",
+    "images": [
+      "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=800&auto=format&fit=crop"
+    ],
+    "details": [
+      "100% Cross-Grain Saffiano Leather",
+      "4 external card slots, zippered main compartment",
+      "Supple calfskin lining",
+      "Made in France"
+    ],
+    "reviews": [],
+    "rating": 4.7,
+    "sizes": [
+      "One Size"
+    ],
+    "colors": [
+      "Midnight Black",
+      "Forest Green",
+      "Silver Metallic"
+    ],
+    "inStock": true,
+    "featured": false,
+    "trending": true,
+    "newArrival": true
+  },
+  {
+    "id": "vellora-heavy-hoodie",
+    "name": "Zenith Structured Cotton Hoodie",
+    "description": "Constructed from dry-touch 450 GSM organic loopback cotton, this hoodie has a rigid structure, double-layered hood without drawstrings, and a slightly cropped hem.",
+    "price": 320,
+    "category": "outerwear",
+    "collection": "Zenith",
+    "images": [
+      "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1544025162-d76694265947?w=800&auto=format&fit=crop"
+    ],
+    "details": [
+      "100% Organic Loopback Cotton",
+      "Ultra-heavyweight 450 GSM knit",
+      "Double-lined hood, no drawstrings",
+      "Kangaroo front pocket, ribbed side panels",
+      "Made in Portugal"
+    ],
+    "reviews": [],
+    "rating": 4.9,
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "colors": [
+      "Slate Gray",
+      "Chalk White",
+      "Midnight Black"
+    ],
+    "inStock": true,
+    "featured": false,
+    "trending": true,
+    "newArrival": true
+  },
+  {
+    "id": "sartorial-silk-shirt",
+    "name": "Sartorial Silk Camp Collar Shirt",
+    "description": "A relaxed-fit shirt cut from sand-washed habotai silk. Featuring a fluid drape, open camp collar, and premium mother-of-pearl buttons.",
+    "price": 380,
+    "category": "t-shirts",
+    "collection": "Sartorial Nomad",
+    "images": [
+      "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?w=800&auto=format&fit=crop"
+    ],
+    "details": [
+      "100% Sand-Washed Habotai Silk",
+      "Camp collar, relaxed straight hem",
+      "Genuine Australian mother-of-pearl buttons",
+      "Made in Italy"
+    ],
+    "reviews": [],
+    "rating": 4.8,
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "colors": [
+      "Oyster",
+      "Midnight Black",
+      "Olive"
+    ],
+    "inStock": true,
+    "featured": true,
+    "trending": true,
+    "newArrival": true
+  },
+  {
+    "id": "luminal-cyber-pants",
+    "name": "Luminal Liquid Metal Jogger",
+    "description": "Futuristic high-shine joggers cut from high-density nylon with a silver metallic coating. Features elasticated waist and cuffs with zipper detailing.",
+    "price": 340,
+    "category": "pants",
+    "collection": "Luminal",
+    "images": [
+      "https://images.unsplash.com/photo-1517462964-21fdcec3f25b?w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?w=800&auto=format&fit=crop"
+    ],
+    "details": [
+      "90% Nylon, 10% Metal fibers with silver coating",
+      "Waterproof zip pockets",
+      "Elasticated waistband with bungee drawcord",
+      "Made in Japan"
+    ],
+    "reviews": [],
+    "rating": 4.5,
+    "sizes": [
+      "S",
+      "M",
+      "L"
+    ],
+    "colors": [
+      "Silver Metallic",
+      "Midnight Black"
+    ],
+    "inStock": true,
+    "featured": false,
+    "trending": true,
+    "newArrival": true
+  },
+  {
+    "id": "sartorial-linen-blazer",
+    "name": "Sartorial Unstructured Linen Blazer",
+    "description": "Constructed with no canvas or shoulder padding, this lightweight unstructured blazer drape naturally, cut from structured premium Italian linen-silk weave.",
+    "price": 750,
+    "category": "outerwear",
+    "collection": "Sartorial Nomad",
+    "images": [
+      "https://images.unsplash.com/photo-1544025162-d76694265947?w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1483985988355-763728e1935b?w=800&auto=format&fit=crop"
+    ],
+    "details": [
+      "60% Linen, 40% Silk",
+      "Three-button rolling to two, notch lapels",
+      "Unstructured, unlined body",
+      "Double patch pockets",
+      "Made in Italy"
+    ],
+    "reviews": [],
+    "rating": 4.9,
+    "sizes": [
+      "48",
+      "50",
+      "52",
+      "54"
+    ],
+    "colors": [
+      "Natural Linen",
+      "Midnight Black",
+      "Navy Blue"
+    ],
+    "inStock": true,
+    "featured": false,
+    "trending": false,
+    "newArrival": false
+  },
+  {
+    "id": "aether-ribbed-beanie",
+    "name": "Aether Cashmere Ribbed Beanie",
+    "description": "Thick 4-ply knit beanie styled in an elegant ribbed texture, crafted from organic cashmere sourced from Mongolia.",
+    "price": 140,
+    "category": "accessories",
+    "collection": "Aether",
+    "images": [
+      "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=800&auto=format&fit=crop"
+    ],
+    "details": [
+      "100% Mongolian Cashmere",
+      "4-ply medium gauge ribbed structure",
+      "Adjustable folded cuff",
+      "Made in Italy"
+    ],
+    "reviews": [],
+    "rating": 4.8,
+    "sizes": [
+      "One Size"
+    ],
+    "colors": [
+      "Midnight Black",
+      "Cream",
+      "Charcoal Gray"
+    ],
+    "inStock": true,
+    "featured": false,
+    "trending": false,
+    "newArrival": false
+  },
+  {
+    "id": "zenith-derby-shoe",
+    "name": "Zenith Chunky Leather Derby",
+    "description": "A bold take on the classic formal shoe, handcrafted from polished bookbinder leather on a high-clearance lugged rubber sole.",
+    "price": 540,
+    "category": "sneakers",
+    "collection": "Zenith",
+    "images": [
+      "https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1608231387042-66d1773070a5?w=800&auto=format&fit=crop"
+    ],
+    "details": [
+      "Polished box-calf leather upper",
+      "Goodyear welt construction",
+      "Custom thick Commando rubber outsole",
+      "Waxed cotton laces",
+      "Made in Italy"
+    ],
+    "reviews": [],
+    "rating": 4.7,
+    "sizes": [
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "colors": [
+      "Polished Black",
+      "Deep Mahogany"
+    ],
+    "inStock": true,
+    "featured": false,
+    "trending": true,
+    "newArrival": true
+  },
+  {
+    "id": "aether-turtleneck",
+    "name": "Aether Merino Turtleneck Sweater",
+    "description": "Constructed from premium 14-gauge extrafine Merino wool, this thin, high-neck sweater offers high warmth with a clean, second-skin fit.",
+    "price": 340,
+    "category": "t-shirts",
+    "collection": "Aether",
+    "images": [
+      "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=800&auto=format&fit=crop"
+    ],
+    "details": [
+      "100% Extrafine Merino Wool",
+      "14-gauge flat knit",
+      "Ribbed collar, cuffs, and hem",
+      "Made in Italy"
+    ],
+    "reviews": [],
+    "rating": 4.9,
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "colors": [
+      "Midnight Black",
+      "Navy",
+      "Oatmeal"
+    ],
+    "inStock": true,
+    "featured": false,
+    "trending": false,
+    "newArrival": false
+  },
+  {
+    "id": "sartorial-drawstring-shorts",
+    "name": "Sartorial Summer Wool Shorts",
+    "description": "Cut from ultra-lightweight wool hopsack, these shorts combine tailored sophistication with leisurewear comfort.",
+    "price": 310,
+    "category": "pants",
+    "collection": "Sartorial Nomad",
+    "images": [
+      "https://images.unsplash.com/photo-1517462964-21fdcec3f25b?w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?w=800&auto=format&fit=crop"
+    ],
+    "details": [
+      "100% Cool Wool Hopsack",
+      "Elasticated waist with internal drawcord",
+      "Finished with a single pressed crease",
+      "Made in Portugal"
+    ],
+    "reviews": [],
+    "rating": 4.6,
+    "sizes": [
+      "46",
+      "48",
+      "50",
+      "52"
+    ],
+    "colors": [
+      "Taupe",
+      "Midnight Black",
+      "Sage"
+    ],
+    "inStock": true,
+    "featured": false,
+    "trending": false,
+    "newArrival": false
+  },
+  {
+    "id": "luminal-reflective-windbreaker",
+    "name": "Luminal Liquid Windbreaker",
+    "description": "A light outer layer crafted from highly reflective glass-bead embedded fabric. Reflects a bright silver under light beams.",
+    "price": 620,
+    "category": "outerwear",
+    "collection": "Luminal",
+    "images": [
+      "https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=800&auto=format&fit=crop"
+    ],
+    "details": [
+      "100% Polyester with glass micro-bead coating",
+      "Highly reflective under camera flashes and spotlights",
+      "Waterproof zip fasteners",
+      "Made in Japan"
+    ],
+    "reviews": [],
+    "rating": 4.8,
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "colors": [
+      "Reflective Silver",
+      "Reflective Black"
+    ],
+    "inStock": true,
+    "featured": false,
+    "trending": true,
+    "newArrival": false
+  },
+  {
+    "id": "zenith-raw-denim",
+    "name": "Zenith Japanese Raw Denim",
+    "description": "Constructed from 15oz selvedge raw indigo denim woven in Okayama, Japan. Rigid, durable, and designed to wear in uniquely.",
+    "price": 360,
+    "category": "pants",
+    "collection": "Zenith",
+    "images": [
+      "https://images.unsplash.com/photo-1517462964-21fdcec3f25b?w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?w=800&auto=format&fit=crop"
+    ],
+    "details": [
+      "100% Cotton Okayama Selvedge Denim (15oz)",
+      "Red line selvedge detail inside out-seam",
+      "Raw unwashed state for personalized fading",
+      "Engraved copper rivet hardware",
+      "Made in Japan"
+    ],
+    "reviews": [],
+    "rating": 5,
+    "sizes": [
+      "28",
+      "30",
+      "32",
+      "34",
+      "36"
+    ],
+    "colors": [
+      "Indigo Raw",
+      "Black Raw"
+    ],
+    "inStock": true,
+    "featured": true,
+    "trending": false,
+    "newArrival": true
+  },
+  {
+    "id": "aether-leather-gloves",
+    "name": "Aether Cashmere-Lined Leather Gloves",
+    "description": "Constructed from extremely soft Nappa sheepskin, featuring touch-screen compatible fingertips and 100% cashmere lining.",
+    "price": 220,
+    "category": "accessories",
+    "collection": "Aether",
+    "images": [
+      "https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1509695507497-903c140c43b0?w=800&auto=format&fit=crop"
+    ],
+    "details": [
+      "100% Nappa Sheepskin Leather",
+      "100% Cashmere knitted interior lining",
+      "Touch-screen conductive leather at thumbs and forefingers",
+      "Made in France"
+    ],
+    "reviews": [],
+    "rating": 4.9,
+    "sizes": [
+      "S",
+      "M",
+      "L"
+    ],
+    "colors": [
+      "Midnight Black",
+      "Chestnut Brown"
+    ],
+    "inStock": true,
+    "featured": false,
+    "trending": false,
+    "newArrival": false
+  },
+  {
+    "id": "luminal-mesh-sneaker",
+    "name": "Luminal Transparent Mesh Runner",
+    "description": "An architectural lifestyle sneaker designed with a transparent mono-mesh upper, exposing the internal foot support structure.",
+    "price": 480,
+    "category": "sneakers",
+    "collection": "Luminal",
+    "images": [
+      "https://images.unsplash.com/photo-1608231387042-66d1773070a5?w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1560769629-975ec94e6a86?w=800&auto=format&fit=crop"
+    ],
+    "details": [
+      "Mono-filament transparent mesh paneling",
+      "Synthetic hot-melt reinforcement details",
+      "Custom semi-translucent rubber capsule sole",
+      "Made in South Korea"
+    ],
+    "reviews": [],
+    "rating": 4.7,
+    "sizes": [
+      "40",
+      "41",
+      "42",
+      "43",
+      "44"
+    ],
+    "colors": [
+      "Ice Clear",
+      "Smoke Gray",
+      "Neon Cyan Accent"
+    ],
+    "inStock": true,
+    "featured": false,
+    "trending": true,
+    "newArrival": true
+  },
+  {
+    "id": "sartorial-pinstripe-suit",
+    "name": "Sartorial Pinstripe Double-Breasted Jacket",
+    "description": "A dramatic double-breasted jacket tailored with sharp peak lapels and a classic structured chalk-stripe pattern. Wool-linen weave.",
+    "price": 1250,
+    "category": "outerwear",
+    "collection": "Sartorial Nomad",
+    "images": [
+      "https://images.unsplash.com/photo-1483985988355-763728e1935b?w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?w=800&auto=format&fit=crop"
+    ],
+    "details": [
+      "80% Virgin Wool, 20% Organic Linen",
+      "Full canvas construction",
+      "Peak lapels, double-breasted 6x2 button layout",
+      "Horn buttons, dual rear vents",
+      "Made in Italy"
+    ],
+    "reviews": [],
+    "rating": 4.9,
+    "sizes": [
+      "48",
+      "50",
+      "52",
+      "54"
+    ],
+    "colors": [
+      "Navy Chalk-Stripe",
+      "Midnight Black"
+    ],
+    "inStock": true,
+    "featured": true,
+    "trending": false,
+    "newArrival": false
+  },
+  {
+    "id": "zenith-waffle-knit",
+    "name": "Zenith Chunky Waffle Sweater",
+    "description": "Knitted from heavy dry wool yarns, this crewneck sweater features an architectural waffle pattern and substantial weight.",
+    "price": 420,
+    "category": "t-shirts",
+    "collection": "Zenith",
+    "images": [
+      "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=800&auto=format&fit=crop"
+    ],
+    "details": [
+      "100% Fine Highland Wool",
+      "Heavy gauge waffle-knit stitch",
+      "Thick ribbed collar and cuffs",
+      "Made in Scotland"
+    ],
+    "reviews": [],
+    "rating": 4.8,
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "colors": [
+      "Off-White",
+      "Midnight Black",
+      "Sage Green"
+    ],
+    "inStock": true,
+    "featured": false,
+    "trending": true,
+    "newArrival": true
+  },
+  {
+    "id": "aether-tailored-shorts",
+    "name": "Aether Wool Pleated Shorts",
+    "description": "Formal pleated shorts cut just above the knee. Ideal for modern editorial tailoring combinations.",
+    "price": 360,
+    "category": "pants",
+    "collection": "Aether",
+    "images": [
+      "https://images.unsplash.com/photo-1509551388413-e18d0ac5d495?w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1517462964-21fdcec3f25b?w=800&auto=format&fit=crop"
+    ],
+    "details": [
+      "95% Virgin Wool, 5% Elastane (stretch comfort)",
+      "Single pleat detailing",
+      "Zip-fly and double hook closure",
+      "Made in Portugal"
+    ],
+    "reviews": [],
+    "rating": 4.6,
+    "sizes": [
+      "46",
+      "48",
+      "50",
+      "52"
+    ],
+    "colors": [
+      "Midnight Black",
+      "Ash Gray"
+    ],
+    "inStock": true,
+    "featured": false,
+    "trending": false,
+    "newArrival": false
+  },
+  {
+    "id": "luminal-platform-boots",
+    "name": "Luminal Chunky Sole Chelsea Boot",
+    "description": "An exaggerated platform Chelsea boot in water-resistant box calf leather with an extra thick custom molded Vibram sole.",
+    "price": 720,
+    "category": "sneakers",
+    "collection": "Luminal",
+    "images": [
+      "https://images.unsplash.com/photo-1549298916-b41d501d3772?w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=800&auto=format&fit=crop"
+    ],
+    "details": [
+      "Premium water-resistant calf leather",
+      "Elastic side panels, leather pull straps",
+      "Vibram architectural rubber sole",
+      "Made in Italy"
+    ],
+    "reviews": [],
+    "rating": 4.9,
+    "sizes": [
+      "40",
+      "41",
+      "42",
+      "43",
+      "44"
+    ],
+    "colors": [
+      "Midnight Black"
+    ],
+    "inStock": true,
+    "featured": false,
+    "trending": true,
+    "newArrival": true
+  },
+  {
+    "id": "sartorial-wool-scarf",
+    "name": "Sartorial Chunky Rib Knit Scarf",
+    "description": "Extremely soft, oversized rib knit scarf in pure virgin wool. Offers high insulation and an editorial layering look.",
+    "price": 240,
+    "category": "accessories",
+    "collection": "Sartorial Nomad",
+    "images": [
+      "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=800&auto=format&fit=crop"
+    ],
+    "details": [
+      "100% Virgin Wool",
+      "Chunky ribbed construction",
+      "Oversized length: 220cm",
+      "Made in Italy"
+    ],
+    "reviews": [],
+    "rating": 4.8,
+    "sizes": [
+      "One Size"
+    ],
+    "colors": [
+      "Oatmeal",
+      "Charcoal Gray",
+      "Midnight Black"
+    ],
+    "inStock": true,
+    "featured": false,
+    "trending": false,
+    "newArrival": false
+  },
+  {
+    "id": "zenith-denim-jacket",
+    "name": "Zenith Raw Denim Trucker Jacket",
+    "description": "A classic boxy-fit trucker jacket crafted from Okayama 15oz raw selvedge denim. Designed to develop high-contrast fades.",
+    "price": 480,
+    "category": "outerwear",
+    "collection": "Zenith",
+    "images": [
+      "https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=800&auto=format&fit=crop"
+    ],
+    "details": [
+      "100% Okayama Selvedge Denim (15oz)",
+      "Engraved brass buttons",
+      "Contrast chain stitching throughout",
+      "Made in Japan"
+    ],
+    "reviews": [],
+    "rating": 4.9,
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "colors": [
+      "Indigo Raw",
+      "Black Raw"
+    ],
+    "inStock": true,
+    "featured": false,
+    "trending": false,
+    "newArrival": true
+  },
+  {
+    "id": "aether-silk-pajama-pants",
+    "name": "Aether Relaxed Silk Trousers",
+    "description": "Fluid, wide-leg trousers tailored from premium sandwashed silk. Complete with an elasticated waistband and side slit pockets.",
+    "price": 420,
+    "category": "pants",
+    "collection": "Aether",
+    "images": [
+      "https://images.unsplash.com/photo-1517462964-21fdcec3f25b?w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?w=800&auto=format&fit=crop"
+    ],
+    "details": [
+      "100% Sandwashed Habotai Silk",
+      "Relaxed wide-leg drape",
+      "Comfortable elasticated waist with internal ties",
+      "Made in France"
+    ],
+    "reviews": [],
+    "rating": 4.7,
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L"
+    ],
+    "colors": [
+      "Pearl Cream",
+      "Midnight Black",
+      "Sage Gray"
+    ],
+    "inStock": true,
+    "featured": false,
+    "trending": true,
+    "newArrival": false
+  },
+  {
+    "id": "luminal-mesh-tee",
+    "name": "Luminal Open-Knit Mesh Tee",
+    "description": "An airy, semi-transparent open-knit tee designed for layering. Knitted from a cool linen-cotton blend.",
+    "price": 190,
+    "category": "t-shirts",
+    "collection": "Luminal",
+    "images": [
+      "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=800&auto=format&fit=crop"
+    ],
+    "details": [
+      "55% Organic Linen, 45% Organic Cotton",
+      "Open-knit mesh structure, semi-transparent",
+      "Relaxed drop-shoulder fit",
+      "Made in Spain"
+    ],
+    "reviews": [],
+    "rating": 4.4,
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "colors": [
+      "Chalk White",
+      "Midnight Black"
+    ],
+    "inStock": true,
+    "featured": false,
+    "trending": false,
+    "newArrival": false
+  },
+  {
+    "id": "sartorial-cashmere-crewneck",
+    "name": "Sartorial Nomad Cashmere Crewneck",
+    "description": "A fine-knit crewneck sweater crafted in Scotland from exceptionally soft 2-ply cashmere. An elegant layering staple.",
+    "price": 480,
+    "category": "t-shirts",
+    "collection": "Sartorial Nomad",
+    "images": [
+      "https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=800&auto=format&fit=crop"
+    ],
+    "details": [
+      "100% Premium Scottish Cashmere",
+      "2-ply fine gauge knit",
+      "Hand-linked cuffs and neckline",
+      "Made in Scotland"
+    ],
+    "reviews": [],
+    "rating": 5,
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "colors": [
+      "Camel",
+      "Midnight Black",
+      "Heather Blue"
+    ],
+    "inStock": true,
+    "featured": false,
+    "trending": true,
+    "newArrival": false
+  },
+  {
+    "id": "zenith-leather-backpack",
+    "name": "Zenith Architectural Leather Backpack",
+    "description": "A structured minimalist backpack featuring sharp geometric angles, premium calf leather, and concealed magnetic flap closure.",
+    "price": 850,
+    "category": "accessories",
+    "collection": "Zenith",
+    "images": [
+      "https://images.unsplash.com/photo-1509695507497-903c140c43b0?w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?w=800&auto=format&fit=crop"
+    ],
+    "details": [
+      "100% Full-grain vegetable tanned leather",
+      "Internal padded laptop compartment (fits up to 16 inches)",
+      "Concealed magnetic clasp and adjustable padded straps",
+      "Dimensions: 40cm x 30cm x 12cm",
+      "Made in Italy"
+    ],
+    "reviews": [],
+    "rating": 4.9,
+    "sizes": [
+      "One Size"
+    ],
+    "colors": [
+      "Midnight Black",
+      "Natural Tan"
+    ],
+    "inStock": true,
+    "featured": false,
+    "trending": true,
+    "newArrival": true
+  },
+  {
+    "id": "aether-shearling-jacket",
+    "name": "Aether Aviator Shearling Jacket",
+    "description": "An exquisite aviator jacket crafted from thick French merino shearling. Offering maximum warmth and a ruggedly luxurious drape.",
+    "price": 2800,
+    "category": "outerwear",
+    "collection": "Aether",
+    "images": [
+      "https://images.unsplash.com/photo-1483985988355-763728e1935b?w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?w=800&auto=format&fit=crop"
+    ],
+    "details": [
+      "100% French Merino Shearling",
+      "Nappa finish leather outer, soft wool interior",
+      "Adjustable collar buckle straps",
+      "Heavy brass zippers",
+      "Made in France"
+    ],
+    "reviews": [],
+    "rating": 5,
+    "sizes": [
+      "48",
+      "50",
+      "52",
+      "54"
+    ],
+    "colors": [
+      "Midnight Black",
+      "Dark Brown / Cream"
+    ],
+    "inStock": true,
+    "featured": true,
+    "trending": true,
+    "newArrival": true
+  },
+  {
+    "id": "luminal-nylon-cap",
+    "name": "Luminal Water-Repellent Nylon Cap",
+    "description": "A clean five-panel cap crafted from ultra-lightweight water-repellent Italian nylon. Finished with an adjustable webbed toggle clasp.",
+    "price": 120,
+    "category": "accessories",
+    "collection": "Luminal",
+    "images": [
+      "https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1509695507497-903c140c43b0?w=800&auto=format&fit=crop"
+    ],
+    "details": [
+      "100% Laminated Italian Nylon",
+      "Breathable lining and laser perforated sides",
+      "Adjustable bungee strap with speed lock",
+      "Made in Portugal"
+    ],
+    "reviews": [],
+    "rating": 4.6,
+    "sizes": [
+      "One Size"
+    ],
+    "colors": [
+      "Midnight Black",
+      "Slate Gray",
+      "Neon Orange Accent"
+    ],
+    "inStock": true,
+    "featured": false,
+    "trending": false,
+    "newArrival": false
+  },
+  {
+    "id": "sartorial-linen-trousers",
+    "name": "Sartorial Relaxed Linen Pants",
+    "description": "Straight-cut relaxed trousers tailored from mid-weight Belgian linen-cotton blend. Finished with a clean drawcord waistband.",
+    "price": 340,
+    "category": "pants",
+    "collection": "Sartorial Nomad",
+    "images": [
+      "https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=800&auto=format&fit=crop"
+    ],
+    "details": [
+      "60% Belgian Linen, 40% Organic Cotton",
+      "Straight cut, casual comfort",
+      "Adjustable drawcord waist, button fly",
+      "Made in Spain"
+    ],
+    "reviews": [],
+    "rating": 4.7,
+    "sizes": [
+      "46",
+      "48",
+      "50",
+      "52"
+    ],
+    "colors": [
+      "Cream",
+      "Natural Oatmeal",
+      "Midnight Black"
+    ],
+    "inStock": true,
+    "featured": false,
+    "trending": false,
+    "newArrival": false
+  },
+  {
+    "id": "zenith-knit-beanie",
+    "name": "Zenith Waffle Cashmere Beanie",
+    "description": "Knitted in a unique waffle structure using organic cashwool blend. Highly insulating and textured.",
+    "price": 130,
+    "category": "accessories",
+    "collection": "Zenith",
+    "images": [
+      "https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=800&auto=format&fit=crop"
+    ],
+    "details": [
+      "50% Cashmere, 50% Extrafine Merino Wool",
+      "Waffle-knit stitch structure",
+      "Made in Italy"
+    ],
+    "reviews": [],
+    "rating": 4.7,
+    "sizes": [
+      "One Size"
+    ],
+    "colors": [
+      "Sage Green",
+      "Oatmeal",
+      "Midnight Black"
+    ],
+    "inStock": true,
+    "featured": false,
+    "trending": false,
+    "newArrival": false
+  }
+]
