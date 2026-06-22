@@ -2,6 +2,7 @@
 
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
+import productsData from '@/data/products.json';
 import {
   Search,
   X,
@@ -23,13 +24,20 @@ interface Product {
 interface SearchModalProps {
   isOpen: boolean;
   onClose: () => void;
-  products: Product[];
 }
+
+const products: Product[] = (productsData as any[]).map((p) => ({
+  id: p.id,
+  name: p.name,
+  category: p.category || '',
+  collection: p.collection || '',
+  price: p.price,
+  image: p.images?.[0] || '',
+}));
 
 export default function SearchModal({
   isOpen,
   onClose,
-  products,
 }: SearchModalProps) {
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -99,7 +107,7 @@ export default function SearchModal({
             .includes(query.toLowerCase())
       )
       .slice(0, 8);
-  }, [query, products]);
+  }, [query]);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {

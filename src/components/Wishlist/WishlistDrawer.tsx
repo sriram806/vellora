@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Heart, ShoppingBag, Trash2 } from 'lucide-react';
+import { X, Heart, ShoppingBag, Trash2, ArrowRight } from 'lucide-react';
 import { useWishlist } from '@/hooks/WishlistContext';
 import { useCart } from '@/hooks/CartContext';
 import Link from 'next/link';
@@ -120,7 +120,7 @@ export default function WishlistDrawer({ isOpen, onClose }: WishlistDrawerProps)
                       {/* Add to Cart CTA */}
                       <button
                         onClick={() => handleMoveToCart(product)}
-                        className="w-full btn-outline py-2 px-3 text-[10px] uppercase tracking-widest mt-3 flex items-center justify-center gap-1.5"
+                        className="w-full btn-outline py-2 px-3 text-[10px] uppercase tracking-widest mt-3 flex items-center justify-center gap-1.5 cursor-pointer"
                       >
                         <ShoppingBag className="w-3.5 h-3.5" />
                         <span>Move to Bag</span>
@@ -130,6 +130,20 @@ export default function WishlistDrawer({ isOpen, onClose }: WishlistDrawerProps)
                 ))
               )}
             </div>
+
+            {/* Footer */}
+            {wishlist.length > 0 && (
+              <div className="p-6 border-t border-border bg-background-secondary/80 backdrop-blur-xl">
+                <Link
+                  href="/wishlist"
+                  onClick={onClose}
+                  className="w-full btn-primary py-3.5 text-xs text-center flex items-center justify-center gap-2 cursor-pointer"
+                >
+                  <span>View Full Wishlist</span>
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+              </div>
+            )}
           </motion.div>
         </>
       )}
