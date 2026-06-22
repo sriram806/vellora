@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Minus, Plus, ShoppingBag, Tag, Trash2, Truck, ShieldCheck, ArrowRight, Sparkles } from 'lucide-react';
+import { Minus, Plus, ShoppingBag, Tag, Trash2, Truck, ShieldCheck, ArrowRight, Sparkles, Gift } from 'lucide-react';
 import { useCart } from '@/hooks/CartContext';
 import { useToast } from '@/components/UI/ToastProvider';
 import productsData from '@/data/products.json';
@@ -24,6 +24,8 @@ export default function CartPage() {
   } = useCart();
 
   const [couponCode, setCouponCode] = useState('');
+  const [isGift, setIsGift] = useState(false);
+  const [giftMessage, setGiftMessage] = useState('');
 
   const handleApplyCoupon = (event: React.FormEvent) => {
     event.preventDefault();
@@ -69,7 +71,7 @@ export default function CartPage() {
   }, []);
 
   return (
-    <main className="container-vellora py-10 sm:py-16 lg:py-20 min-h-[85vh]">
+    <main className="container-vellora py-12 sm:py-20 lg:py-24 min-h-[85vh]">
       {/* Header section */}
       <div className="border-b border-border pb-8">
         <span className="label-text text-accent font-semibold">Digital Atelier</span>
@@ -98,7 +100,7 @@ export default function CartPage() {
             exit={{ opacity: 0, y: -15 }}
             className="space-y-16 mt-12"
           >
-            <section className="flex flex-col items-center justify-center text-center py-20 border border-dashed border-border bg-background-secondary/35 rounded-lg">
+            <section className="flex flex-col items-center justify-center text-center py-24 border border-dashed border-border bg-background-secondary/30 rounded-sm">
               <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-background-secondary border border-border text-foreground-muted mb-6">
                 <ShoppingBag className="h-8 w-8 stroke-[1.25]" />
               </div>
@@ -168,31 +170,31 @@ export default function CartPage() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="grid gap-10 py-10 lg:grid-cols-[1fr_380px] lg:items-start"
+            className="grid gap-12 py-10 lg:grid-cols-[1fr_390px] lg:items-start"
           >
-            {/* Items List */}
-            <section className="space-y-6">
+            {/* Items List (Minimalist Editorial Style) */}
+            <section className="divide-y divide-border/60">
               <AnimatePresence initial={false}>
                 {cart.map((item) => (
                   <motion.article
                     layout
                     key={item.id}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, scale: 0.95 }}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
                     transition={{ duration: 0.35 }}
-                    className="grid gap-5 border border-border bg-background p-4 sm:grid-cols-[150px_1fr] sm:p-6 rounded-sm shadow-sm relative"
+                    className="py-8 first:pt-0 last:pb-0 flex flex-col sm:flex-row gap-6 sm:gap-8 items-start relative group"
                   >
                     {/* Image */}
                     <Link
                       href={`/product/${item.product.id}`}
-                      className="relative aspect-product overflow-hidden border border-border bg-background-secondary rounded-sm block"
+                      className="w-full sm:w-36 aspect-product overflow-hidden border border-border/60 bg-background-secondary rounded-xs shrink-0 relative block"
                     >
                       {item.product.images?.[0] ? (
                         <img
                           src={item.product.images[0]}
                           alt={item.product.name}
-                          className="h-full w-full object-cover transition-transform duration-700 ease-out hover:scale-105"
+                          className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-103"
                         />
                       ) : (
                         <div className="flex h-full items-center justify-center bg-zinc-800 text-[10px] uppercase font-mono text-zinc-500">
@@ -202,25 +204,25 @@ export default function CartPage() {
                     </Link>
 
                     {/* Content Details */}
-                    <div className="flex min-w-0 flex-col justify-between gap-6">
+                    <div className="flex-1 min-w-0 flex flex-col justify-between self-stretch gap-6">
                       <div className="flex justify-between items-start gap-4">
                         <div className="min-w-0 flex-1">
                           <span className="label-text text-[9px] text-foreground-muted">{item.product.collection}</span>
                           <Link href={`/product/${item.product.id}`} className="mt-1 block">
-                            <h2 className="text-lg font-medium leading-snug transition-colors hover:text-accent truncate">
+                            <h2 className="text-xl font-serif font-medium leading-snug transition-colors hover:text-accent truncate">
                               {item.product.name}
                             </h2>
                           </Link>
                           
-                          {/* Attributes selectors */}
-                          <div className="mt-3 flex flex-wrap items-center gap-3">
+                          {/* Attribute Text Selectors (Borderless look) */}
+                          <div className="mt-4 flex flex-wrap items-center gap-5">
                             {/* Size selector */}
-                            <div className="flex items-center gap-1.5">
-                              <span className="text-[10px] font-mono text-foreground-muted uppercase">Size:</span>
+                            <div className="flex items-center gap-1.5 border-b border-border/40 pb-0.5">
+                              <span className="text-[9px] font-mono text-foreground-muted uppercase tracking-wider">Size</span>
                               <select
                                 value={item.selectedSize}
                                 onChange={(e) => handleUpdateAttributes(item, e.target.value, item.selectedColor)}
-                                className="bg-transparent border border-border text-[10px] px-1.5 py-0.5 outline-none font-mono focus:border-accent cursor-pointer"
+                                className="bg-transparent text-[10px] font-mono px-1 border-none focus:outline-none focus:text-accent font-semibold tracking-wider cursor-pointer"
                               >
                                 {item.product.sizes?.map((size: string) => (
                                   <option key={size} value={size}>
@@ -231,12 +233,12 @@ export default function CartPage() {
                             </div>
 
                             {/* Color selector */}
-                            <div className="flex items-center gap-1.5">
-                              <span className="text-[10px] font-mono text-foreground-muted uppercase">Color:</span>
+                            <div className="flex items-center gap-1.5 border-b border-border/40 pb-0.5">
+                              <span className="text-[9px] font-mono text-foreground-muted uppercase tracking-wider">Color</span>
                               <select
                                 value={item.selectedColor}
                                 onChange={(e) => handleUpdateAttributes(item, item.selectedSize, e.target.value)}
-                                className="bg-transparent border border-border text-[10px] px-1.5 py-0.5 outline-none font-mono focus:border-accent cursor-pointer"
+                                className="bg-transparent text-[10px] font-mono px-1 border-none focus:outline-none focus:text-accent font-semibold tracking-wider cursor-pointer"
                               >
                                 {item.product.colors?.map((color: string) => (
                                   <option key={color} value={color}>
@@ -251,7 +253,7 @@ export default function CartPage() {
                         {/* Remove button */}
                         <button
                           onClick={() => item.id && removeFromCart(item.id)}
-                          className="h-8 w-8 border border-border rounded-full flex items-center justify-center text-foreground-muted transition-colors hover:border-error hover:text-error cursor-pointer"
+                          className="p-2 text-foreground-muted hover:text-error hover:bg-error-light/10 rounded-full transition-all cursor-pointer"
                           aria-label={`Remove ${item.product.name}`}
                         >
                           <Trash2 className="h-4 w-4" />
@@ -259,25 +261,32 @@ export default function CartPage() {
                       </div>
 
                       {/* Quantity & Price Row */}
-                      <div className="flex flex-wrap items-center justify-between gap-4 pt-3 border-t border-border-light">
-                        <div className="flex items-center border border-border rounded-full overflow-hidden">
+                      <div className="flex items-center justify-between gap-4 pt-4 mt-auto">
+                        <div className="flex items-center border border-border/80 rounded-full bg-background-secondary/35 px-1.5">
                           <button
                             onClick={() => item.id && updateQuantity(item.id, item.quantity - 1)}
-                            className="grid h-8 w-8 place-items-center transition-colors hover:bg-border-light cursor-pointer text-foreground-secondary"
+                            className="grid h-7 w-7 place-items-center transition-colors hover:text-accent cursor-pointer text-foreground-secondary"
                             aria-label="Decrease quantity"
                           >
                             <Minus className="h-3 w-3" />
                           </button>
-                          <span className="w-8 text-center font-mono text-xs">{item.quantity}</span>
+                          <span className="w-8 text-center font-mono text-xs font-semibold">{item.quantity}</span>
                           <button
                             onClick={() => item.id && updateQuantity(item.id, item.quantity + 1)}
-                            className="grid h-8 w-8 place-items-center transition-colors hover:bg-border-light cursor-pointer text-foreground-secondary"
+                            className="grid h-7 w-7 place-items-center transition-colors hover:text-accent cursor-pointer text-foreground-secondary"
                             aria-label="Increase quantity"
                           >
                             <Plus className="h-3 w-3" />
                           </button>
                         </div>
-                        <p className="font-mono text-base font-semibold text-accent">${item.product.price * item.quantity}</p>
+                        <div className="text-right">
+                          {item.quantity > 1 && (
+                            <span className="text-[10px] font-mono text-foreground-muted block mb-0.5">
+                              ${item.product.price} each
+                            </span>
+                          )}
+                          <p className="font-mono text-base font-semibold text-accent">${item.product.price * item.quantity}</p>
+                        </div>
                       </div>
                     </div>
                   </motion.article>
@@ -285,76 +294,124 @@ export default function CartPage() {
               </AnimatePresence>
             </section>
 
-            {/* Sidebar Summary */}
-            <aside className="sticky top-32 space-y-6 border border-border bg-background-secondary/70 p-6 sm:p-8 rounded-sm glass">
-              <div>
-                <p className="label-text text-accent font-semibold">Order Summary</p>
-                <h2 className="heading-serif mt-1 text-2xl sm:text-3xl uppercase tracking-wider">Atelier Total</h2>
-              </div>
+            {/* Sidebar Summary & Bespoke Options */}
+            <aside className="sticky top-32 space-y-6">
+              {/* Order Summary box */}
+              <div className="border border-border bg-background-secondary/70 p-6 sm:p-8 rounded-sm glass shadow-[0_20px_50px_rgba(201,169,110,0.04)] space-y-6">
+                <div>
+                  <p className="label-text text-accent font-semibold">Order Summary</p>
+                  <h2 className="heading-serif mt-1 text-2xl uppercase tracking-wider">Atelier Total</h2>
+                </div>
 
-              {/* Promo input */}
-              {!coupon ? (
-                <form onSubmit={handleApplyCoupon} className="flex gap-2">
-                  <div className="relative flex-1">
-                    <Tag className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-foreground-muted" />
-                    <input
-                      value={couponCode}
-                      onChange={(event) => setCouponCode(event.target.value)}
-                      placeholder="ENTER CODE (e.g. VEL15)"
-                      className="w-full border border-border bg-background py-2.5 pl-10 pr-3 text-xs uppercase tracking-widest outline-none focus:border-accent font-mono"
-                    />
+                {/* Shipping progress tracker bar */}
+                <div className="space-y-2">
+                  <div className="flex justify-between items-center text-[10px] font-mono uppercase tracking-wider text-success">
+                    <span className="flex items-center gap-1"><Truck className="w-3.5 h-3.5" /> Express Shipping</span>
+                    <span>Complimentary</span>
                   </div>
-                  <button type="submit" className="btn-outline px-4 py-2.5 text-[10px] cursor-pointer">
-                    Apply
-                  </button>
-                </form>
-              ) : (
-                <div className="flex items-center justify-between border border-accent/25 bg-accent-light px-3 py-3 text-xs text-accent rounded-sm">
-                  <span className="font-mono uppercase tracking-wider font-medium">{coupon.code} Applied</span>
-                  <button onClick={removeCoupon} className="text-[10px] uppercase tracking-widest text-foreground hover:text-accent font-semibold cursor-pointer">
-                    Remove
-                  </button>
+                  <div className="h-1 bg-border rounded-full overflow-hidden">
+                    <div className="h-full bg-success w-full" />
+                  </div>
                 </div>
-              )}
 
-              {/* Summary table */}
-              <div className="space-y-3 border-t border-border pt-5 font-mono text-xs">
-                <div className="flex justify-between text-foreground-secondary">
-                  <span>Bag Total</span>
-                  <span>${cartTotal}</span>
-                </div>
-                {coupon && (
-                  <div className="flex justify-between text-accent font-medium">
-                    <span>Discount</span>
-                    <span>-${discountAmount}</span>
+                {/* Promo input */}
+                {!coupon ? (
+                  <form onSubmit={handleApplyCoupon} className="flex gap-2 border-t border-border/60 pt-5">
+                    <div className="relative flex-1">
+                      <Tag className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-foreground-muted" />
+                      <input
+                        value={couponCode}
+                        onChange={(event) => setCouponCode(event.target.value)}
+                        placeholder="PROMO CODE (e.g. VEL15)"
+                        className="w-full border border-border bg-background py-2 pl-10 pr-3 text-xs uppercase tracking-widest outline-none focus:border-accent font-mono"
+                      />
+                    </div>
+                    <button type="submit" className="btn-outline px-4 py-2 text-[10px] cursor-pointer">
+                      Apply
+                    </button>
+                  </form>
+                ) : (
+                  <div className="flex items-center justify-between border border-accent/25 bg-accent-light px-3 py-3 text-xs text-accent rounded-sm">
+                    <span className="font-mono uppercase tracking-wider font-medium">{coupon.code} Applied</span>
+                    <button onClick={removeCoupon} className="text-[10px] uppercase tracking-widest text-foreground hover:text-accent font-semibold cursor-pointer">
+                      Remove
+                    </button>
                   </div>
                 )}
-                <div className="flex justify-between text-foreground-secondary">
-                  <span>Shipping</span>
-                  <span className="text-[10px] text-success uppercase">Complimentary</span>
+
+                {/* Summary table */}
+                <div className="space-y-3 border-t border-border pt-5 font-mono text-xs">
+                  <div className="flex justify-between text-foreground-secondary">
+                    <span>Bag Total</span>
+                    <span>${cartTotal}</span>
+                  </div>
+                  {coupon && (
+                    <div className="flex justify-between text-accent font-medium">
+                      <span>Discount</span>
+                      <span>-${discountAmount}</span>
+                    </div>
+                  )}
+                  <div className="flex justify-between text-foreground-secondary">
+                    <span>Shipping</span>
+                    <span className="text-[10px] text-success uppercase">Complimentary</span>
+                  </div>
+                  <div className="flex justify-between border-t border-border pt-4 text-sm font-semibold text-foreground">
+                    <span>Subtotal</span>
+                    <span className="text-accent font-bold">${subtotal}</span>
+                  </div>
                 </div>
-                <div className="flex justify-between border-t border-border pt-4 text-sm font-semibold text-foreground">
-                  <span>Subtotal</span>
-                  <span className="text-accent">${subtotal}</span>
+
+                {/* Checkout CTA */}
+                <Link href="/checkout" className="btn-primary w-full gap-2 py-4 text-[10px] text-center flex items-center justify-center cursor-pointer">
+                  <span>Proceed to Checkout</span>
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
+
+                <div className="flex items-center justify-center gap-1.5 text-foreground-muted text-[10px] font-mono border-t border-border/40 pt-4">
+                  <ShieldCheck className="w-3.5 h-3.5 text-accent" />
+                  <span>Double-encrypted card authentication</span>
                 </div>
               </div>
 
-              {/* Checkout CTA */}
-              <Link href="/checkout" className="btn-primary w-full gap-2 py-4 text-[10px] text-center flex items-center justify-center cursor-pointer">
-                <span>Proceed to Checkout</span>
-                <ArrowRight className="h-4 w-4" />
-              </Link>
+              {/* Bespoke Gift Wrapping Options */}
+              <div className="border border-border p-6 bg-background rounded-xs space-y-4 shadow-sm">
+                <label className="flex items-center justify-between cursor-pointer">
+                  <div className="flex items-center gap-3">
+                    <Gift className="w-5 h-5 text-accent" />
+                    <div>
+                      <h4 className="text-xs font-semibold uppercase tracking-wider">Gift Atelier Packaging</h4>
+                      <p className="text-[10px] text-foreground-muted mt-0.5">Free signature box and custom note</p>
+                    </div>
+                  </div>
+                  <input
+                    type="checkbox"
+                    checked={isGift}
+                    onChange={(e) => setIsGift(e.target.checked)}
+                    className="rounded border-border text-accent focus:ring-accent cursor-pointer h-4 w-4 accent-accent"
+                  />
+                </label>
 
-              {/* Additional badges */}
-              <div className="grid gap-3 border-t border-border pt-5 text-[11px] leading-relaxed text-foreground-secondary">
-                <p className="flex gap-2.5">
-                  <Truck className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
-                  <span>Worldwide express shipping is included on every order.</span>
-                </p>
-                <p className="flex gap-2.5">
-                  <ShieldCheck className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
-                  <span>Secure checkout process. Authenticity-backed product records.</span>
-                </p>
+                <AnimatePresence>
+                  {isGift && (
+                    <motion.div
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: 'auto' }}
+                      exit={{ opacity: 0, height: 0 }}
+                      transition={{ duration: 0.3 }}
+                      className="overflow-hidden"
+                    >
+                      <div className="pt-2">
+                        <textarea
+                          rows={3}
+                          placeholder="Type your personalized gift message here. It will be hand-written on a gold-embossed card."
+                          value={giftMessage}
+                          onChange={(e) => setGiftMessage(e.target.value)}
+                          className="w-full text-xs p-3 border border-border bg-background outline-none focus:border-accent resize-none placeholder:text-foreground-muted/80 rounded-xs"
+                        />
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </div>
             </aside>
           </motion.div>

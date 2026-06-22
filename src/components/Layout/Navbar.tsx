@@ -1,8 +1,8 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Search, Heart, ShoppingBag, Menu, X } from 'lucide-react';
+import { Search, Heart, ShoppingBag, Menu, X, User } from 'lucide-react';
 import { useCart } from '@/hooks/CartContext';
 import { useWishlist } from '@/hooks/WishlistContext';
 import SearchModal from './SearchModal';
@@ -20,12 +20,21 @@ export default function Navbar() {
   const [isWishlistOpen, setIsWishlistOpen] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  // Announcement state
+  const [announcement, setAnnouncement] = useState('Use Code: VEL15 for 15% off in the digital atelier');
+  useEffect(() => {
+    const saved = localStorage.getItem('vellora_announcement');
+    if (saved) {
+      setAnnouncement(saved);
+    }
+  }, []);
+
   return (
     <>
       <header className="sticky top-0 left-0 right-0 z-50 transition-all duration-300">
         {/* Top Announcement Bar */}
         <div className="w-full bg-accent text-[9px] sm:text-[10px] text-white font-mono uppercase tracking-[0.15em] py-2 px-4 sm:px-6 text-center flex items-center justify-center gap-2 border-b border-white/10">
-          <span>Use Code: <span className="font-bold underline">VEL15</span> for 15% off in the digital atelier</span>
+          <span>{announcement}</span>
           <span className="hidden md:inline-block w-1 h-1 rounded-full bg-white/60" />
           <span className="hidden md:inline-block">Free worldwide express shipping</span>
         </div>
@@ -83,6 +92,15 @@ export default function Navbar() {
             >
               <Search className="w-5 h-5" />
             </button>
+
+            {/* Profile Page Link */}
+            <Link
+              href="/profile"
+              className="p-2 rounded-full border border-transparent hover:border-border hover:bg-border-light text-foreground hover:text-accent transition-colors cursor-pointer"
+              aria-label="Open profile page"
+            >
+              <User className="w-5 h-5" />
+            </Link>
 
             {/* Wishlist Trigger */}
             <button

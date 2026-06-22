@@ -195,8 +195,9 @@ textarea {
   background: rgba(10, 10, 10, 0.65);
 }
 
-.cursor-custom {
-  cursor: none;
+.cursor-custom,
+.cursor-custom * {
+  cursor: none !important;
 }
 
 .cursor-dot,

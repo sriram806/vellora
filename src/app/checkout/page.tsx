@@ -1,9 +1,9 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ShoppingBag, ArrowRight, ShieldCheck, CheckCircle2, ChevronRight, CreditCard, Landmark, Truck } from 'lucide-react';
+import { ShoppingBag, ArrowRight, ShieldCheck, CheckCircle2, ChevronRight, CreditCard, Landmark, Truck, Sparkles } from 'lucide-react';
 import { useCart } from '@/hooks/CartContext';
 import { useToast } from '@/components/UI/ToastProvider';
 
@@ -30,6 +30,28 @@ export default function CheckoutPage() {
   const [orderId, setOrderId] = useState('');
   const [confirmedItems, setConfirmedItems] = useState<any[]>([]);
   const [confirmedTotal, setConfirmedTotal] = useState(0);
+
+  // Load saved profile data on mount
+  const [profileLoaded, setProfileLoaded] = useState(false);
+  useEffect(() => {
+    try {
+      const savedProfile = localStorage.getItem('vellora_profile');
+      if (savedProfile) {
+        const p = JSON.parse(savedProfile);
+        if (p.email) setEmail(p.email);
+        if (p.firstName) setFirstName(p.firstName);
+        if (p.lastName) setLastName(p.lastName);
+        if (p.address) setAddress(p.address);
+        if (p.city) setCity(p.city);
+        if (p.state) setState(p.state);
+        if (p.zip) setZip(p.zip);
+        if (p.phone) setPhone(p.phone);
+        setProfileLoaded(true);
+      }
+    } catch (err) {
+      console.error('Failed to parse saved profile details', err);
+    }
+  }, []);
 
   const handleSubmitCheckout = (e: React.FormEvent) => {
     e.preventDefault();
@@ -58,6 +80,43 @@ export default function CheckoutPage() {
     setTimeout(() => {
       setIsSubmitting(false);
       const generatedOrderId = `VEL-2026-${Math.floor(100000 + Math.random() * 900000)}`;
+      
+      // Save order to localStorage for Admin Panel
+      try {
+        const storedOrders = localStorage.getItem('vellora_orders');
+        const ordersList = storedOrders ? JSON.parse(storedOrders) : [];
+        const newOrder = {
+          orderId: generatedOrderId,
+          email,
+          shippingAddress: {
+            firstName,
+            lastName,
+            address,
+            city,
+            state,
+            zip,
+            phone
+          },
+          items: cart.map(item => ({
+            id: item.id,
+            productId: item.product.id,
+            name: item.product.name,
+            price: item.product.price,
+            quantity: item.quantity,
+            selectedSize: item.selectedSize,
+            selectedColor: item.selectedColor,
+            image: item.product.images?.[0] || ''
+          })),
+          total: subtotal,
+          status: 'Pending',
+          date: new Date().toISOString()
+        };
+        ordersList.unshift(newOrder);
+        localStorage.setItem('vellora_orders', JSON.stringify(ordersList));
+      } catch (err) {
+        console.error('Failed to save order to localStorage', err);
+      }
+
       setOrderId(generatedOrderId);
       setConfirmedItems([...cart]);
       setConfirmedTotal(subtotal);
@@ -193,6 +252,14 @@ export default function CheckoutPage() {
         <form onSubmit={handleSubmitCheckout} className="grid gap-10 lg:grid-cols-[1fr_390px] lg:items-start">
           {/* Billing and Shipping forms */}
           <div className="space-y-8">
+            {/* Profile Pre-filled Banner */}
+            {profileLoaded && (
+              <div className="p-4 border border-accent/25 bg-accent-light/5 text-accent text-xs font-mono uppercase tracking-wider flex items-center gap-2 rounded-sm">
+                <Sparkles className="w-4 h-4 text-accent shrink-0 animate-pulse" />
+                <span>Pre-filled from your Atelier Profile</span>
+              </div>
+            )}
+
             {/* Step 1: Account Info */}
             <div className="border border-border p-6 bg-background rounded-sm space-y-4">
               <div className="flex items-center gap-3 pb-3 border-b border-border">

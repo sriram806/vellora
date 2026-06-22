@@ -109,7 +109,29 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
   };
 
   const applyCoupon = (code: string): boolean => {
-    const foundCoupon = COUPONS.find((c) => c.code.toUpperCase() === code.toUpperCase());
+    // 1. Check static coupons
+    let foundCoupon = COUPONS.find((c) => c.code.toUpperCase() === code.toUpperCase());
+    
+    // 2. Check localStorage coupons if not found statically
+    if (!foundCoupon) {
+      try {
+        const storedPromoCodesStr = localStorage.getItem('vellora_promo_codes');
+        if (storedPromoCodesStr) {
+          const storedPromoCodes = JSON.parse(storedPromoCodesStr);
+          const found = storedPromoCodes.find((c: any) => c.code.toUpperCase() === code.toUpperCase() && c.active);
+          if (found) {
+            foundCoupon = {
+              code: found.code,
+              discountType: found.type === 'percentage' ? 'percentage' : 'fixed',
+              value: found.value
+            };
+          }
+        }
+      } catch (e) {
+        console.error('Failed to parse promo codes from localStorage', e);
+      }
+    }
+
     if (foundCoupon) {
       setCoupon(foundCoupon);
       return true;

@@ -147,10 +147,10 @@ export default function Home() {
       {/* IMMERSIVE SHOWROOM EXPERIENCE */}
       <section className="relative h-[60vh] min-h-[500px] bg-black border-t border-border">
         <ShowroomCanvas />
-         {/* Watermark */}
-         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-          <h1 className="text-[18vw] font-black tracking-[0.35em] text-white/[0.03] whitespace-nowrap">
-             VELLORA
+        {/* Watermark */}
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+          <h1 className="text-[14vw] pl-18 font-black tracking-[0.35em] text-white/[0.05] whitespace-nowrap">
+            VELLORA
           </h1>
         </div>
       </section>

@@ -1,13 +1,40 @@
 'use client';
 
-import React, { useState, useMemo, Suspense } from 'react';
+import React, { useState, useMemo, useEffect, useRef, Suspense } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import productsData from '@/data/products.json';
 import { Product } from '@/types';
 import ProductCard from '@/components/Product/ProductCard';
-import { SlidersHorizontal, Grid, List, X, Search, Info } from 'lucide-react';
+import { 
+  SlidersHorizontal, 
+  X, 
+  Search, 
+  Info, 
+  ChevronDown, 
+  ChevronUp, 
+  ChevronLeft, 
+  ChevronRight,
+  RotateCcw
+} from 'lucide-react';
 
 const products = productsData as Product[];
+
+// Map color names to premium hexadecimal codes for live swatches
+const getColorHex = (colorName: string): string => {
+  const c = colorName.toLowerCase();
+  if (c.includes('black')) return '#141414';
+  if (c.includes('white')) return '#faf8f5';
+  if (c.includes('platinum') || c.includes('silver') || c.includes('volt')) return '#d4d4d8';
+  if (c.includes('gray')) return '#8a8a8a';
+  if (c.includes('cream') || c.includes('ivory')) return '#fcfaf2';
+  if (c.includes('espresso') || c.includes('brown')) return '#4b382a';
+  if (c.includes('taupe')) return '#8b8589';
+  if (c.includes('sand') || c.includes('linen') || c.includes('beige')) return '#dfd5c6';
+  if (c.includes('olive') || c.includes('sage') || c.includes('green')) return '#909e8f';
+  if (c.includes('camel') || c.includes('cognac') || c.includes('bronze')) return '#c19a6b';
+  if (c.includes('burgundy') || c.includes('red')) return '#722f37';
+  return '#c0c0c0'; // default gray
+};
 
 const getProductFit = (product: Product): string => {
   const desc = (product.description || '').toLowerCase();
@@ -39,6 +66,10 @@ function ShopContent() {
   const urlCategory = searchParams.get('category') || '';
   const urlCollection = searchParams.get('collection') || '';
 
+  // Pagination states
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 12;
+
   // Filter local states
   const [searchQuery, setSearchQuery] = useState('');
   const [categoryFilter, setCategoryFilter] = useState(urlCategory);
@@ -49,6 +80,24 @@ function ShopContent() {
   const [showMobileFilters, setShowMobileFilters] = useState(false);
   const [fitFilter, setFitFilter] = useState('');
   const [isFitGuideOpen, setIsFitGuideOpen] = useState(false);
+
+  // Collapsible sidebar states
+  const [expandedSections, setExpandedSections] = useState({
+    search: true,
+    category: true,
+    price: true,
+    color: true,
+    size: true
+  });
+
+  const toggleSection = (section: keyof typeof expandedSections) => {
+    setExpandedSections((prev) => ({
+      ...prev,
+      [section]: !prev[section]
+    }));
+  };
+
+  const productsSectionRef = useRef<HTMLDivElement>(null);
 
   // Lists of available colors and sizes for UI
   const categories = ['t-shirts', 'pants', 'sneakers', 'outerwear', 'accessories'];
@@ -86,6 +135,20 @@ function ShopContent() {
     setPriceRange(3000);
     setSortBy('featured');
     router.replace('/shop');
+  };
+
+  // Reset page to 1 when filters change
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [searchQuery, categoryFilter, colorFilter, sizeFilter, fitFilter, priceRange, sortBy]);
+
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
+    // Smooth scroll back to the products grid header
+    if (productsSectionRef.current) {
+      const topOffset = productsSectionRef.current.getBoundingClientRect().top + window.scrollY - 100;
+      window.scrollTo({ top: topOffset, behavior: 'smooth' });
+    }
   };
 
   // Compile active filters list
@@ -157,131 +220,241 @@ function ShopContent() {
       });
   }, [searchQuery, categoryFilter, urlCollection, colorFilter, sizeFilter, fitFilter, priceRange, sortBy]);
 
+  // Paginated products
+  const paginatedProducts = useMemo(() => {
+    const startIndex = (currentPage - 1) * itemsPerPage;
+    return filteredProducts.slice(startIndex, startIndex + itemsPerPage);
+  }, [filteredProducts, currentPage, itemsPerPage]);
+
+  const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
+
   return (
     <div className="container-vellora py-12 space-y-12">
       {/* Editorial Header Banner */}
-      <div className="border border-border p-8 sm:p-16 flex flex-col justify-center items-center text-center space-y-4 bg-background-secondary relative overflow-hidden">
-        <div className="absolute inset-0 bg-radial-gold opacity-10 pointer-events-none" />
-        <span className="label-text text-accent">Vellora Atelier</span>
-        <h1 className="heading-serif text-3xl sm:text-5xl font-bold uppercase tracking-wider">
+      <div className="border border-border p-8 sm:p-16 flex flex-col justify-center items-center text-center space-y-4 bg-background-secondary relative overflow-hidden group">
+        {/* Subtle radial luxury mesh gradient backdrop */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,var(--color-accent-light)_0%,transparent_70%)] opacity-30 pointer-events-none" />
+        
+        {/* Gold Inset Frame */}
+        <div className="absolute inset-4 border border-accent/20 pointer-events-none transition-all duration-700 group-hover:inset-3 group-hover:border-accent/40" />
+
+        <span className="text-[10px] tracking-[0.3em] text-accent uppercase font-mono font-bold">Vellora Atelier</span>
+        <h1 className="heading-serif text-3xl sm:text-6xl font-bold uppercase tracking-widest text-foreground">
           The Collection Shop
         </h1>
-        <p className="body-text text-sm text-foreground-secondary max-w-xl">
+        <p className="body-text text-xs sm:text-sm text-foreground-secondary max-w-xl leading-relaxed">
           Discover structured luxury wardrobe staples. Re-engineered using premium cashmere, mulberry silk, and raw Okayama selvedge denim.
         </p>
       </div>
 
-      <div className="flex flex-col lg:flex-row gap-10 items-start">
+      <div className="flex flex-col lg:flex-row gap-10 items-start" ref={productsSectionRef}>
         {/* FILTERS PANEL (Desktop) */}
-        <aside className="hidden lg:block w-72 space-y-8 flex-shrink-0 border border-border p-6 bg-background-tertiary glass sticky top-32">
+        <aside className="hidden lg:block w-72 space-y-6 flex-shrink-0 border border-border p-6 bg-background-tertiary glass sticky top-32">
           <div className="flex justify-between items-center pb-4 border-b border-border">
-            <h2 className="ui-text text-sm">Filters</h2>
-            <button
-              onClick={handleResetFilters}
-              className="text-[10px] text-foreground-muted hover:text-accent font-semibold uppercase tracking-wider"
-            >
-              Reset All
-            </button>
-          </div>
-
-          {/* Search */}
-          <div className="space-y-3">
-            <label className="ui-text text-foreground-muted text-[10px] block">Search</label>
-            <div className="relative border border-border flex items-center bg-background px-3 py-2">
-              <input
-                type="text"
-                placeholder="Search items..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full bg-transparent text-xs outline-none uppercase"
-              />
-              <Search className="w-3.5 h-3.5 text-foreground-muted" />
-            </div>
-          </div>
-
-          {/* Categories */}
-          <div className="space-y-3">
-            <label className="ui-text text-foreground-muted text-[10px] block">Category</label>
-            <div className="flex flex-col gap-2">
+            <h2 className="ui-text text-xs font-semibold uppercase tracking-wider text-foreground">Filters</h2>
+            {activeFiltersList.length > 0 && (
               <button
-                onClick={() => handleCategorySelect('')}
-                className={`text-left text-xs uppercase tracking-wider py-1 hover:text-accent transition-colors flex justify-between items-center w-full ${
-                  !categoryFilter ? 'text-accent font-semibold' : 'text-foreground-secondary'
-                }`}
+                onClick={handleResetFilters}
+                className="text-[10px] text-foreground-muted hover:text-accent font-semibold uppercase tracking-wider flex items-center gap-1 transition-colors cursor-pointer"
               >
-                <span>All Categories</span>
-                <span className="text-[9px] text-foreground-muted font-mono bg-border-light/40 px-1.5 py-0.5 rounded-full">
-                  {products.length}
-                </span>
+                <RotateCcw className="w-3 h-3" />
+                <span>Reset All</span>
               </button>
-              {categories.map((cat) => (
+            )}
+          </div>
+
+          {/* Search Section */}
+          <div className="border-b border-border pb-5 space-y-3">
+            <button
+              onClick={() => toggleSection('search')}
+              className="flex justify-between items-center w-full text-left py-1.5 group cursor-pointer"
+            >
+              <span className="ui-text text-[10px] text-foreground-muted uppercase tracking-wider font-bold">Search</span>
+              {expandedSections.search ? (
+                <ChevronUp className="w-3.5 h-3.5 text-foreground-muted group-hover:text-accent transition-colors" />
+              ) : (
+                <ChevronDown className="w-3.5 h-3.5 text-foreground-muted group-hover:text-accent transition-colors" />
+              )}
+            </button>
+            {expandedSections.search && (
+              <div className="relative border border-border flex items-center bg-background px-3 py-2 transition-all duration-300 focus-within:border-accent">
+                <input
+                  type="text"
+                  placeholder="Search items..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="w-full bg-transparent text-xs outline-none uppercase placeholder:text-foreground-muted/65"
+                />
+                <Search className="w-3.5 h-3.5 text-foreground-muted" />
+              </div>
+            )}
+          </div>
+
+          {/* Categories Section */}
+          <div className="border-b border-border pb-5 space-y-3">
+            <button
+              onClick={() => toggleSection('category')}
+              className="flex justify-between items-center w-full text-left py-1.5 group cursor-pointer"
+            >
+              <span className="ui-text text-[10px] text-foreground-muted uppercase tracking-wider font-bold">Category</span>
+              {expandedSections.category ? (
+                <ChevronUp className="w-3.5 h-3.5 text-foreground-muted group-hover:text-accent transition-colors" />
+              ) : (
+                <ChevronDown className="w-3.5 h-3.5 text-foreground-muted group-hover:text-accent transition-colors" />
+              )}
+            </button>
+            {expandedSections.category && (
+              <div className="flex flex-col gap-2 pt-1">
                 <button
-                  key={cat}
-                  onClick={() => handleCategorySelect(cat)}
-                  className={`text-left text-xs uppercase tracking-wider py-1 hover:text-accent transition-colors flex justify-between items-center w-full ${
-                    categoryFilter === cat ? 'text-accent font-semibold' : 'text-foreground-secondary'
+                  onClick={() => handleCategorySelect('')}
+                  className={`text-left text-xs uppercase tracking-wider py-1 hover:text-accent transition-colors flex justify-between items-center w-full cursor-pointer ${
+                    !categoryFilter ? 'text-accent font-bold' : 'text-foreground-secondary'
                   }`}
                 >
-                  <span>{cat.replace('-', ' ')}</span>
-                  <span className="text-[9px] text-foreground-muted font-mono bg-border-light/40 px-1.5 py-0.5 rounded-full">
-                    {categoryCounts[cat] || 0}
+                  <span>All Categories</span>
+                  <span className="text-[9px] text-foreground-muted font-mono bg-border-light/60 px-2 py-0.5 rounded-full">
+                    {products.length}
                   </span>
                 </button>
-              ))}
-            </div>
+                {categories.map((cat) => (
+                  <button
+                    key={cat}
+                    onClick={() => handleCategorySelect(cat)}
+                    className={`text-left text-xs uppercase tracking-wider py-1 hover:text-accent transition-colors flex justify-between items-center w-full cursor-pointer ${
+                      categoryFilter === cat ? 'text-accent font-bold' : 'text-foreground-secondary'
+                    }`}
+                  >
+                    <span>{cat.replace('-', ' ')}</span>
+                    <span className="text-[9px] text-foreground-muted font-mono bg-border-light/60 px-2 py-0.5 rounded-full">
+                      {categoryCounts[cat] || 0}
+                    </span>
+                  </button>
+                ))}
+              </div>
+            )}
           </div>
 
-          {/* Price Range */}
-          <div className="space-y-3">
-            <div className="flex justify-between items-center">
-              <label className="ui-text text-foreground-muted text-[10px]">Max Price</label>
-              <span className="font-mono text-xs text-accent">${priceRange}</span>
-            </div>
-            <input
-              type="range"
-              min="100"
-              max="3000"
-              step="50"
-              value={priceRange}
-              onChange={(e) => setPriceRange(Number(e.target.value))}
-              className="w-full accent-accent bg-border h-1"
-            />
+          {/* Price Range Section */}
+          <div className="border-b border-border pb-5 space-y-3">
+            <button
+              onClick={() => toggleSection('price')}
+              className="flex justify-between items-center w-full text-left py-1.5 group cursor-pointer"
+            >
+              <span className="ui-text text-[10px] text-foreground-muted uppercase tracking-wider font-bold">Price</span>
+              {expandedSections.price ? (
+                <ChevronUp className="w-3.5 h-3.5 text-foreground-muted group-hover:text-accent transition-colors" />
+              ) : (
+                <ChevronDown className="w-3.5 h-3.5 text-foreground-muted group-hover:text-accent transition-colors" />
+              )}
+            </button>
+            {expandedSections.price && (
+              <div className="space-y-3 pt-1">
+                <div className="flex justify-between items-center">
+                  <span className="text-xs text-foreground-secondary">Max Range</span>
+                  <span className="font-mono text-xs text-accent font-bold">${priceRange}</span>
+                </div>
+                <input
+                  type="range"
+                  min="100"
+                  max="3000"
+                  step="50"
+                  value={priceRange}
+                  onChange={(e) => setPriceRange(Number(e.target.value))}
+                  className="w-full accent-accent bg-border h-1 rounded-lg cursor-ew-resize"
+                />
+              </div>
+            )}
           </div>
 
-          {/* Colors */}
-          <div className="space-y-3">
-            <label className="ui-text text-foreground-muted text-[10px] block">Color</label>
-            <div className="flex flex-wrap gap-2">
-              {colors.map((c) => (
-                <button
-                  key={c}
-                  onClick={() => setColorFilter(colorFilter === c ? '' : c)}
-                  className={`px-3 py-1.5 border rounded-full text-[10px] uppercase font-medium tracking-wider transition-colors ${
-                    colorFilter === c ? 'border-accent bg-accent-light text-accent' : 'border-border text-foreground-secondary hover:border-accent'
-                  }`}
-                >
-                  {c.split(' ')[0]}
-                </button>
-              ))}
-            </div>
+          {/* Colors Section (Custom swatches with concentric outline) */}
+          <div className="border-b border-border pb-5 space-y-3">
+            <button
+              onClick={() => toggleSection('color')}
+              className="flex justify-between items-center w-full text-left py-1.5 group cursor-pointer"
+            >
+              <span className="ui-text text-[10px] text-foreground-muted uppercase tracking-wider font-bold">Color Palette</span>
+              {expandedSections.color ? (
+                <ChevronUp className="w-3.5 h-3.5 text-foreground-muted group-hover:text-accent transition-colors" />
+              ) : (
+                <ChevronDown className="w-3.5 h-3.5 text-foreground-muted group-hover:text-accent transition-colors" />
+              )}
+            </button>
+            {expandedSections.color && (
+              <div className="grid grid-cols-4 gap-4 pt-2">
+                {colors.map((c) => {
+                  const isSelected = colorFilter === c;
+                  const colorHex = getColorHex(c);
+                  return (
+                    <button
+                      key={c}
+                      onClick={() => setColorFilter(isSelected ? '' : c)}
+                      title={c}
+                      className="group relative flex flex-col items-center gap-1.5 cursor-pointer"
+                    >
+                      <span
+                        style={{ backgroundColor: colorHex }}
+                        className={`h-7 w-7 rounded-full border transition-all duration-300 relative flex items-center justify-center ${
+                          isSelected 
+                            ? 'border-accent scale-110 ring-2 ring-accent/35' 
+                            : 'border-border group-hover:scale-105 group-hover:border-foreground-secondary'
+                        }`}
+                      >
+                        {isSelected && (
+                          <span 
+                            className="w-1.5 h-1.5 rounded-full" 
+                            style={{ 
+                              backgroundColor: c.toLowerCase().includes('white') || c.toLowerCase().includes('cream') 
+                                ? '#c9a96e' 
+                                : '#ffffff' 
+                            }} 
+                          />
+                        )}
+                      </span>
+                      <span className={`text-[8px] uppercase tracking-wider line-clamp-1 max-w-full text-center ${
+                        isSelected ? 'text-accent font-bold' : 'text-foreground-muted'
+                      }`}>
+                        {c.split(' ')[0]}
+                      </span>
+                    </button>
+                  );
+                })}
+              </div>
+            )}
           </div>
 
-          {/* Sizes */}
-          <div className="space-y-3">
-            <label className="ui-text text-foreground-muted text-[10px] block">Size</label>
-            <div className="flex flex-wrap gap-2">
-              {sizes.map((s) => (
-                <button
-                  key={s}
-                  onClick={() => setSizeFilter(sizeFilter === s ? '' : s)}
-                  className={`w-9 h-9 border flex items-center justify-center text-[10px] font-mono transition-colors ${
-                    sizeFilter === s ? 'border-accent bg-accent-light text-accent font-bold' : 'border-border text-foreground-secondary hover:border-accent'
-                  }`}
-                >
-                  {s}
-                </button>
-              ))}
-            </div>
+          {/* Sizes Section */}
+          <div className="pb-2 space-y-3">
+            <button
+              onClick={() => toggleSection('size')}
+              className="flex justify-between items-center w-full text-left py-1.5 group cursor-pointer"
+            >
+              <span className="ui-text text-[10px] text-foreground-muted uppercase tracking-wider font-bold">Sizes</span>
+              {expandedSections.size ? (
+                <ChevronUp className="w-3.5 h-3.5 text-foreground-muted group-hover:text-accent transition-colors" />
+              ) : (
+                <ChevronDown className="w-3.5 h-3.5 text-foreground-muted group-hover:text-accent transition-colors" />
+              )}
+            </button>
+            {expandedSections.size && (
+              <div className="grid grid-cols-4 gap-2 pt-1">
+                {sizes.map((s) => {
+                  const isSelected = sizeFilter === s;
+                  return (
+                    <button
+                      key={s}
+                      onClick={() => setSizeFilter(isSelected ? '' : s)}
+                      className={`h-9 border flex items-center justify-center text-[10px] font-mono transition-all duration-300 cursor-pointer ${
+                        isSelected 
+                          ? 'border-accent bg-accent text-white font-bold shadow-xs' 
+                          : 'border-border text-foreground-secondary hover:border-accent hover:text-accent'
+                      }`}
+                    >
+                      {s}
+                    </button>
+                  );
+                })}
+              </div>
+            )}
           </div>
         </aside>
 
@@ -292,23 +465,23 @@ function ShopContent() {
             {/* Mobile Filter Toggle */}
             <button
               onClick={() => setShowMobileFilters(true)}
-              className="lg:hidden flex items-center gap-2 border border-border px-4 py-2 hover:border-accent transition-colors"
+              className="lg:hidden flex items-center gap-2 border border-border px-4 py-2 hover:border-accent hover:text-accent transition-colors cursor-pointer"
             >
               <SlidersHorizontal className="w-4 h-4 text-accent" />
-              <span className="ui-text text-[10px]">Filter</span>
+              <span className="ui-text text-[10px] font-semibold uppercase tracking-wider">Filters</span>
             </button>
 
             <span className="text-xs text-foreground-muted font-mono hidden sm:inline">
-              Showing {filteredProducts.length} Luxury Pieces
+              Showing {Math.min(currentPage * itemsPerPage, filteredProducts.length)} of {filteredProducts.length} Luxury Pieces
             </span>
 
             {/* Sort Dropdown */}
             <div className="flex items-center gap-2">
-              <span className="ui-text text-[10px] text-foreground-muted hidden sm:inline">Sort By</span>
+              <span className="ui-text text-[10px] text-foreground-muted uppercase tracking-wider font-semibold hidden sm:inline">Sort By</span>
               <select
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value)}
-                className="bg-transparent border border-border px-3 py-2 text-xs uppercase tracking-wider outline-none focus:border-accent cursor-pointer"
+                className="bg-background-tertiary border border-border px-3 py-2 text-xs uppercase tracking-wider outline-none focus:border-accent cursor-pointer"
               >
                 <option value="featured">Featured</option>
                 <option value="newest">New Arrivals</option>
@@ -325,8 +498,10 @@ function ShopContent() {
               <span className="text-[10px] text-foreground-muted uppercase tracking-widest font-bold whitespace-nowrap mr-2">Silhouettes:</span>
               <button
                 onClick={() => setFitFilter('')}
-                className={`px-4 py-1.5 border text-[10px] uppercase tracking-wider transition-colors cursor-pointer ${
-                  !fitFilter ? 'border-accent bg-accent text-white font-semibold' : 'border-border bg-background text-foreground-secondary hover:border-accent'
+                className={`px-4 py-1.5 border text-[10px] uppercase tracking-wider transition-all duration-300 cursor-pointer ${
+                  !fitFilter 
+                    ? 'border-accent bg-accent text-white font-semibold' 
+                    : 'border-border bg-background text-foreground-secondary hover:border-accent hover:text-accent'
                 }`}
               >
                 All Fits
@@ -335,11 +510,14 @@ function ShopContent() {
                 <button
                   key={f}
                   onClick={() => setFitFilter(f)}
-                  className={`px-4 py-1.5 border text-[10px] uppercase tracking-wider transition-colors cursor-pointer ${
-                    fitFilter === f ? 'border-accent bg-accent text-white font-semibold' : 'border-border bg-background text-foreground-secondary hover:border-accent'
+                  className={`px-4 py-1.5 border text-[10px] uppercase tracking-wider transition-all duration-300 cursor-pointer flex items-center gap-1.5 ${
+                    fitFilter === f 
+                      ? 'border-accent bg-accent text-white font-semibold shadow-xs' 
+                      : 'border-border bg-background text-foreground-secondary hover:border-accent hover:text-accent'
                   }`}
                 >
-                  {f}
+                  {fitFilter === f && <span className="w-1.5 h-1.5 rounded-full bg-white animate-ping" />}
+                  <span>{f}</span>
                 </button>
               ))}
             </div>
@@ -349,7 +527,7 @@ function ShopContent() {
               onClick={() => setIsFitGuideOpen(true)}
               className="text-[10px] text-accent uppercase tracking-wider font-semibold border border-accent/20 hover:border-accent bg-background px-4 py-2 flex items-center gap-1.5 transition-all hover:bg-accent-light cursor-pointer"
             >
-              <Info className="w-3.5 h-3.5 animate-pulse" />
+              <Info className="w-3.5 h-3.5" />
               <span>View Fit Guide</span>
             </button>
           </div>
@@ -366,7 +544,7 @@ function ShopContent() {
                   <span>{filt.label}</span>
                   <button
                     onClick={() => handleRemoveFilter(filt.key)}
-                    className="hover:text-accent font-bold cursor-pointer text-xs ml-1"
+                    className="hover:text-accent font-bold cursor-pointer text-xs ml-1 transition-colors"
                   >
                     x
                   </button>
@@ -374,7 +552,7 @@ function ShopContent() {
               ))}
               <button
                 onClick={handleResetFilters}
-                className="text-[9px] text-accent uppercase tracking-widest font-semibold hover:underline ml-auto"
+                className="text-[9px] text-accent uppercase tracking-widest font-semibold hover:underline ml-auto cursor-pointer"
               >
                 Clear All
               </button>
@@ -388,15 +566,85 @@ function ShopContent() {
               <p className="body-text text-sm text-foreground-muted">
                 No luxury pieces match your current filters.
               </p>
-              <button onClick={handleResetFilters} className="btn-outline py-2 px-6 text-xs font-mono">
+              <button onClick={handleResetFilters} className="btn-outline py-2 px-6 text-xs font-mono cursor-pointer">
                 Clear All Filters
               </button>
             </div>
           ) : (
-            <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
-              {filteredProducts.map((prod) => (
-                <ProductCard key={prod.id} product={prod} />
-              ))}
+            <div className="space-y-12">
+              <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
+                {paginatedProducts.map((prod) => (
+                  <ProductCard key={prod.id} product={prod} />
+                ))}
+              </div>
+
+              {/* Luxury Catalog Progress Bar & Pagination Controls */}
+              {totalPages > 1 && (
+                <div className="pt-10 border-t border-border flex flex-col items-center space-y-6">
+                  {/* Progress bar */}
+                  <div className="flex flex-col items-center space-y-2 w-full max-w-xs">
+                    <span className="text-[10px] text-foreground-muted font-mono uppercase tracking-wider">
+                      Showing {Math.min(currentPage * itemsPerPage, filteredProducts.length)} of {filteredProducts.length} pieces
+                    </span>
+                    <div className="w-full bg-border h-[2px] relative overflow-hidden rounded-full">
+                      <div 
+                        className="absolute left-0 top-0 h-full bg-accent transition-all duration-500 ease-out" 
+                        style={{ width: `${(Math.min(currentPage * itemsPerPage, filteredProducts.length) / filteredProducts.length) * 100}%` }}
+                      />
+                    </div>
+                  </div>
+
+                  {/* Buttons controls */}
+                  <div className="flex items-center gap-1.5">
+                    {/* Prev */}
+                    <button
+                      disabled={currentPage === 1}
+                      onClick={() => handlePageChange(currentPage - 1)}
+                      className={`flex items-center justify-center w-10 h-10 border transition-all duration-300 rounded-sm cursor-pointer ${
+                        currentPage === 1 
+                          ? 'border-border-light text-foreground-muted opacity-40 cursor-not-allowed' 
+                          : 'border-border hover:border-accent hover:text-accent'
+                      }`}
+                      aria-label="Previous Page"
+                    >
+                      <ChevronLeft className="w-4 h-4" />
+                    </button>
+
+                    {/* Page numbers */}
+                    {Array.from({ length: totalPages }).map((_, idx) => {
+                      const pageNum = idx + 1;
+                      const isCurrent = currentPage === pageNum;
+                      return (
+                        <button
+                          key={pageNum}
+                          onClick={() => handlePageChange(pageNum)}
+                          className={`w-10 h-10 border font-mono text-xs transition-all duration-300 rounded-sm cursor-pointer flex items-center justify-center ${
+                            isCurrent 
+                              ? 'border-accent bg-accent text-white font-bold' 
+                              : 'border-border hover:border-accent hover:text-accent'
+                          }`}
+                        >
+                          {pageNum.toString().padStart(2, '0')}
+                        </button>
+                      );
+                    })}
+
+                    {/* Next */}
+                    <button
+                      disabled={currentPage === totalPages}
+                      onClick={() => handlePageChange(currentPage + 1)}
+                      className={`flex items-center justify-center w-10 h-10 border transition-all duration-300 rounded-sm cursor-pointer ${
+                        currentPage === totalPages 
+                          ? 'border-border-light text-foreground-muted opacity-40 cursor-not-allowed' 
+                          : 'border-border hover:border-accent hover:text-accent'
+                      }`}
+                      aria-label="Next Page"
+                    >
+                      <ChevronRight className="w-4 h-4" />
+                    </button>
+                  </div>
+                </div>
+              )}
             </div>
           )}
         </div>
@@ -408,16 +656,16 @@ function ShopContent() {
           {/* Backdrop */}
           <div
             onClick={() => setShowMobileFilters(false)}
-            className="absolute inset-0 bg-black/50"
+            className="absolute inset-0 bg-black/50 backdrop-blur-xs"
           />
           {/* Content */}
           <div className="absolute top-0 bottom-0 left-0 w-80 max-w-full bg-background border-r border-border p-6 overflow-y-auto space-y-6 flex flex-col justify-between">
             <div>
               <div className="flex justify-between items-center pb-4 border-b border-border">
-                <h2 className="ui-text text-sm">Filters</h2>
+                <h2 className="ui-text text-sm font-semibold uppercase tracking-wider text-foreground">Filters</h2>
                 <button
                   onClick={() => setShowMobileFilters(false)}
-                  className="p-1 text-foreground-muted hover:text-foreground"
+                  className="p-1 text-foreground-muted hover:text-foreground cursor-pointer"
                 >
                   <X className="w-5 h-5" />
                 </button>
@@ -426,30 +674,30 @@ function ShopContent() {
               <div className="space-y-6 mt-6">
                 {/* Search */}
                 <div className="space-y-3">
-                  <label className="ui-text text-foreground-muted text-[10px]">Search</label>
+                  <label className="ui-text text-foreground-muted text-[10px] uppercase font-bold tracking-wider">Search</label>
                   <div className="relative border border-border flex items-center bg-background px-3 py-2">
                     <input
                       type="text"
                       placeholder="Search items..."
                       value={searchQuery}
                       onChange={(e) => setSearchQuery(e.target.value)}
-                      className="w-full bg-transparent text-xs outline-none uppercase"
+                      className="w-full bg-transparent text-xs outline-none uppercase placeholder:text-foreground-muted/65"
                     />
                   </div>
                 </div>
 
                 {/* Categories */}
                 <div className="space-y-3">
-                  <label className="ui-text text-foreground-muted text-[10px] block">Category</label>
+                  <label className="ui-text text-foreground-muted text-[10px] uppercase font-bold tracking-wider">Category</label>
                   <div className="flex flex-col gap-2">
                     <button
                       onClick={() => { handleCategorySelect(''); setShowMobileFilters(false); }}
-                      className={`text-left text-xs uppercase tracking-wider py-1 hover:text-accent flex justify-between items-center w-full ${
+                      className={`text-left text-xs uppercase tracking-wider py-1 hover:text-accent flex justify-between items-center w-full cursor-pointer ${
                         !categoryFilter ? 'text-accent font-bold' : 'text-foreground-secondary'
                       }`}
                     >
                       <span>All Categories</span>
-                      <span className="text-[9px] text-foreground-muted font-mono bg-border-light/40 px-1.5 py-0.5 rounded-full font-normal">
+                      <span className="text-[9px] text-foreground-muted font-mono bg-border-light/60 px-1.5 py-0.5 rounded-full">
                         {products.length}
                       </span>
                     </button>
@@ -457,12 +705,12 @@ function ShopContent() {
                       <button
                         key={cat}
                         onClick={() => { handleCategorySelect(cat); setShowMobileFilters(false); }}
-                        className={`text-left text-xs uppercase tracking-wider py-1 hover:text-accent flex justify-between items-center w-full ${
+                        className={`text-left text-xs uppercase tracking-wider py-1 hover:text-accent flex justify-between items-center w-full cursor-pointer ${
                           categoryFilter === cat ? 'text-accent font-bold' : 'text-foreground-secondary'
                         }`}
                       >
                         <span>{cat.replace('-', ' ')}</span>
-                        <span className="text-[9px] text-foreground-muted font-mono bg-border-light/40 px-1.5 py-0.5 rounded-full font-normal">
+                        <span className="text-[9px] text-foreground-muted font-mono bg-border-light/60 px-1.5 py-0.5 rounded-full">
                           {categoryCounts[cat] || 0}
                         </span>
                       </button>
@@ -473,8 +721,8 @@ function ShopContent() {
                 {/* Price range */}
                 <div className="space-y-3">
                   <div className="flex justify-between items-center">
-                    <label className="ui-text text-foreground-muted text-[10px]">Max Price</label>
-                    <span className="font-mono text-xs text-accent">${priceRange}</span>
+                    <label className="ui-text text-foreground-muted text-[10px] uppercase font-bold tracking-wider">Max Price</label>
+                    <span className="font-mono text-xs text-accent font-bold">${priceRange}</span>
                   </div>
                   <input
                     type="range"
@@ -487,57 +735,54 @@ function ShopContent() {
                   />
                 </div>
 
-                {/* Fit / Silhouette */}
+                {/* Colors (custom circular color list for mobile drawer) */}
                 <div className="space-y-3">
-                  <label className="ui-text text-foreground-muted text-[10px] block">Silhouette</label>
-                  <div className="flex flex-wrap gap-2">
-                    {fits.map((f) => (
-                      <button
-                        key={f}
-                        onClick={() => setFitFilter(fitFilter === f ? '' : f)}
-                        className={`px-3 py-1.5 border rounded-full text-[10px] uppercase font-medium tracking-wider transition-colors cursor-pointer ${
-                          fitFilter === f ? 'border-accent bg-accent-light text-accent' : 'border-border text-foreground-secondary'
-                        }`}
-                      >
-                        {f}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Colors */}
-                <div className="space-y-3">
-                  <label className="ui-text text-foreground-muted text-[10px] block">Color</label>
-                  <div className="flex flex-wrap gap-2">
-                    {colors.map((c) => (
-                      <button
-                        key={c}
-                        onClick={() => setColorFilter(colorFilter === c ? '' : c)}
-                        className={`px-3 py-1.5 border rounded-full text-[10px] uppercase font-medium tracking-wider ${
-                          colorFilter === c ? 'border-accent bg-accent-light text-accent' : 'border-border text-foreground-secondary'
-                        }`}
-                      >
-                        {c.split(' ')[0]}
-                      </button>
-                    ))}
+                  <label className="ui-text text-foreground-muted text-[10px] uppercase font-bold tracking-wider">Color Palette</label>
+                  <div className="flex flex-wrap gap-2 pt-1">
+                    {colors.map((c) => {
+                      const isSelected = colorFilter === c;
+                      const colorHex = getColorHex(c);
+                      return (
+                        <button
+                          key={c}
+                          onClick={() => setColorFilter(isSelected ? '' : c)}
+                          className={`px-3 py-1.5 border rounded-full text-[10px] uppercase font-medium tracking-wider transition-all duration-300 flex items-center gap-1.5 cursor-pointer ${
+                            isSelected 
+                              ? 'border-accent bg-accent-light text-accent' 
+                              : 'border-border text-foreground-secondary bg-background'
+                          }`}
+                        >
+                          <span 
+                            style={{ backgroundColor: colorHex }} 
+                            className="w-3 h-3 rounded-full border border-black/10 shrink-0" 
+                          />
+                          <span>{c.split(' ')[0]}</span>
+                        </button>
+                      );
+                    })}
                   </div>
                 </div>
 
                 {/* Sizes */}
                 <div className="space-y-3">
-                  <label className="ui-text text-foreground-muted text-[10px] block">Size</label>
+                  <label className="ui-text text-foreground-muted text-[10px] uppercase font-bold tracking-wider">Size</label>
                   <div className="flex flex-wrap gap-2">
-                    {sizes.map((s) => (
-                      <button
-                        key={s}
-                        onClick={() => setSizeFilter(sizeFilter === s ? '' : s)}
-                        className={`w-9 h-9 border flex items-center justify-center text-[10px] font-mono ${
-                          sizeFilter === s ? 'border-accent bg-accent-light text-accent font-bold' : 'border-border text-foreground-secondary'
-                        }`}
-                      >
-                        {s}
-                      </button>
-                    ))}
+                    {sizes.map((s) => {
+                      const isSelected = sizeFilter === s;
+                      return (
+                        <button
+                          key={s}
+                          onClick={() => setSizeFilter(isSelected ? '' : s)}
+                          className={`w-9 h-9 border flex items-center justify-center text-[10px] font-mono cursor-pointer ${
+                            isSelected 
+                              ? 'border-accent bg-accent-light text-accent font-bold' 
+                              : 'border-border text-foreground-secondary bg-background'
+                          }`}
+                        >
+                          {s}
+                        </button>
+                      );
+                    })}
                   </div>
                 </div>
               </div>
@@ -545,14 +790,14 @@ function ShopContent() {
 
             <div className="pt-6 border-t border-border flex gap-4">
               <button
-                onClick={handleResetFilters}
-                className="flex-1 btn-outline py-3 text-xs uppercase"
+                onClick={() => { handleResetFilters(); setShowMobileFilters(false); }}
+                className="flex-1 btn-outline py-3 text-xs uppercase cursor-pointer"
               >
                 Reset
               </button>
               <button
                 onClick={() => setShowMobileFilters(false)}
-                className="flex-1 btn-primary py-3 text-xs uppercase"
+                className="flex-1 btn-primary py-3 text-xs uppercase cursor-pointer"
               >
                 Apply
               </button>
@@ -564,8 +809,8 @@ function ShopContent() {
       {/* FIT GUIDE MODAL (Lee style) */}
       {isFitGuideOpen && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
-          <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={() => setIsFitGuideOpen(false)} />
-          <div className="relative bg-background border border-border p-6 sm:p-10 max-w-2xl w-full max-h-[85vh] overflow-y-auto space-y-6 shadow-2xl glass">
+          <div className="absolute inset-0 bg-black/60 backdrop-blur-xs" onClick={() => setIsFitGuideOpen(false)} />
+          <div className="relative bg-background border border-border p-6 sm:p-10 max-w-2xl w-full max-h-[85vh] overflow-y-auto space-y-6 shadow-2xl glass animate-fade-in-up">
             <button
               onClick={() => setIsFitGuideOpen(false)}
               className="absolute top-4 right-4 p-1 hover:text-accent text-foreground-muted transition-colors cursor-pointer"
@@ -640,7 +885,7 @@ function ShopContent() {
             <div className="pt-2 flex justify-end">
               <button
                 onClick={() => setIsFitGuideOpen(false)}
-                className="btn-primary px-6 py-2.5 text-[10px] uppercase font-mono tracking-wider font-semibold"
+                className="btn-primary px-6 py-2.5 text-[10px] uppercase font-mono tracking-wider font-semibold cursor-pointer"
               >
                 Close Guide
               </button>
