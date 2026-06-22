@@ -173,7 +173,7 @@ function ShopContent() {
 
       <div className="flex flex-col lg:flex-row gap-10 items-start">
         {/* FILTERS PANEL (Desktop) */}
-        <aside className="hidden lg:block w-72 space-y-8 flex-shrink-0 border border-border p-6 bg-background-tertiary glass">
+        <aside className="hidden lg:block w-72 space-y-8 flex-shrink-0 border border-border p-6 bg-background-tertiary glass sticky top-32">
           <div className="flex justify-between items-center pb-4 border-b border-border">
             <h2 className="ui-text text-sm">Filters</h2>
             <button

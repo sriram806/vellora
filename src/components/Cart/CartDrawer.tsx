@@ -255,17 +255,13 @@ export default function CartDrawer({ isOpen, onClose }: CartDrawerProps) {
                     View Bag
                     <ArrowRight className="w-4 h-4" />
                   </Link>
-                  <button
-                    onClick={handleCheckout}
-                    disabled={isCheckingOut}
-                    className="btn-primary py-3.5 text-xs text-center flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
+                  <Link
+                    href="/checkout"
+                    onClick={onClose}
+                    className="btn-primary py-3.5 text-xs text-center flex items-center justify-center gap-2 cursor-pointer"
                   >
-                    {isCheckingOut ? (
-                      <span className="animate-pulse">Processing...</span>
-                    ) : (
-                      <span>Checkout</span>
-                    )}
-                  </button>
+                    Checkout
+                  </Link>
                 </div>
               </div>
             )}
