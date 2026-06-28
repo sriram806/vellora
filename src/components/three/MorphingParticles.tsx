@@ -191,10 +191,17 @@ export default function MorphingParticles() {
     };
     window.addEventListener('mousemove', handleMouseMove);
 
-    // Bind GSAP ScrollTrigger timeline to progress values
+    // Bind GSAP ScrollTrigger timeline to progress values if element is ready in DOM
+    const triggerEl = document.getElementById('showroom-trigger-container');
+    if (!triggerEl) {
+      return () => {
+        window.removeEventListener('mousemove', handleMouseMove);
+      };
+    }
+
     const tl = gsap.timeline({
       scrollTrigger: {
-        trigger: '#showroom-trigger-container',
+        trigger: triggerEl,
         start: 'top top',
         end: 'bottom bottom',
         scrub: 1,

@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: PageProps) {
   if (!product) return getMetadata({ title: 'Product Not Found' });
 
   return getMetadata({
-    title: `${product.name} | Vellora`,
+    title: `${product.name} | Jcops`,
     description: product.description,
     path: `/product/${product.id}`,
     type: 'article',

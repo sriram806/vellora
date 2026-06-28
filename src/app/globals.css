@@ -357,3 +357,64 @@ textarea {
   flex-shrink: 0;
   scroll-snap-align: start;
 }
+
+/* ==========================================================================
+   Swiper Premium Overrides
+   ========================================================================== */
+.swiper {
+  --swiper-theme-color: #c9a96e !important;
+  --swiper-navigation-size: 18px !important;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  background: rgba(26, 26, 26, 0.45) !important;
+  backdrop-filter: blur(8px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  width: 38px !important;
+  height: 38px !important;
+  border-radius: 999px !important;
+  color: #c9a96e !important;
+  transition: all 0.3s ease !important;
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  background: #c9a96e !important;
+  color: #ffffff !important;
+  border-color: #c9a96e !important;
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  font-size: 12px !important;
+  font-weight: bold !important;
+}
+
+.swiper-pagination-bullet {
+  background: #8a8a8a !important;
+  opacity: 0.4 !important;
+}
+
+.swiper-pagination-bullet-active {
+  background: #c9a96e !important;
+  opacity: 1 !important;
+  width: 18px !important;
+  border-radius: 4px !important;
+  transition: width 0.3s ease !important;
+}
+
+/* Spin Slow Animation */
+.animate-spin-slow {
+  animation: spin 8s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+

@@ -3,6 +3,7 @@
 import React, { Suspense, useRef, useState, useCallback, CSSProperties, ReactNode } from 'react';
 import { Canvas, type RootState } from '@react-three/fiber';
 import { AdaptiveDpr, AdaptiveEvents, Preload, Html, PerformanceMonitor } from '@react-three/drei';
+import * as THREE from 'three';
 
 /* ------------------------------------------------------------------ */
 /* Types                                                               */
@@ -98,7 +99,7 @@ export default function Scene({
     >
       <Canvas
         ref={canvasRef}
-        shadows={shadows}
+        shadows={shadows ? { type: THREE.PCFShadowMap } : false}
         dpr={dpr}
         camera={{ position: cameraPosition, fov: 45, near: 0.1, far: 100 }}
         gl={{

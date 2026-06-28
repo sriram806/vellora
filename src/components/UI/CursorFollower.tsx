@@ -200,7 +200,7 @@ export default function CursorFollower() {
     <>
       {/* Outer Spring Ring */}
       <motion.div
-        className="fixed top-0 left-0 rounded-full pointer-events-none z-[9999] flex items-center justify-center select-none"
+        className="fixed top-0 left-0 rounded-full pointer-events-none z-[999999] flex items-center justify-center select-none"
         style={{
           x: ringXSpring,
           y: ringYSpring,
@@ -227,7 +227,7 @@ export default function CursorFollower() {
 
       {/* Center Micro-Dot */}
       <motion.div
-        className="fixed top-0 left-0 w-1.5 h-1.5 rounded-full pointer-events-none z-[10000]"
+        className="fixed top-0 left-0 w-1.5 h-1.5 rounded-full pointer-events-none z-[999999]"
         style={{
           x: dotXSpring,
           y: dotYSpring,

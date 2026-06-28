@@ -9,6 +9,7 @@ import {
   Html,
   AdaptiveDpr,
 } from '@react-three/drei';
+import * as THREE from 'three';
 import { Suspense } from 'react';
 import TShirtModel from './TShirtModel';
 import PantsModel from './PantsModel';
@@ -181,7 +182,7 @@ export default function ProductViewer({
       }}
     >
       <Canvas
-        shadows
+        shadows={{ type: THREE.PCFShadowMap }}
         dpr={[1, 2]}
         camera={{ position: [0, 0, 4], fov: 40 }}
         gl={{ antialias: true, alpha: true, powerPreference: 'high-performance' }}

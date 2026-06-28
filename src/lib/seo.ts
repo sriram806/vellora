@@ -2,8 +2,8 @@ import { Metadata } from 'next';
 import { Product } from '@/types';
 
 const SITE_URL = 'https://vellora-luxury.vercel.app'; // Production placeholder url
-const DEFAULT_TITLE = 'Vellora | Premium Luxury Digital Fashion Showroom';
-const DEFAULT_DESCRIPTION = 'Experience Vellora, a next-generation luxury digital fashion showroom. Explore our curated collections of silk-cotton tees, pleated wool trousers, calfskin sneakers, and Italian cashmere overcoats.';
+const DEFAULT_TITLE = 'Jcops | Premium Luxury Digital Fashion Showroom';
+const DEFAULT_DESCRIPTION = 'Experience Jcops, a next-generation luxury digital fashion showroom. Explore our curated collections of silk-cotton tees, pleated wool trousers, calfskin sneakers, and Italian cashmere overcoats.';
 
 interface MetadataOptions {
   title?: string;
@@ -21,7 +21,7 @@ export function getMetadata({
   type = 'website',
 }: MetadataOptions = {}): Metadata {
   const url = `${SITE_URL}${path}`;
-  const displayTitle = title.includes('Vellora') ? title : `${title} | Vellora`;
+  const displayTitle = title.includes('Jcops') ? title : `${title} | Jcops`;
 
   return {
     title: displayTitle,
@@ -34,7 +34,7 @@ export function getMetadata({
       title: displayTitle,
       description,
       url,
-      siteName: 'Vellora',
+      siteName: 'Jcops',
       images: [
         {
           url: image,
@@ -81,7 +81,7 @@ export function getProductSchema(product: Product) {
     mpn: product.id,
     brand: {
       '@type': 'Brand',
-      name: 'Vellora',
+      name: 'Jcops',
     },
     offers: {
       '@type': 'Offer',
@@ -95,7 +95,7 @@ export function getProductSchema(product: Product) {
         : 'https://schema.org/OutOfStock',
       seller: {
         '@type': 'Organization',
-        name: 'Vellora',
+        name: 'Jcops',
       },
     },
     aggregateRating: product.reviews.length
@@ -129,11 +129,11 @@ export function getStoreSchema() {
   return {
     '@context': 'https://schema.org',
     '@type': 'FashionStore',
-    name: 'Vellora Luxury Showroom',
+    name: 'Jcops Luxury Showroom',
     image: `${SITE_URL}/images/campaign_hero.png`,
     '@id': `${SITE_URL}/#store`,
     url: SITE_URL,
-    telephone: '+1-800-VELLORA',
+    telephone: '+1-800-JCOPS',
     address: {
       '@type': 'PostalAddress',
       streetAddress: '12 Rue du Faubourg Saint-Honoré',

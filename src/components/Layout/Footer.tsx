@@ -33,7 +33,7 @@ export default function Footer() {
       {/* Large Background Brand Text */}
       <div className="absolute inset-0 flex items-center justify-center overflow-hidden pointer-events-none">
         <h1 className="text-[14vw] pl-20 font-bold tracking-[0.4em] text-white/3 whitespace-nowrap">
-          VELLORA
+          JCOPS
         </h1>
       </div>
 
@@ -140,7 +140,7 @@ export default function Footer() {
         <div className="pt-8">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-[10px] uppercase tracking-[0.2em] text-zinc-550 font-mono">
             <p>
-              © {new Date().getFullYear()} VELLORA. All Rights Reserved.
+              © {new Date().getFullYear()} JCOPS. All Rights Reserved.
             </p>
             <span>International / English</span>
           </div>

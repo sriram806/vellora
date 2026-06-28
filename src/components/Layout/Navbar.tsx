@@ -7,8 +7,6 @@ import { useCart } from '@/hooks/CartContext';
 import { useWishlist } from '@/hooks/WishlistContext';
 import SearchModal from './SearchModal';
 import MegaMenu from './MegaMenu';
-import CartDrawer from '../Cart/CartDrawer';
-import WishlistDrawer from '../Wishlist/WishlistDrawer';
 
 export default function Navbar() {
   const { itemCount } = useCart();
@@ -16,8 +14,6 @@ export default function Navbar() {
 
   // Dialog/drawer states
   const [isSearchOpen, setIsSearchOpen] = useState(false);
-  const [isCartOpen, setIsCartOpen] = useState(false);
-  const [isWishlistOpen, setIsWishlistOpen] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   // Announcement state
@@ -78,7 +74,7 @@ export default function Navbar() {
           {/* Center Brand Name */}
           <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
             <Link href="/" className="font-playfair text-2xl font-bold tracking-[0.25em] text-foreground hover:opacity-80 transition-opacity">
-              VELLORA
+              JCOPS
             </Link>
           </div>
 
@@ -102,24 +98,27 @@ export default function Navbar() {
               <User className="w-5 h-5" />
             </Link>
 
-            {/* Wishlist Trigger */}
-            <button
-              onClick={() => setIsWishlistOpen(true)}
-              className="p-2 rounded-full border border-transparent hover:border-border hover:bg-border-light text-foreground hover:text-accent transition-colors cursor-pointer relative"
-              aria-label="Open wishlist"
+            {/* Wishlist Trigger Page Link */}
+            <Link
+              href="/wishlist"
+              className="p-2 rounded-full border border-transparent hover:border-border hover:bg-border-light text-foreground hover:text-accent transition-colors cursor-pointer relative flex items-center justify-center"
+              aria-label="Open wishlist page"
+              data-cursor="hover"
             >
               <Heart className="w-5 h-5" />
               {wishlist.length > 0 && (
-                <span className="absolute -top-1 -right-1 min-w-4 h-4 px-1 bg-accent text-vellora-white text-[8px] font-mono font-bold flex items-center justify-center rounded-full">
+                <span className="absolute -top-1 -right-1 min-w-4 h-4 px-1 bg-accent text-white text-[8px] font-mono font-bold flex items-center justify-center rounded-full">
                   {wishlist.length}
                 </span>
               )}
-            </button>
+            </Link>
 
-            <button
-              onClick={() => setIsCartOpen(true)}
-              className="p-2 rounded-full border border-border bg-background-secondary/80 hover:bg-border-light text-foreground hover:text-accent transition-colors cursor-pointer relative"
-              aria-label="Open shopping bag"
+            {/* Cart Page Link */}
+            <Link
+              href="/cart"
+              className="p-2 rounded-full border border-border bg-background-secondary/80 hover:bg-border-light text-foreground hover:text-accent transition-colors cursor-pointer relative flex items-center justify-center"
+              aria-label="Open shopping bag page"
+              data-cursor="hover"
             >
               <ShoppingBag className="w-5 h-5" />
               {itemCount > 0 && (
@@ -127,7 +126,7 @@ export default function Navbar() {
                   {itemCount}
                 </span>
               )}
-            </button>
+            </Link>
           </div>
         </div>
       </div>
@@ -136,8 +135,6 @@ export default function Navbar() {
       {/* Navigation Drawers/Modals */}
       <MegaMenu isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
       <SearchModal isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
-      <CartDrawer isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
-      <WishlistDrawer isOpen={isWishlistOpen} onClose={() => setIsWishlistOpen(false)} />
     </>
   );
 }

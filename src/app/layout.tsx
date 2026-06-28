@@ -7,6 +7,8 @@ import Navbar from '@/components/Layout/Navbar';
 import Footer from '@/components/Layout/Footer';
 import CursorFollower from '@/components/UI/CursorFollower';
 import { ToastProvider } from '@/components/UI/ToastProvider';
+import { IntroProvider } from '@/hooks/IntroContext';
+import IntroAwareShell from '@/components/intro/IntroAwareShell';
 
 const playfair = Playfair_Display({
   subsets: ['latin'],
@@ -27,8 +29,8 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: 'Vellora | Premium Luxury Digital Fashion Showroom',
-  description: 'Experience Vellora, a next-generation luxury digital fashion showroom. Explore our curated collections of silk-cotton tees, pleated wool trousers, calfskin sneakers, and Italian cashmere overcoats.',
+  title: 'Jcops | Premium Luxury Digital Fashion Showroom',
+  description: 'Experience Jcops, a next-generation luxury digital fashion showroom. Explore our curated collections of silk-cotton tees, pleated wool trousers, calfskin sneakers, and Italian cashmere overcoats.',
 };
 
 export default function RootLayout({
@@ -42,28 +44,27 @@ export default function RootLayout({
       className={`${playfair.variable} ${inter.variable} ${spaceGrotesk.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-background text-foreground selection:bg-accent selection:text-white">
-        <ToastProvider>
-          <CartProvider>
-            <WishlistProvider>
-              {/* Grain texture overlay */}
-              <div className="grain-overlay" />
-              
-              {/* Custom Interactive Cursor */}
-              <CursorFollower />
+        <IntroProvider>
+          <ToastProvider>
+            <CartProvider>
+              <WishlistProvider>
+                {/* Grain texture overlay */}
+                <div className="grain-overlay" />
+                
+                {/* Custom Interactive Cursor */}
+                <CursorFollower />
 
-              {/* Global Header */}
-              <Navbar />
-
-              {/* Main Content Area */}
-              <main className="flex-grow">
-                {children}
-              </main>
-
-              {/* Global Footer */}
-              <Footer />
-            </WishlistProvider>
-          </CartProvider>
-        </ToastProvider>
+                {/* Intro-aware shell: hides Navbar/Footer during intro */}
+                <IntroAwareShell
+                  navbar={<Navbar />}
+                  footer={<Footer />}
+                >
+                  {children}
+                </IntroAwareShell>
+              </WishlistProvider>
+            </CartProvider>
+          </ToastProvider>
+        </IntroProvider>
       </body>
     </html>
   );

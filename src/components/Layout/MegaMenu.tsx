@@ -35,7 +35,7 @@ export default function MegaMenu({ isOpen, onClose }: MegaMenuProps) {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.3 }}
-          className="fixed inset-0 bg-background/98 z-[90] overflow-y-auto backdrop-blur-xl flex flex-col justify-start"
+          className="fixed inset-0 bg-background/98 z-[9999] overflow-y-auto backdrop-blur-xl flex flex-col justify-start"
         >
           {/* Centering Wrapper Container to prevent elements hitting screen edges */}
           <div className="container-vellora py-10 sm:py-16 flex flex-col justify-between min-h-screen flex-grow">
@@ -43,7 +43,7 @@ export default function MegaMenu({ isOpen, onClose }: MegaMenuProps) {
             {/* Menu Top Bar */}
             <div className="flex justify-between items-center pb-6 border-b border-border">
               <span className="font-playfair text-2xl font-bold tracking-[0.25em] text-foreground">
-                VELLORA
+                JCOPS
               </span>
               <button
                 onClick={onClose}
@@ -125,7 +125,7 @@ export default function MegaMenu({ isOpen, onClose }: MegaMenuProps) {
                     Where Generation Tailoring Meets Tech
                   </h3>
                   <p className="text-xs text-foreground-secondary leading-relaxed">
-                    Vellora unites generational Italian craftsmanship with interactive 3D WebGL preview models, redefining the luxury retail archive.
+                    Jcops unites generational Italian craftsmanship with interactive 3D WebGL preview models, redefining the luxury retail archive.
                   </p>
                 </div>
                 <Link
