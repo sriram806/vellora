@@ -61,7 +61,7 @@ export default function SearchModal({
       inputRef.current?.focus();
     }, 150);
 
-    const saved = localStorage.getItem('vellora_recent_searches');
+    const saved = localStorage.getItem('JCOPS_recent_searches');
     if (saved) {
       setRecentSearches(JSON.parse(saved));
     }
@@ -92,7 +92,7 @@ export default function SearchModal({
     setRecentSearches(updated);
 
     localStorage.setItem(
-      'vellora_recent_searches',
+      'JCOPS_recent_searches',
       JSON.stringify(updated)
     );
   };
@@ -185,8 +185,8 @@ export default function SearchModal({
         >
           {/* Ambient Glow Bubbles */}
           <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
-            <div className="absolute top-0 left-1/4 h-[400px] w-[400px] rounded-full bg-accent/8 blur-[100px] dark:bg-accent/15" />
-            <div className="absolute bottom-0 right-1/4 h-[400px] w-[400px] rounded-full bg-accent-hover/5 blur-[100px] dark:bg-accent-hover/10" />
+            <div className="absolute top-0 left-1/4 h-[400px] w-[400px] rounded-full bg-[#C9A96E]/8 blur-[100px]" />
+            <div className="absolute bottom-0 right-1/4 h-[400px] w-[400px] rounded-full bg-[#C9A96E]/5 blur-[100px]" />
           </div>
 
           {/* Shortcut note */}
@@ -197,7 +197,7 @@ export default function SearchModal({
           {/* Close button with hover animation */}
           <button
             onClick={onClose}
-            className="fixed right-8 top-8 z-50 flex h-12 w-12 items-center justify-center rounded-full border border-border bg-background-secondary hover:border-accent hover:text-accent transition-all duration-300 shadow-sm cursor-pointer hover:rotate-90"
+            className="fixed right-8 top-8 z-50 flex h-12 w-12 items-center justify-center rounded-full  bg-background-secondary hover:text-[#C9A96E] transition-all duration-300 shadow-sm cursor-pointer hover:rotate-90"
             aria-label="Close search"
           >
             <X size={18} />
@@ -205,61 +205,122 @@ export default function SearchModal({
 
           <div className="relative mx-auto max-w-5xl px-6 py-20 z-10 space-y-12">
             {/* Search Input block */}
-            <div className="space-y-4">
-              <div className="relative border-b border-border focus-within:border-accent transition-colors py-4 flex items-center">
-                <Search className="text-foreground-muted shrink-0 mr-4" size={26} />
+            <div className="max-w-6xl mx-auto">
+
+              <div className="flex items-center gap-6">
+
+                <Search
+                  size={34}
+                  strokeWidth={1.5}
+                  className="text-[#C9A96E] shrink-0"
+                />
 
                 <input
                   ref={inputRef}
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
-                  placeholder="SEARCH THE ATELIER..."
-                  className="w-full bg-transparent text-[clamp(1.5rem,5vw,3.5rem)] font-light tracking-[0.1em] uppercase outline-none placeholder:text-foreground-muted/30"
+                  placeholder="SEARCH THE ATELIER"
+                  className="
+      w-full
+      bg-transparent
+      border-0
+      border-transparent
+      focus:border-transparent
+      focus:ring-0
+      focus:outline-none
+      focus-visible:ring-0
+      focus-visible:outline-none
+      shadow-none
+      text-4xl
+      md:text-7xl
+      font-extralight
+      uppercase
+      tracking-[10px]
+      text-foreground
+      placeholder:text-foreground/20
+      appearance-none
+      "
+                  style={{
+                    border: 'none',
+                    outline: 'none',
+                    boxShadow: 'none',
+                  }}
                 />
-              </div>
 
-              <div className="flex justify-between items-center text-[10px] tracking-[0.25em] text-foreground-muted font-mono uppercase">
-                <span>Discover timeless luxury creations</span>
-                {query.length > 0 && (
-                  <button 
+                {query && (
+                  <button
                     onClick={() => setQuery('')}
-                    className="hover:text-accent font-bold transition-colors cursor-pointer"
+                    className="
+        text-foreground/40
+        hover:text-[#C9A96E]
+        transition
+        duration-300
+        text-sm
+        uppercase
+        tracking-[4px]
+        "
                   >
-                    Clear [x]
+                    Clear
                   </button>
                 )}
+
               </div>
 
-              {/* Progress bar loader */}
-              <AnimatePresence>
-                {isSearching && (
-                  <motion.div
-                    initial={{ opacity: 0, height: 0 }}
-                    animate={{ opacity: 1, height: 'auto' }}
-                    exit={{ opacity: 0, height: 0 }}
-                    className="mt-2"
-                  >
-                    <div className="h-[2px] w-full bg-border-light relative overflow-hidden rounded-full">
-                      <motion.div
-                        initial={{ x: '-100%' }}
-                        animate={{ x: '100%' }}
-                        transition={{
-                          repeat: Infinity,
-                          duration: 1.2,
-                          ease: 'linear',
-                        }}
-                        className="absolute inset-0 bg-accent"
-                      />
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
+              {/* Luxury underline */}
+
+              <div className="mt-6 h-px overflow-hidden bg-border">
+
+                <motion.div
+                  animate={{
+                    width: query ? "100%" : "15%",
+                  }}
+                  transition={{
+                    duration: .7,
+                  }}
+                  className="h-full bg-[#C9A96E]"
+                />
+
+              </div>
+
+              <div className="mt-6 flex flex-wrap items-center justify-between gap-4">
+
+                <p className="uppercase tracking-[4px] text-[11px] text-foreground-muted">
+
+                  Discover timeless luxury creations
+
+                </p>
+
+                <div className="hidden lg:flex gap-6">
+
+                  {["Outerwear", "Shirts", "Denim", "Accessories"].map((item) => (
+
+                    <button
+                      key={item}
+                      onClick={() => setQuery(item.toLowerCase())}
+                      className="
+          uppercase
+          tracking-[3px]
+          text-[11px]
+          text-foreground-muted/60
+          hover:text-[#C9A96E]
+          transition
+          "
+                    >
+                      {item}
+                    </button>
+
+                  ))}
+
+                </div>
+
+              </div>
+
             </div>
 
             {/* Default State: Suggestions and Featured */}
             {query.length <= 1 && (
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 pt-6">
-                
+
                 {/* Suggestions & Recent */}
                 <div className="lg:col-span-5 space-y-8">
                   {/* Suggested */}
@@ -272,7 +333,7 @@ export default function SearchModal({
                         <button
                           key={item}
                           onClick={() => setQuery(item.replace(/[^\w\s-]/g, '').trim())}
-                          className="px-4 py-2 border border-border bg-background-secondary/50 rounded-full text-[10px] uppercase font-semibold tracking-wider hover:border-accent hover:text-accent hover:bg-background transition-all duration-300 cursor-pointer text-foreground-secondary"
+                          className="px-4 py-2 border border-border bg-background-secondary/50 rounded-full text-[10px] uppercase font-semibold tracking-wider hover:border-[#C9A96E] hover:text-[#C9A96E] hover:bg-background transition-all duration-300 cursor-pointer text-foreground-secondary"
                         >
                           {item}
                         </button>
@@ -292,7 +353,7 @@ export default function SearchModal({
                           <button
                             key={item}
                             onClick={() => setQuery(item)}
-                            className="px-3.5 py-1.5 border border-border-light bg-background-tertiary text-xs text-foreground-secondary hover:border-accent rounded-sm font-mono transition-colors cursor-pointer"
+                            className="px-3.5 py-1.5 border border-border-light bg-background-tertiary text-xs text-foreground-secondary hover:border-[#C9A96E] rounded-sm font-mono transition-colors cursor-pointer"
                           >
                             {item}
                           </button>
@@ -305,7 +366,7 @@ export default function SearchModal({
                 {/* Featured Collections Column */}
                 <div className="lg:col-span-7 space-y-4">
                   <h4 className="flex items-center gap-2 text-[10px] font-mono text-foreground-muted uppercase tracking-[0.2em] font-bold border-b border-border pb-2">
-                    <Sparkles size={12} className="text-accent" />
+                    <Sparkles size={12} className="text-[#C9A96E]" />
                     Featured Curations
                   </h4>
 
@@ -315,7 +376,7 @@ export default function SearchModal({
                         href={item.link}
                         onClick={onClose}
                         key={item.title}
-                        className="group relative overflow-hidden rounded-xs border border-border aspect-square bg-background-secondary shadow-xs hover:border-accent/40 transition-all duration-500"
+                        className="group relative overflow-hidden rounded-xs border border-border aspect-square bg-background-secondary shadow-xs hover:border-[#C9A96E]/50 hover:shadow-[0_10px_25px_rgba(201,169,110,0.06)] transition-all duration-500"
                       >
                         <img
                           src={item.image}
@@ -368,10 +429,9 @@ export default function SearchModal({
                             transition-all
                             duration-300
                             cursor-pointer
-                            ${
-                              isSelected
-                                ? 'border-accent bg-accent-light/10 shadow-xs'
-                                : 'border-border bg-background-secondary/20 hover:border-accent/45 hover:bg-background-secondary/40'
+                            ${isSelected
+                              ? 'border-[#C9A96E] bg-[#C9A96E]/5 shadow-xs'
+                              : 'border-border bg-background-secondary/20 hover:border-[#C9A96E]/45 hover:bg-background-secondary/40'
                             }
                           `}
                         >
@@ -386,10 +446,10 @@ export default function SearchModal({
 
                           {/* Data details */}
                           <div className="flex-1 min-w-0">
-                            <span className="text-[8px] font-mono font-bold uppercase tracking-[0.2em] text-accent">
+                            <span className="text-[8px] font-mono font-bold uppercase tracking-[0.2em] text-[#C9A96E]">
                               {product.collection}
                             </span>
-                            <h3 className="text-xs font-serif font-semibold text-foreground truncate group-hover:text-accent transition-colors mt-0.5">
+                            <h3 className="text-xs font-serif font-semibold text-foreground truncate group-hover:text-[#C9A96E] transition-colors mt-0.5">
                               {product.name}
                             </h3>
                             <span className="text-[9px] uppercase tracking-wider text-foreground-muted block font-mono mt-0.5">
@@ -398,11 +458,11 @@ export default function SearchModal({
                           </div>
 
                           <div className="text-right shrink-0">
-                            <span className="font-mono text-xs font-bold text-accent">${product.price}</span>
+                            <span className="font-mono text-xs font-bold text-[#C9A96E]">${product.price}</span>
                             <span className="text-[8px] font-mono text-foreground-muted block mt-0.5 uppercase tracking-widest">In Stock</span>
                           </div>
 
-                          <ArrowRight className="w-4 h-4 text-foreground-muted group-hover:text-accent group-hover:translate-x-1 transition-all shrink-0" />
+                          <ArrowRight className="w-4 h-4 text-foreground-muted group-hover:text-[#C9A96E] group-hover:translate-x-1 transition-all shrink-0" />
                         </Link>
                       );
                     })}

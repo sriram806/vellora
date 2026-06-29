@@ -78,10 +78,10 @@ export default function PriceCard({ product }: PriceCardProps) {
         <div className="space-y-1">
           <div className="flex items-center gap-1.5">
             <span className="ui-text text-[9px] font-bold text-accent">PROMO ACTIVE</span>
-            <span className="font-mono text-[8px] border border-accent/30 px-1 py-0.2 text-accent bg-accent-light/30 font-bold uppercase rounded-xs">VEL15</span>
+            <span className="font-mono text-[8px] border border-accent/30 px-1 py-0.2 text-accent bg-accent-light/30 font-bold uppercase rounded-xs">JCOPS15</span>
           </div>
           <p className="text-[10px] text-foreground-secondary leading-relaxed font-mono">
-            Apply coupon code <strong className="text-foreground font-semibold">VEL15</strong> at shopping bag step to retrieve an extra 15% discount.
+            Apply coupon code <strong className="text-foreground font-semibold">JCOPS15</strong> at shopping bag step to retrieve an extra 15% discount.
           </p>
         </div>
       </div>

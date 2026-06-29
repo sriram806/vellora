@@ -4,7 +4,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 // ============================================
-// VELLORA - GSAP Utilities
+// JCOPS - GSAP Utilities
 // ============================================
 
 /**
@@ -85,10 +85,10 @@ export function createTextReveal(
   const tl = gsap.timeline({
     scrollTrigger: scrollTriggerConfig
       ? {
-          trigger: element,
-          ...scrollTriggerPresets.once,
-          ...scrollTriggerConfig,
-        }
+        trigger: element,
+        ...scrollTriggerPresets.once,
+        ...scrollTriggerConfig,
+      }
       : undefined,
   });
 

@@ -21,9 +21,9 @@ interface CartContextType {
 const CartContext = createContext<CartContextType | undefined>(undefined);
 
 const COUPONS: Coupon[] = [
-  { code: 'VEL15', discountType: 'percentage', value: 15 },
-  { code: 'VELLORA10', discountType: 'percentage', value: 10 },
-  { code: 'VELLORA20', discountType: 'percentage', value: 20 },
+  { code: 'JCOPS15', discountType: 'percentage', value: 15 },
+  { code: 'JCOPS10', discountType: 'percentage', value: 10 },
+  { code: 'JCOPS20', discountType: 'percentage', value: 20 },
   { code: 'LUXURY50', discountType: 'fixed', value: 50 },
 ];
 
@@ -33,7 +33,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   // Load cart from LocalStorage on mount
   useEffect(() => {
-    const storedCart = localStorage.getItem('vellora_cart');
+    const storedCart = localStorage.getItem('JCOPS_cart');
     if (storedCart) {
       try {
         setCart(JSON.parse(storedCart));
@@ -41,7 +41,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
         console.error('Failed to parse cart data', e);
       }
     }
-    const storedCoupon = localStorage.getItem('vellora_coupon');
+    const storedCoupon = localStorage.getItem('JCOPS_coupon');
     if (storedCoupon) {
       try {
         setCoupon(JSON.parse(storedCoupon));
@@ -53,15 +53,15 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   // Save cart to LocalStorage whenever it changes
   useEffect(() => {
-    localStorage.setItem('vellora_cart', JSON.stringify(cart));
+    localStorage.setItem('JCOPS_cart', JSON.stringify(cart));
   }, [cart]);
 
   // Save coupon to LocalStorage when changed
   useEffect(() => {
     if (coupon) {
-      localStorage.setItem('vellora_coupon', JSON.stringify(coupon));
+      localStorage.setItem('JCOPS_coupon', JSON.stringify(coupon));
     } else {
-      localStorage.removeItem('vellora_coupon');
+      localStorage.removeItem('JCOPS_coupon');
     }
   }, [coupon]);
 
@@ -111,11 +111,11 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const applyCoupon = (code: string): boolean => {
     // 1. Check static coupons
     let foundCoupon = COUPONS.find((c) => c.code.toUpperCase() === code.toUpperCase());
-    
+
     // 2. Check localStorage coupons if not found statically
     if (!foundCoupon) {
       try {
-        const storedPromoCodesStr = localStorage.getItem('vellora_promo_codes');
+        const storedPromoCodesStr = localStorage.getItem('JCOPS_promo_codes');
         if (storedPromoCodesStr) {
           const storedPromoCodes = JSON.parse(storedPromoCodesStr);
           const found = storedPromoCodes.find((c: any) => c.code.toUpperCase() === code.toUpperCase() && c.active);
@@ -145,7 +145,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   // Calculations
   const cartTotal = cart.reduce((total, item) => total + item.product.price * item.quantity, 0);
-  
+
   const discountAmount = coupon
     ? coupon.discountType === 'percentage'
       ? (cartTotal * coupon.value) / 100
@@ -153,7 +153,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
     : 0;
 
   const subtotal = Math.max(0, cartTotal - discountAmount);
-  
+
   const itemCount = cart.reduce((count, item) => count + item.quantity, 0);
 
   return (

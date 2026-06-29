@@ -4,22 +4,18 @@ import React from 'react';
 
 export default function InfiniteMarquee() {
   return (
-    <section className="py-10 sm:py-14 lg:py-16 bg-vellora-deep-black text-vellora-white border-y border-zinc-800 overflow-hidden relative z-20">
+    <section className="py-8 bg-[#121212] overflow-hidden relative z-20">
       <div className="flex whitespace-nowrap animate-marquee">
-        {[1, 2, 3, 4].map((i) => (
-          <div key={i} className="flex items-center gap-8 px-6 sm:px-8">
-            <span className="font-playfair text-2xl sm:text-4xl font-black uppercase tracking-widest text-zinc-700">
-              Vellora Digital Showroom
+        {[1, 2, 3, 4, 5, 6].map((i) => (
+          <div key={i} className="flex items-center gap-12 px-6">
+            <span className="font-sans text-xl md:text-2xl font-bold uppercase tracking-widest text-white">
+              JCOPS Digital Showroom
             </span>
-            <span className="w-3 h-3 bg-accent rounded-full" />
-            <span className="font-playfair text-2xl sm:text-4xl font-light italic text-accent tracking-widest">
-              Italian Craftsmanship
+            <span className="w-2 h-2 bg-[#c9a96e] rotate-45" />
+            <span className="font-sans text-xl md:text-2xl font-bold uppercase tracking-widest text-transparent" style={{ WebkitTextStroke: '1px rgba(255,255,255,0.6)' }}>
+              Explore The Collection
             </span>
-            <span className="w-3 h-3 bg-zinc-700 rounded-full" />
-            <span className="font-playfair text-2xl sm:text-4xl font-black uppercase tracking-widest text-vellora-white">
-              Mulberry Silk
-            </span>
-            <span className="w-3 h-3 bg-accent rounded-full" />
+            <span className="w-2 h-2 bg-[#c9a96e] rotate-45" />
           </div>
         ))}
       </div>

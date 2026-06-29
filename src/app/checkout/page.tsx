@@ -23,7 +23,7 @@ export default function CheckoutPage() {
   const [cardNumber, setCardNumber] = useState('');
   const [expiry, setExpiry] = useState('');
   const [cvv, setCvv] = useState('');
-  
+
   // App UI states
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [orderConfirmed, setOrderConfirmed] = useState(false);
@@ -35,7 +35,7 @@ export default function CheckoutPage() {
   const [profileLoaded, setProfileLoaded] = useState(false);
   useEffect(() => {
     try {
-      const savedProfile = localStorage.getItem('vellora_profile');
+      const savedProfile = localStorage.getItem('JCOPS_profile');
       if (savedProfile) {
         const p = JSON.parse(savedProfile);
         if (p.email) setEmail(p.email);
@@ -80,10 +80,10 @@ export default function CheckoutPage() {
     setTimeout(() => {
       setIsSubmitting(false);
       const generatedOrderId = `VEL-2026-${Math.floor(100000 + Math.random() * 900000)}`;
-      
+
       // Save order to localStorage for Admin Panel
       try {
-        const storedOrders = localStorage.getItem('vellora_orders');
+        const storedOrders = localStorage.getItem('JCOPS_orders');
         const ordersList = storedOrders ? JSON.parse(storedOrders) : [];
         const newOrder = {
           orderId: generatedOrderId,
@@ -112,7 +112,7 @@ export default function CheckoutPage() {
           date: new Date().toISOString()
         };
         ordersList.unshift(newOrder);
-        localStorage.setItem('vellora_orders', JSON.stringify(ordersList));
+        localStorage.setItem('JCOPS_orders', JSON.stringify(ordersList));
       } catch (err) {
         console.error('Failed to save order to localStorage', err);
       }
@@ -132,7 +132,7 @@ export default function CheckoutPage() {
   };
 
   const handleFillMockData = () => {
-    setEmail('atelier.client@vellora.com');
+    setEmail('atelier.client@JCOPS.com');
     setFirstName('Julian');
     setLastName('Sartre');
     setAddress('84 Rue de l\'Université');
@@ -154,7 +154,7 @@ export default function CheckoutPage() {
   if (orderConfirmed) {
     /* Order Confirmed Post-Purchase Receipt View */
     return (
-      <main className="container-vellora py-10 sm:py-16 lg:py-20 flex items-center justify-center min-h-[85vh]">
+      <main className="container-JCOPS py-10 sm:py-16 lg:py-20 flex items-center justify-center min-h-[85vh]">
         <motion.div
           initial={{ opacity: 0, scale: 0.96 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -179,7 +179,7 @@ export default function CheckoutPage() {
               <span>Order Reference:</span>
               <span className="font-mono font-bold text-foreground">{orderId}</span>
             </div>
-            
+
             {/* Receipts items list */}
             <div className="space-y-3">
               {confirmedItems.map((item) => (
@@ -212,7 +212,7 @@ export default function CheckoutPage() {
   }
 
   return (
-    <main className="container-vellora py-10 sm:py-16 lg:py-20 min-h-[85vh]">
+    <main className="container-JCOPS py-10 sm:py-16 lg:py-20 min-h-[85vh]">
       {/* Checkout Header */}
       <div className="border-b border-border pb-6 mb-10 flex flex-col sm:flex-row sm:justify-between sm:items-end gap-4">
         <div>

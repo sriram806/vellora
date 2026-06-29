@@ -1,6 +1,6 @@
 [
   {
-    "id": "vellora-signature-tee",
+    "id": "JCOPS-signature-tee",
     "name": "Signature Silk-Cotton Tee",
     "description": "Crafted from an ultra-premium blend of organic cotton and mulberry silk, this structured tee offers a subtle sheen and an incredibly soft handle. Designed with a clean-cut neckband and a relaxed, editorial silhouette.",
     "price": 180,
@@ -397,7 +397,7 @@
     "newArrival": false
   },
   {
-    "id": "vellora-court-sneaker",
+    "id": "JCOPS-court-sneaker",
     "name": "Aether Calfskin Court Sneaker",
     "description": "A masterclass in minimalism. Our signature low-top sneaker is handcrafted in Italy from full-grain calfskin leather, lined with butter-soft lambskin, and set on a durable Margom rubber sole.",
     "price": 490,
@@ -787,7 +787,7 @@
     "newArrival": false
   },
   {
-    "id": "vellora-calfskin-tote",
+    "id": "JCOPS-calfskin-tote",
     "name": "Aether Calfskin Holdall Tote",
     "description": "A luxury travel essential, handcrafted from structured French calfskin leather. Featuring raw edge seams and a spacious, suede-lined interior.",
     "price": 1250,
@@ -927,7 +927,7 @@
     "newArrival": false
   },
   {
-    "id": "vellora-coin-pouch",
+    "id": "JCOPS-coin-pouch",
     "name": "Aether Zip Leather Card Holder",
     "description": "A compact card and coin carrier handcrafted in France from cross-grain Saffiano leather, secured by a heavy Riri zipper.",
     "price": 240,
@@ -959,7 +959,7 @@
     "newArrival": true
   },
   {
-    "id": "vellora-heavy-hoodie",
+    "id": "JCOPS-heavy-hoodie",
     "name": "Zenith Structured Cotton Hoodie",
     "description": "Constructed from dry-touch 450 GSM organic loopback cotton, this hoodie has a rigid structure, double-layered hood without drawstrings, and a slightly cropped hem.",
     "price": 320,

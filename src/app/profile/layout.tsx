@@ -3,13 +3,13 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
-import { 
-  User, 
-  MapPin, 
-  FileText, 
-  Sparkles, 
-  LogOut, 
-  Scissors 
+import {
+  User,
+  MapPin,
+  FileText,
+  Sparkles,
+  LogOut,
+  Scissors
 } from 'lucide-react';
 
 interface SavedProfile {
@@ -25,7 +25,7 @@ export default function ProfileLayout({ children }: { children: React.ReactNode 
 
   useEffect(() => {
     try {
-      const storedProfile = localStorage.getItem('vellora_profile');
+      const storedProfile = localStorage.getItem('JCOPS_profile');
       if (storedProfile) {
         const p: SavedProfile = JSON.parse(storedProfile);
         if (p.firstName || p.lastName) {
@@ -38,8 +38,8 @@ export default function ProfileLayout({ children }: { children: React.ReactNode 
   }, [pathname]); // Refresh name if navigation happens
 
   const handleResetProfile = () => {
-    localStorage.removeItem('vellora_profile');
-    localStorage.removeItem('vellora_measurements');
+    localStorage.removeItem('JCOPS_profile');
+    localStorage.removeItem('JCOPS_measurements');
     router.refresh();
     window.location.reload();
   };
@@ -53,7 +53,7 @@ export default function ProfileLayout({ children }: { children: React.ReactNode 
   ];
 
   return (
-    <main className="container-vellora py-10 sm:py-16 lg:py-20 min-h-[85vh]">
+    <main className="container-JCOPS py-10 sm:py-16 lg:py-20 min-h-[85vh]">
       {/* Top Banner Header */}
       <div className="border-b border-border pb-8 mb-10 flex flex-col md:flex-row md:justify-between md:items-end gap-6">
         <div>
@@ -64,7 +64,7 @@ export default function ProfileLayout({ children }: { children: React.ReactNode 
             Atelier Elite Tier Client
           </p>
         </div>
-        
+
         <button
           onClick={handleResetProfile}
           className="text-[9px] uppercase tracking-widest text-foreground-muted hover:text-error hover:border-error/30 font-semibold font-mono self-start md:self-auto border border-border bg-background px-4 py-2 flex items-center gap-1.5 transition-colors cursor-pointer"
@@ -79,10 +79,10 @@ export default function ProfileLayout({ children }: { children: React.ReactNode 
         <nav className="flex flex-row lg:flex-col overflow-x-auto lg:overflow-x-visible border-b lg:border-b-0 lg:border-r border-border pb-4 lg:pb-0 pr-0 lg:pr-6 gap-2 lg:gap-1.5 scrollbar-none whitespace-nowrap">
           {navLinks.map((link) => {
             const Icon = link.icon;
-            const isActive = link.exact 
-              ? pathname === link.href 
+            const isActive = link.exact
+              ? pathname === link.href
               : pathname.startsWith(link.href) && pathname !== '/profile/layout'; // Avoid matching layout name files
-            
+
             // Adjust dashboard exact match so layout transitions highlight correctly
             const isDashboardActive = link.href === '/profile' && pathname === '/profile';
             const highlightActive = link.exact ? isDashboardActive : isActive;
@@ -91,11 +91,10 @@ export default function ProfileLayout({ children }: { children: React.ReactNode 
               <Link
                 key={link.href}
                 href={link.href}
-                className={`flex items-center gap-3 px-4 py-3 text-[10px] uppercase font-mono tracking-widest transition-all rounded-xs cursor-pointer ${
-                  highlightActive
+                className={`flex items-center gap-3 px-4 py-3 text-[10px] uppercase font-mono tracking-widest transition-all rounded-xs cursor-pointer ${highlightActive
                     ? 'bg-foreground text-background font-bold'
                     : 'text-foreground-secondary hover:bg-border-light hover:text-foreground'
-                }`}
+                  }`}
               >
                 <Icon className="w-4 h-4" />
                 <span>{link.label}</span>

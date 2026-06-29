@@ -43,7 +43,7 @@ export default function CartDrawer({ isOpen, onClose }: CartDrawerProps) {
       toast({
         type: 'error',
         title: 'Invalid promo code',
-        description: 'Check the code and try again. VEL15 is active today.',
+        description: 'Check the code and try again. JCOPS15 is active today.',
       });
     }
   };
@@ -55,7 +55,7 @@ export default function CartDrawer({ isOpen, onClose }: CartDrawerProps) {
       toast({
         type: 'success',
         title: 'Order placed',
-        description: 'Thank you for choosing Vellora. Your confirmation is being prepared.',
+        description: 'Thank you for choosing JCOPS. Your confirmation is being prepared.',
       });
     }, 2000);
   };
@@ -194,7 +194,7 @@ export default function CartDrawer({ isOpen, onClose }: CartDrawerProps) {
                   <form onSubmit={handleApplyCoupon} className="flex gap-2">
                     <input
                       type="text"
-                      placeholder="ENTER PROMO CODE (e.g. VELLORA10)"
+                      placeholder="ENTER PROMO CODE (e.g. JCOPS10)"
                       value={couponCode}
                       onChange={(e) => setCouponCode(e.target.value)}
                       className="flex-1 bg-background border border-border px-3 py-2 text-xs uppercase tracking-wider outline-none focus:border-accent"

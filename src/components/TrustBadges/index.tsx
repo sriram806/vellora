@@ -39,12 +39,12 @@ export default function TrustBadges() {
   ];
 
   return (
-    <section className="section-vellora border-t border-border bg-background-secondary/30">
-      <div className="container-vellora space-y-10">
-        
+    <section className="section-JCOPS border-t border-border bg-background-secondary/30">
+      <div className="container-JCOPS space-y-10">
+
         {/* Header */}
         <div className="text-center max-w-xl mx-auto space-y-3">
-          <span className="ui-text text-[9px] text-accent tracking-[0.25em] font-semibold">Vellora Standards</span>
+          <span className="ui-text text-[9px] text-[#C9A96E] tracking-[0.25em] font-semibold">JCOPS Standards</span>
           <h3 className="heading-serif text-2xl font-bold uppercase leading-tight">
             Our Luxury Commitment
           </h3>
@@ -58,11 +58,11 @@ export default function TrustBadges() {
           {badges.map((badge, idx) => {
             const Icon = badge.icon;
             return (
-              <div 
-                key={idx} 
-                className="p-6 border border-border bg-background hover:border-accent/40 hover:shadow-lg transition-all duration-300 rounded-xs flex gap-4 select-none"
+              <div
+                key={idx}
+                className="p-6 border border-border bg-background hover:border-[#C9A96E]/50 hover:shadow-[0_12px_30px_rgba(201,169,110,0.06)] transition-all duration-300 rounded-xs flex gap-4 select-none"
               >
-                <div className="w-10 h-10 bg-accent-light/10 border border-accent/15 rounded-full flex items-center justify-center shrink-0 text-accent">
+                <div className="w-10 h-10 bg-[#C9A96E]/5 border border-[#C9A96E]/20 rounded-full flex items-center justify-center shrink-0 text-[#C9A96E]">
                   <Icon className="w-4.5 h-4.5" />
                 </div>
                 <div className="space-y-1">

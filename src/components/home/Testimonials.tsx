@@ -5,8 +5,8 @@ import { Star } from 'lucide-react';
 
 export default function Testimonials() {
   return (
-    <section className="py-20 bg-background border-t border-border relative z-20">
-      <div className="container-vellora space-y-10">
+    <section className="py-14 sm:py-20 bg-background border-t border-border relative z-20">
+      <div className="container-JCOPS space-y-10">
         <div className="text-center space-y-3">
           <span className="label-text text-accent">Client Reviews</span>
           <h2 className="heading-serif text-3xl sm:text-4xl font-bold uppercase">
@@ -15,7 +15,7 @@ export default function Testimonials() {
         </div>
 
         {/* Testimonial Panel */}
-        <div className="max-w-3xl mx-auto border border-border p-6 sm:p-12 text-center space-y-6 bg-background-tertiary relative glass">
+        <div className="max-w-3xl mx-auto border border-border p-5 sm:p-6 md:p-12 text-center space-y-4 sm:space-y-6 bg-background-tertiary relative glass">
           <div className="flex justify-center gap-1 text-accent">
             {[1, 2, 3, 4, 5].map((i) => (
               <Star key={i} className="w-5 h-5 fill-accent" />

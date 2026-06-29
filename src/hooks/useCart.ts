@@ -3,7 +3,7 @@
 import { useState, useCallback, useEffect } from "react";
 import type { CartItem, Product, ProductColor } from "@/types";
 
-const CART_STORAGE_KEY = "vellora-cart";
+const CART_STORAGE_KEY = "JCOPS-cart";
 
 function loadCart(): CartItem[] {
   if (typeof window === "undefined") return [];

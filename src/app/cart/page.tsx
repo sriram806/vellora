@@ -43,14 +43,14 @@ export default function CartPage() {
     toast({
       type: 'error',
       title: 'Promo unavailable',
-      description: 'That code is not active. Try VEL15 for the current offer.',
+      description: 'That code is not active. Try JCOPS15 for the current offer.',
     });
   };
 
   // Helper to change size/color in cart by replacing the item identity
   const handleUpdateAttributes = (item: any, newSize: string, newColor: string) => {
     if (newSize === item.selectedSize && newColor === item.selectedColor) return;
-    
+
     // Remove old item identity
     removeFromCart(item.id);
     // Add new item identity with same quantity
@@ -71,7 +71,7 @@ export default function CartPage() {
   }, []);
 
   return (
-    <main className="container-vellora py-12 sm:py-20 lg:py-24 min-h-[85vh]">
+    <main className="container-JCOPS py-12 sm:py-20 lg:py-24 min-h-[85vh]">
       {/* Header section */}
       <div className="border-b border-border pb-8">
         <span className="label-text text-accent font-semibold">Digital Atelier</span>
@@ -213,7 +213,7 @@ export default function CartPage() {
                               {item.product.name}
                             </h2>
                           </Link>
-                          
+
                           {/* Attribute Text Selectors (Borderless look) */}
                           <div className="mt-4 flex flex-wrap items-center gap-5">
                             {/* Size selector */}

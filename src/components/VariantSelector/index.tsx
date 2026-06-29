@@ -98,11 +98,9 @@ export default function VariantSelector({ product }: VariantSelectorProps) {
             Find My Size wizard
           </button>
         </div>
-        <div className="grid grid-cols-5 gap-2">
+        <div className="flex flex-wrap gap-x-6 gap-y-3 pt-1">
           {sizes.map((size) => {
             const isSelected = selectedSize === size;
-            
-            // Mocking variant in-stock status (XS/XL have low stock or out)
             const isLowStock = size === 'XS' || size === '54';
             const isOutOfStock = size === 'XXS'; // mockup out of stock
 
@@ -110,24 +108,27 @@ export default function VariantSelector({ product }: VariantSelectorProps) {
               <button
                 key={size}
                 disabled={isOutOfStock}
+                type="button"
                 onClick={() => setSelectedSize(size)}
-                className={`relative aspect-square border flex flex-col items-center justify-center transition-all ${
+                className={`relative py-1.5 px-0.5 text-xs font-mono transition-all duration-300 focus:outline-hidden ${
                   isOutOfStock 
-                    ? 'border-border-light text-zinc-300 bg-zinc-50/20 cursor-not-allowed'
+                    ? 'text-zinc-300 line-through cursor-not-allowed'
                     : isSelected
-                    ? 'border-accent bg-accent-light text-accent font-bold scale-102 shadow-xs'
-                    : 'border-border hover:border-accent/40 text-foreground-secondary hover:text-foreground'
+                    ? 'text-foreground font-bold'
+                    : 'text-foreground-secondary hover:text-foreground'
                 }`}
                 data-cursor={isOutOfStock ? 'default' : 'hover'}
               >
-                <span className="font-mono text-xs uppercase tracking-wider">{size}</span>
-                {isLowStock && !isSelected && (
-                  <span className="absolute bottom-1 text-[7px] text-accent uppercase font-bold tracking-tight">Low</span>
+                <span>{size}</span>
+                {isSelected && (
+                  <motion.div
+                    layoutId="activeSizeUnderline"
+                    className="absolute bottom-0 left-0 right-0 h-[1.5px] bg-[#9c7c3c]"
+                    transition={{ type: 'spring', damping: 20, stiffness: 200 }}
+                  />
                 )}
-                {isOutOfStock && (
-                  <span className="absolute inset-0 flex items-center justify-center">
-                    <span className="w-[120%] h-[1px] bg-zinc-300 rotate-45 transform pointer-events-none" />
-                  </span>
+                {isLowStock && !isSelected && (
+                  <span className="absolute -top-0.5 -right-1.5 text-[6px] text-[#9c7c3c]">●</span>
                 )}
               </button>
             );

@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import { Product } from '@/types';
 
-const SITE_URL = 'https://vellora-luxury.vercel.app'; // Production placeholder url
+const SITE_URL = 'https://JCOPS-luxury.vercel.app'; // Production placeholder url
 const DEFAULT_TITLE = 'Jcops | Premium Luxury Digital Fashion Showroom';
 const DEFAULT_DESCRIPTION = 'Experience Jcops, a next-generation luxury digital fashion showroom. Explore our curated collections of silk-cotton tees, pleated wool trousers, calfskin sneakers, and Italian cashmere overcoats.';
 
@@ -51,7 +51,7 @@ export function getMetadata({
       title: displayTitle,
       description,
       images: [image],
-      creator: '@vellora_luxury',
+      creator: '@JCOPS_luxury',
     },
     robots: {
       index: true,
@@ -100,12 +100,12 @@ export function getProductSchema(product: Product) {
     },
     aggregateRating: product.reviews.length
       ? {
-          '@type': 'AggregateRating',
-          ratingValue: product.rating,
-          reviewCount: product.reviews.length,
-          bestRating: '5',
-          worstRating: '1',
-        }
+        '@type': 'AggregateRating',
+        ratingValue: product.rating,
+        reviewCount: product.reviews.length,
+        bestRating: '5',
+        worstRating: '1',
+      }
       : undefined,
     review: product.reviews.map((rev) => ({
       '@type': 'Review',
@@ -162,8 +162,8 @@ export function getStoreSchema() {
       },
     ],
     sameAs: [
-      'https://www.instagram.com/vellora_luxury',
-      'https://twitter.com/vellora_luxury',
+      'https://www.instagram.com/JCOPS_luxury',
+      'https://twitter.com/JCOPS_luxury',
     ],
   };
 }

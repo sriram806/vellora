@@ -38,8 +38,8 @@ export default function MegaMenu({ isOpen, onClose }: MegaMenuProps) {
           className="fixed inset-0 bg-background/98 z-[9999] overflow-y-auto backdrop-blur-xl flex flex-col justify-start"
         >
           {/* Centering Wrapper Container to prevent elements hitting screen edges */}
-          <div className="container-vellora py-10 sm:py-16 flex flex-col justify-between min-h-screen flex-grow">
-            
+          <div className="container-JCOPS py-10 sm:py-16 flex flex-col justify-between min-h-screen flex-grow">
+
             {/* Menu Top Bar */}
             <div className="flex justify-between items-center pb-6 border-b border-border">
               <span className="font-playfair text-2xl font-bold tracking-[0.25em] text-foreground">
@@ -56,7 +56,7 @@ export default function MegaMenu({ isOpen, onClose }: MegaMenuProps) {
 
             {/* Menu Body Columns */}
             <div className="grid grid-cols-1 lg:grid-cols-4 gap-12 sm:gap-16 py-12 sm:py-16 items-start">
-              
+
               {/* Column 1: Categories list with huge typography */}
               <div className="space-y-6">
                 <span className="text-[9px] uppercase tracking-[0.25em] text-foreground-muted font-mono font-bold block">
@@ -112,30 +112,38 @@ export default function MegaMenu({ isOpen, onClose }: MegaMenuProps) {
                 </div>
               </div>
 
-              {/* Column 3: Philosophy / Highlights */}
+              {/* Column 3: Visual Campaign Spotlight */}
               <motion.div
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3 }}
-                className="border border-border p-6 flex flex-col justify-between bg-background-secondary relative overflow-hidden group shadow-sm h-full"
+                className="border border-border flex flex-col justify-between bg-background-secondary relative overflow-hidden group shadow-sm h-full min-h-[320px]"
               >
-                <div className="space-y-4">
-                  <span className="label-text text-accent font-semibold">Brand Vision</span>
-                  <h3 className="heading-serif text-lg leading-snug font-bold uppercase tracking-wider">
-                    Where Generation Tailoring Meets Tech
-                  </h3>
-                  <p className="text-xs text-foreground-secondary leading-relaxed">
-                    Jcops unites generational Italian craftsmanship with interactive 3D WebGL preview models, redefining the luxury retail archive.
-                  </p>
+                <div className="absolute inset-0 z-0">
+                  <img
+                    src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=600&auto=format&fit=crop&q=60"
+                    alt="Okayama Denim Atelier"
+                    className="w-full h-full object-cover transition-transform duration-[6s] group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent" />
                 </div>
-                <Link
-                  href="/about"
-                  onClick={onClose}
-                  className="mt-8 text-xs font-semibold uppercase tracking-wider flex items-center gap-2 text-foreground group-hover:text-accent transition-all duration-300"
-                >
-                  <span>Read Philosophy</span>
-                  <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
-                </Link>
+                <div className="relative z-10 p-6 space-y-3 mt-auto text-white">
+                  <span className="text-[8px] font-mono uppercase tracking-[0.25em] text-[#9c7c3c] font-bold">Featured Fabric</span>
+                  <h3 className="font-serif text-lg leading-snug uppercase tracking-wider font-bold">
+                    Okayama Selvedge
+                  </h3>
+                  <p className="text-[10px] text-white/70 leading-relaxed font-light">
+                    Sourced from historic slow-loom shuttle mills in Kojima.
+                  </p>
+                  <Link
+                    href="/shop?category=pants"
+                    onClick={onClose}
+                    className="inline-flex items-center gap-2 text-[9px] uppercase font-mono tracking-widest text-[#9c7c3c] hover:text-white transition-colors pt-2"
+                  >
+                    <span>Inspect Weave</span>
+                    <ArrowRight className="w-3 h-3" />
+                  </Link>
+                </div>
               </motion.div>
 
             </div>

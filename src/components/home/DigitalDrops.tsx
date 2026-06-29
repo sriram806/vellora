@@ -25,8 +25,8 @@ export default function DigitalDrops() {
   }, []);
 
   return (
-    <section className="py-24 sm:py-28 lg:py-32 bg-background border-b border-border relative z-20">
-      <div className="container-vellora space-y-12">
+    <section className="py-16 sm:py-24 md:py-28 lg:py-32 bg-background border-b border-border relative z-20">
+      <div className="container-JCOPS space-y-12">
         {/* Section Header */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 md:gap-8 pb-8 border-b border-border">
           <div className="space-y-4">
@@ -43,7 +43,7 @@ export default function DigitalDrops() {
           </div>
 
           {/* Live Countdown Clock */}
-          <div className="flex items-center gap-3 border border-accent/20 bg-accent-light px-5 py-3 shadow-sm rounded-sm">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-3 border border-accent/20 bg-accent-light px-4 py-2.5 sm:px-5 sm:py-3 shadow-sm rounded-sm">
             <Clock className="w-4 h-4 text-accent animate-spin" style={{ animationDuration: '6s' }} />
             <div className="font-mono text-xs uppercase tracking-wider text-foreground-secondary flex gap-2">
               <span>Next drop in:</span>
@@ -59,7 +59,7 @@ export default function DigitalDrops() {
         {/* Drops Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 xl:gap-8">
           {/* Drop Item 1 */}
-          <div className="group flex flex-col bg-background-tertiary border border-border p-6 space-y-6 shadow-sm hover:border-accent transition-all duration-300">
+          <div className="group flex flex-col bg-background-tertiary border border-border p-4 sm:p-6 space-y-4 sm:space-y-6 shadow-sm hover:border-accent transition-all duration-300">
             <div className="relative aspect-product overflow-hidden border border-border bg-zinc-100">
               <img
                 src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?w=800&auto=format&fit=crop"
@@ -97,7 +97,7 @@ export default function DigitalDrops() {
               </div>
 
               <div className="pt-2">
-                <Link href="/product/vellora-signature-tee" className="btn-primary w-full text-center block py-2.5 text-[10px] uppercase font-mono tracking-wider font-semibold">
+                <Link href="/product/JCOPS-signature-tee" className="btn-primary w-full text-center block py-2.5 text-[10px] uppercase font-mono tracking-wider font-semibold">
                   Purchase Archive Piece
                 </Link>
               </div>
@@ -105,7 +105,7 @@ export default function DigitalDrops() {
           </div>
 
           {/* Drop Item 2 */}
-          <div className="group flex flex-col bg-background-tertiary border border-border p-6 space-y-6 shadow-sm hover:border-accent transition-all duration-300">
+          <div className="group flex flex-col bg-background-tertiary border border-border p-4 sm:p-6 space-y-4 sm:space-y-6 shadow-sm hover:border-accent transition-all duration-300">
             <div className="relative aspect-product overflow-hidden border border-border bg-zinc-100">
               <img
                 src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?q=80&w=800&auto=format&fit=crop"
@@ -150,7 +150,7 @@ export default function DigitalDrops() {
           </div>
 
           {/* Drop Item 3 */}
-          <div className="group flex flex-col bg-background-tertiary border border-border p-6 space-y-6 shadow-sm hover:border-accent transition-all duration-300">
+          <div className="group flex flex-col bg-background-tertiary border border-border p-4 sm:p-6 space-y-4 sm:space-y-6 shadow-sm hover:border-accent transition-all duration-300">
             <div className="relative aspect-product overflow-hidden border border-border bg-zinc-100">
               <img
                 src="https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=800&auto=format&fit=crop"
@@ -188,7 +188,7 @@ export default function DigitalDrops() {
               </div>
 
               <div className="pt-2">
-                <Link href="/product/vellora-court-sneaker" className="btn-primary w-full text-center block py-2.5 text-[10px] uppercase font-mono tracking-wider font-semibold">
+                <Link href="/product/JCOPS-court-sneaker" className="btn-primary w-full text-center block py-2.5 text-[10px] uppercase font-mono tracking-wider font-semibold">
                   Purchase Archive Piece
                 </Link>
               </div>

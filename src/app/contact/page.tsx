@@ -49,10 +49,10 @@ export default function ContactPage() {
     setSubmitted(true);
     setTimeout(() => {
       setSubmitted(false);
-      
+
       // Save inquiry to localStorage for Admin Inbox
       try {
-        const stored = localStorage.getItem('vellora_inquiries');
+        const stored = localStorage.getItem('JCOPS_inquiries');
         const inquiriesList = stored ? JSON.parse(stored) : [];
         const newInquiry = {
           id: `INQ-${Math.floor(100000 + Math.random() * 900000)}`,
@@ -64,7 +64,7 @@ export default function ContactPage() {
           status: 'Unresolved'
         };
         inquiriesList.unshift(newInquiry);
-        localStorage.setItem('vellora_inquiries', JSON.stringify(inquiriesList));
+        localStorage.setItem('JCOPS_inquiries', JSON.stringify(inquiriesList));
       } catch (err) {
         console.error('Failed to save inquiry to localStorage', err);
       }
@@ -73,7 +73,7 @@ export default function ContactPage() {
       toast({
         type: 'success',
         title: 'Inquiry registered',
-        description: 'A Vellora concierge will contact you shortly.',
+        description: 'A JCOPS concierge will contact you shortly.',
       });
     }, 1500);
   };
@@ -104,8 +104,8 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="container-vellora py-12 space-y-16">
-      
+    <div className="container-JCOPS py-12 space-y-16">
+
       {/* Page Header with radial gradient and concierge pulse */}
       <div className="text-center max-w-xl mx-auto space-y-4">
         <span className="text-[10px] tracking-[0.3em] text-accent uppercase font-mono font-bold">Atelier Contact</span>
@@ -130,15 +130,15 @@ export default function ContactPage() {
 
       <div className="flex flex-col lg:flex-row gap-12 items-start">
         {/* LEFT COLUMN: CONTACT FORM */}
-        <div 
-          ref={formRef} 
+        <div
+          ref={formRef}
           className="w-full lg:w-1/2 border border-border p-8 bg-background-tertiary rounded-sm shadow-[0_15px_40px_rgba(0,0,0,0.02)] space-y-6 transition-all duration-300 focus-within:border-accent/40"
         >
           <div className="space-y-1 border-b border-border pb-4">
             <h2 className="ui-text text-sm font-semibold uppercase tracking-wider text-foreground">Send an Inquiry</h2>
             <p className="text-[10px] text-foreground-muted">Please complete the ledger details below. Our response time is typically under 1 hour.</p>
           </div>
-          
+
           <form onSubmit={handleSubmit} className="space-y-5">
             <div className="space-y-1 relative">
               <label className="text-[9px] uppercase font-bold tracking-widest text-foreground-muted block">Your Name</label>
@@ -213,14 +213,14 @@ export default function ContactPage() {
           <div className="space-y-2 border-b border-border pb-4">
             <h2 className="ui-text text-sm font-semibold uppercase tracking-wider text-foreground">Atelier Showrooms</h2>
             <p className="body-text text-xs text-foreground-secondary leading-relaxed">
-              Vellora operates four physical spaces worldwide where clients can examine fabric rolls, experience custom simulations, and consult with resident tailors.
+              JCOPS operates four physical spaces worldwide where clients can examine fabric rolls, experience custom simulations, and consult with resident tailors.
             </p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             {showrooms.map((showroom, idx) => (
-              <div 
-                key={idx} 
+              <div
+                key={idx}
                 className="group border border-border p-5 space-y-4 bg-background-secondary rounded-sm hover:border-accent/40 hover:shadow-md transition-all duration-300 flex flex-col justify-between"
               >
                 <div className="space-y-2">
@@ -230,7 +230,7 @@ export default function ContactPage() {
                       <Clock className="w-3.5 h-3.5 text-foreground-muted" />
                     </span>
                   </div>
-                  
+
                   <div className="space-y-2 text-xs text-foreground-secondary font-light">
                     <div className="flex items-start gap-2">
                       <MapPin className="w-3.5 h-3.5 text-accent flex-shrink-0 mt-0.5" />
@@ -260,7 +260,7 @@ export default function ContactPage() {
               <span>Direct Inquiries</span>
             </h3>
             <p className="text-xs text-foreground-secondary leading-relaxed">
-              For direct assistance, email us at <a href="mailto:concierge@vellora.com" className="text-accent hover:text-accent-hover underline font-semibold">concierge@vellora.com</a> or phone our central concierge desk at <strong className="font-mono text-accent">+1-800-VELLORA</strong>.
+              For direct assistance, email us at <a href="mailto:concierge@JCOPS.com" className="text-accent hover:text-accent-hover underline font-semibold">concierge@JCOPS.com</a> or phone our central concierge desk at <strong className="font-mono text-accent">+1-800-JCOPS</strong>.
             </p>
           </div>
         </div>

@@ -6,7 +6,7 @@ import { ShieldCheck, ChevronRight } from 'lucide-react';
 
 export default function TermsPage() {
   return (
-    <main className="container-vellora py-10 sm:py-16 lg:py-20 max-w-4xl">
+    <main className="container-JCOPS py-10 sm:py-16 lg:py-20 max-w-4xl">
       {/* Navigation Breadcrumb */}
       <div className="flex items-center gap-1.5 text-xs text-foreground-muted mb-4 font-mono uppercase tracking-wider">
         <Link href="/" className="hover:text-accent">Home</Link>
@@ -29,7 +29,7 @@ export default function TermsPage() {
       <div className="space-y-10 text-xs sm:text-sm text-foreground-secondary leading-relaxed font-light">
         <section className="space-y-3">
           <p>
-            Welcome to the Vellora digital atelier. These Terms & Conditions govern your access to and use of our web application, collections, customer services, and ordering systems. By browsing the site or initiating checkout acquisitions, you accept these terms in full.
+            Welcome to the JCOPS digital atelier. These Terms & Conditions govern your access to and use of our web application, collections, customer services, and ordering systems. By browsing the site or initiating checkout acquisitions, you accept these terms in full.
           </p>
         </section>
 
@@ -43,8 +43,8 @@ export default function TermsPage() {
           </p>
           <ul className="list-disc pl-5 space-y-2">
             <li>You are purchasing luxury garments and accessories for personal use, not for commercial unauthorized resale.</li>
-            <li>All prices are in USD, and you authorize Vellora to charge your selected credit card or mock payment details for the total order amount, minus any applied active promo privileges (e.g. VEL15).</li>
-            <li>Vellora reserves the right to reject checkout processing in the event of stock inaccuracies or verification checks.</li>
+            <li>All prices are in USD, and you authorize JCOPS to charge your selected credit card or mock payment details for the total order amount, minus any applied active promo privileges (e.g. JCOPS15).</li>
+            <li>JCOPS reserves the right to reject checkout processing in the event of stock inaccuracies or verification checks.</li>
           </ul>
         </section>
 
@@ -54,7 +54,7 @@ export default function TermsPage() {
             2. DHL Insured Delivery
           </h2>
           <p>
-            Every order placed on Vellora qualifies for complimentary insured worldwide express delivery:
+            Every order placed on JCOPS qualifies for complimentary insured worldwide express delivery:
           </p>
           <p>
             DHL Express manages transit logistics, requiring a physical signature upon delivery to secure the integrity of the creations. Standard delivery times range from 2 to 4 business days. Title and risk of loss pass to the client upon DHL delivery verification.
@@ -80,7 +80,7 @@ export default function TermsPage() {
             4. Proprietary Designs & IP
           </h2>
           <p>
-            All digital designs, product layouts, graphics, font configurations, and brand concepts displayed on Vellora are the exclusive intellectual property of Vellora. Copying, republishing, or mimicking our styles, patterns, or layouts without prior written consent is strictly prohibited.
+            All digital designs, product layouts, graphics, font configurations, and brand concepts displayed on JCOPS are the exclusive intellectual property of JCOPS. Copying, republishing, or mimicking our styles, patterns, or layouts without prior written consent is strictly prohibited.
           </p>
         </section>
 
@@ -93,7 +93,7 @@ export default function TermsPage() {
             For assistance resolving transaction disputes, shipping coordinate changes, or detailed size consultations, please contact our atelier:
           </p>
           <p className="font-mono text-xs text-accent">
-            Email: concierge@vellora.com
+            Email: concierge@JCOPS.com
           </p>
         </section>
       </div>

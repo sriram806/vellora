@@ -1,7 +1,7 @@
 import { PDPExtraData } from '../types/pdp-types';
 
 export const pdpExtraDataMap: Record<string, PDPExtraData> = {
-  'vellora-signature-tee': {
+  'JCOPS-signature-tee': {
     sku: 'VL-TEE-092-AE',
     fit: 'Relaxed',
     designerNotes: 'The Signature Silk-Cotton Tee was conceived as a study in pure form and texture. Designed with a slightly dropped shoulder, a wider clean collar band, and a custom drape that emphasizes movement. The blending of organic cotton and mulberry silk offers a subtle, premium luster that catches the light naturally.',
@@ -60,8 +60,8 @@ export const pdpExtraDataMap: Record<string, PDPExtraData> = {
     ],
     outfit: [
       { id: 'sartorial-pleated-trousers', name: 'Sartorial Pleated Trousers', price: 580, category: 'pants', image: 'https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=600&auto=format&fit=crop' },
-      { id: 'vellora-court-sneaker', name: 'Aether Calfskin Court Sneaker', price: 490, category: 'sneakers', image: 'https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=600&auto=format&fit=crop' },
-      { id: 'vellora-calfskin-tote', name: 'Aether Calfskin Holdall Tote', price: 1250, category: 'accessories', image: 'https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?w=600&auto=format&fit=crop' }
+      { id: 'JCOPS-court-sneaker', name: 'Aether Calfskin Court Sneaker', price: 490, category: 'sneakers', image: 'https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=600&auto=format&fit=crop' },
+      { id: 'JCOPS-calfskin-tote', name: 'Aether Calfskin Holdall Tote', price: 1250, category: 'accessories', image: 'https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?w=600&auto=format&fit=crop' }
     ],
     delivery: {
       freeShippingThreshold: 300,
@@ -119,7 +119,7 @@ export const pdpExtraDataMap: Record<string, PDPExtraData> = {
       }
     ],
     outfit: [
-      { id: 'vellora-signature-tee', name: 'Signature Silk-Cotton Tee', price: 180, category: 't-shirts', image: 'https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?w=600&auto=format&fit=crop' },
+      { id: 'JCOPS-signature-tee', name: 'Signature Silk-Cotton Tee', price: 180, category: 't-shirts', image: 'https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?w=600&auto=format&fit=crop' },
       { id: 'aether-cashmere-overcoat', name: 'Aether Double-Breasted Cashmere Coat', price: 2400, category: 'outerwear', image: 'https://images.unsplash.com/photo-1483985988355-763728e1935b?w=600&auto=format&fit=crop' }
     ],
     delivery: {
@@ -130,7 +130,7 @@ export const pdpExtraDataMap: Record<string, PDPExtraData> = {
       returnWindowDays: 30
     }
   },
-  'vellora-court-sneaker': {
+  'JCOPS-court-sneaker': {
     sku: 'VL-SK-551-CT',
     fit: 'Regular',
     designerNotes: 'A minimalist low-top silhouette featuring a custom Margom rubber sole and Italian calfskin leather. Double-stitched seams and full lambskin lining provide long-term durability and soft, blister-free wear.',
@@ -179,7 +179,7 @@ export const pdpExtraDataMap: Record<string, PDPExtraData> = {
       }
     ],
     outfit: [
-      { id: 'vellora-signature-tee', name: 'Signature Silk-Cotton Tee', price: 180, category: 't-shirts', image: 'https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?w=600&auto=format&fit=crop' },
+      { id: 'JCOPS-signature-tee', name: 'Signature Silk-Cotton Tee', price: 180, category: 't-shirts', image: 'https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?w=600&auto=format&fit=crop' },
       { id: 'sartorial-pleated-trousers', name: 'Sartorial Pleated Trousers', price: 580, category: 'pants', image: 'https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=600&auto=format&fit=crop' }
     ],
     delivery: {
@@ -236,9 +236,9 @@ export const pdpExtraDataMap: Record<string, PDPExtraData> = {
       }
     ],
     outfit: [
-      { id: 'vellora-signature-tee', name: 'Signature Silk-Cotton Tee', price: 180, category: 't-shirts', image: 'https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?w=600&auto=format&fit=crop' },
+      { id: 'JCOPS-signature-tee', name: 'Signature Silk-Cotton Tee', price: 180, category: 't-shirts', image: 'https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?w=600&auto=format&fit=crop' },
       { id: 'sartorial-pleated-trousers', name: 'Sartorial Pleated Trousers', price: 580, category: 'pants', image: 'https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=600&auto=format&fit=crop' },
-      { id: 'vellora-court-sneaker', name: 'Aether Calfskin Court Sneaker', price: 490, category: 'sneakers', image: 'https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=600&auto=format&fit=crop' }
+      { id: 'JCOPS-court-sneaker', name: 'Aether Calfskin Court Sneaker', price: 490, category: 'sneakers', image: 'https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=600&auto=format&fit=crop' }
     ],
     delivery: {
       freeShippingThreshold: 300,

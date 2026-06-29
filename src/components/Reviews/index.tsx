@@ -34,7 +34,7 @@ export default function Reviews({ product }: ReviewsProps) {
   // Mock list of photo reviews to attach to product.reviews
   const enrichedReviews = useMemo(() => {
     const defaultReviews = product.reviews || [];
-    
+
     // Attach photos/videos to default reviews to make the PDP gorgeous
     return defaultReviews.map((rev, index) => ({
       id: `${product.id}-rev-${index}`,
@@ -140,9 +140,9 @@ export default function Reviews({ product }: ReviewsProps) {
   };
 
   return (
-    <section className="section-vellora border-t border-border select-none">
-      <div className="container-vellora space-y-12">
-        
+    <section className="section-JCOPS border-t border-border select-none">
+      <div className="container-JCOPS space-y-12">
+
         {/* Title */}
         <div className="max-w-md">
           <span className="ui-text text-[9px] text-accent tracking-[0.25em] font-semibold font-mono">Testimonial Board</span>
@@ -153,7 +153,7 @@ export default function Reviews({ product }: ReviewsProps) {
 
         {/* Rating metrics row */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-start border border-border p-6 sm:p-8 bg-background-tertiary/20">
-          
+
           {/* Average block */}
           <div className="md:col-span-4 text-center md:text-left space-y-3">
             <div className="space-y-1">
@@ -163,7 +163,7 @@ export default function Reviews({ product }: ReviewsProps) {
                 <span className="font-mono text-xs text-foreground-muted">/ 5.0</span>
               </div>
             </div>
-            
+
             <div className="flex justify-center md:justify-start text-accent gap-0.5">
               {[1, 2, 3, 4, 5].map((i) => (
                 <Star
@@ -196,16 +196,15 @@ export default function Reviews({ product }: ReviewsProps) {
                 <button
                   key={star}
                   onClick={() => setRatingFilter(ratingFilter === star ? null : star)}
-                  className={`flex items-center gap-3 w-full text-left transition-colors py-0.5 px-2.5 border border-transparent hover:border-accent/15 ${
-                    ratingFilter === star ? 'bg-accent-light/5 border-accent/20 text-accent font-bold' : ''
-                  }`}
+                  className={`flex items-center gap-3 w-full text-left transition-colors py-0.5 px-2.5 border border-transparent hover:border-accent/15 ${ratingFilter === star ? 'bg-accent-light/5 border-accent/20 text-accent font-bold' : ''
+                    }`}
                   data-cursor="hover"
                 >
                   <span className="w-4 flex items-center shrink-0">{star}★</span>
                   <div className="flex-1 h-2 bg-border-light relative overflow-hidden rounded-xs">
-                    <div 
+                    <div
                       style={{ width: `${percent}%` }}
-                      className="absolute inset-y-0 left-0 bg-accent transition-all duration-500" 
+                      className="absolute inset-y-0 left-0 bg-accent transition-all duration-500"
                     />
                   </div>
                   <span className="w-8 text-right shrink-0">{count} ({Math.round(percent)}%)</span>
@@ -249,7 +248,7 @@ export default function Reviews({ product }: ReviewsProps) {
                   </select>
                 </div>
               </div>
-              
+
               <div className="space-y-1.5">
                 <label className="ui-text text-[8px] text-foreground-muted">Feedback Comment</label>
                 <textarea
@@ -282,7 +281,7 @@ export default function Reviews({ product }: ReviewsProps) {
                   <Video className="w-3.5 h-3.5" />
                   <span>Mock upload video</span>
                 </button>
-                
+
                 {newReviewPhotos.length > 0 && (
                   <div className="flex gap-1">
                     {newReviewPhotos.map((p, i) => (
@@ -349,7 +348,7 @@ export default function Reviews({ product }: ReviewsProps) {
             <div className="text-center py-12 border border-border border-dashed space-y-2">
               <AlertCircle className="w-6 h-6 text-zinc-300 mx-auto" />
               <p className="font-mono text-xs uppercase tracking-wider text-zinc-500 font-semibold">No reviews matching filters</p>
-              <button 
+              <button
                 onClick={() => { setReviewsSearch(''); setRatingFilter(null); }}
                 className="text-accent font-mono text-[10px] uppercase tracking-widest underline pt-1"
                 data-cursor="hover"
@@ -359,9 +358,9 @@ export default function Reviews({ product }: ReviewsProps) {
             </div>
           ) : (
             processedReviews.map((rev) => (
-              <AnimatedSection 
-                key={rev.id} 
-                animation="fade-up" 
+              <AnimatedSection
+                key={rev.id}
+                animation="fade-up"
                 className="p-6 border border-border hover:border-accent/35 hover:shadow-xs transition-all duration-300 bg-background space-y-4"
               >
                 {/* Header info */}
@@ -412,11 +411,10 @@ export default function Reviews({ product }: ReviewsProps) {
                   <button
                     disabled={votedReviews[rev.id]}
                     onClick={() => handleVote(rev.id)}
-                    className={`flex items-center gap-1.5 border px-2.5 py-1 transition-all ${
-                      votedReviews[rev.id] 
-                        ? 'border-success/20 bg-success/5 text-success font-bold' 
+                    className={`flex items-center gap-1.5 border px-2.5 py-1 transition-all ${votedReviews[rev.id]
+                        ? 'border-success/20 bg-success/5 text-success font-bold'
                         : 'border-border bg-background-tertiary hover:border-accent hover:text-accent'
-                    }`}
+                      }`}
                     data-cursor="hover"
                   >
                     <ThumbsUp className="w-3 h-3" />

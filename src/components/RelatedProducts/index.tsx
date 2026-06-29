@@ -41,26 +41,24 @@ export default function RelatedProducts({ relatedProducts }: RelatedProductsProp
   }, [activeSegment, relatedProducts, trendingProducts, recentlyViewedProducts]);
 
   return (
-    <section className="section-vellora border-t border-border select-none">
-      <div className="container-vellora space-y-8">
-        
+    <section className="section-JCOPS border-t border-border select-none">
+      <div className="container-JCOPS space-y-8">
+
         {/* Navigation Selector segments */}
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-baseline gap-4 border-b border-border pb-3">
           <div className="flex gap-6 font-mono text-[9px] uppercase tracking-widest text-foreground-muted">
             <button
               onClick={() => setActiveSegment('similar')}
-              className={`pb-2 border-b-2 transition-colors ${
-                activeSegment === 'similar' ? 'border-accent text-accent font-bold' : 'border-transparent hover:text-foreground'
-              }`}
+              className={`pb-2 border-b-2 transition-colors ${activeSegment === 'similar' ? 'border-accent text-accent font-bold' : 'border-transparent hover:text-foreground'
+                }`}
               data-cursor="hover"
             >
               Similar Masterpieces
             </button>
             <button
               onClick={() => setActiveSegment('trending')}
-              className={`pb-2 border-b-2 transition-colors ${
-                activeSegment === 'trending' ? 'border-accent text-accent font-bold' : 'border-transparent hover:text-foreground'
-              }`}
+              className={`pb-2 border-b-2 transition-colors ${activeSegment === 'trending' ? 'border-accent text-accent font-bold' : 'border-transparent hover:text-foreground'
+                }`}
               data-cursor="hover"
             >
               Trending Now
@@ -68,16 +66,15 @@ export default function RelatedProducts({ relatedProducts }: RelatedProductsProp
             {recentlyViewedProducts.length > 0 && (
               <button
                 onClick={() => setActiveSegment('recent')}
-                className={`pb-2 border-b-2 transition-colors ${
-                  activeSegment === 'recent' ? 'border-accent text-accent font-bold' : 'border-transparent hover:text-foreground'
-                }`}
+                className={`pb-2 border-b-2 transition-colors ${activeSegment === 'recent' ? 'border-accent text-accent font-bold' : 'border-transparent hover:text-foreground'
+                  }`}
                 data-cursor="hover"
               >
                 Recently Viewed ({recentlyViewedProducts.length})
               </button>
             )}
           </div>
-          
+
           <span className="font-mono text-[9px] text-foreground-muted uppercase tracking-widest hidden sm:inline">
             Scroll or Drag to inspect
           </span>

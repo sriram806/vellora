@@ -14,9 +14,9 @@ export default function ProductStory({ productId }: ProductStoryProps) {
   const storyBlocks = pdpExtra.story || [];
 
   return (
-    <section className="section-vellora border-t border-border overflow-hidden select-none">
-      <div className="container-vellora space-y-16">
-        
+    <section className="section-JCOPS border-t border-border overflow-hidden select-none">
+      <div className="container-JCOPS space-y-16">
+
         {/* Intro */}
         <div className="max-w-2xl space-y-4">
           <span className="ui-text text-[9px] text-accent tracking-[0.25em] font-semibold">Behind The Seams</span>
@@ -33,11 +33,11 @@ export default function ProductStory({ productId }: ProductStoryProps) {
           {storyBlocks.map((block, idx) => {
             const isLeft = block.layout === 'left-image';
             return (
-              <div 
+              <div
                 key={idx}
                 className={`grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center`}
               >
-                
+
                 {/* Image block */}
                 <div className={`lg:col-span-7 w-full aspect-editorial overflow-hidden border border-border bg-background-secondary ${isLeft ? 'lg:order-1' : 'lg:order-2'}`}>
                   <ParallaxImage src={block.imageUrl} alt={block.title} speed={block.parallaxSpeed} />
@@ -69,7 +69,7 @@ export default function ProductStory({ productId }: ProductStoryProps) {
 // Custom Smooth Scroll Parallax Image component
 function ParallaxImage({ src, alt, speed = 10 }: { src: string; alt: string; speed?: number }) {
   const ref = useRef<HTMLDivElement>(null);
-  
+
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ['start end', 'end start']

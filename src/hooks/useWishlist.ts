@@ -3,7 +3,7 @@
 import { useState, useCallback, useEffect } from "react";
 import type { WishlistItem, Product } from "@/types";
 
-const WISHLIST_STORAGE_KEY = "vellora-wishlist";
+const WISHLIST_STORAGE_KEY = "JCOPS-wishlist";
 
 function loadWishlist(): WishlistItem[] {
   if (typeof window === "undefined") return [];

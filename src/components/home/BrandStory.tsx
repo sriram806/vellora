@@ -6,10 +6,10 @@ import { ArrowRight } from 'lucide-react';
 
 export default function BrandStory() {
   return (
-    <section className="py-20 bg-background-secondary brand-story-section overflow-hidden relative z-20">
-      <div className="container-vellora grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+    <section className="py-14 sm:py-20 bg-background-secondary brand-story-section overflow-hidden relative z-20">
+      <div className="container-JCOPS grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 items-center">
         {/* Left Column: Image Block */}
-        <div className="relative aspect-editorial bg-zinc-100 border border-border overflow-hidden group">
+        <div className="relative aspect-[4/3] sm:aspect-editorial bg-zinc-100 border border-border overflow-hidden group">
           <img
             src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?q=80&w=1200&auto=format&fit=crop"
             alt="Sartorial Craftsmanship"
@@ -25,10 +25,10 @@ export default function BrandStory() {
             Where Generation Tailoring Meets Tech
           </h2>
           <p className="body-text text-sm text-foreground-secondary leading-relaxed">
-            Vellora was built on a singular vision: to dismantle the boundaries between physical tactile luxury garments and immersive digital design. Every single item we create is double-simulated programmatically before a needle touches raw fabric.
+            JCOPS was built on a singular vision: to dismantle the boundaries between physical tactile luxury garments and immersive digital design. Every single item we create is double-simulated programmatically before a needle touches raw fabric.
           </p>
           <p className="body-text text-sm text-foreground-secondary leading-relaxed">
-            We source our wool from eco-responsible herds in Biella, and our mulberry silk from historic family spinning houses in Como. This attention to tactile perfection combined with next-generation digital showroom platforms is Vellora.
+            We source our wool from eco-responsible herds in Biella, and our mulberry silk from historic family spinning houses in Como. This attention to tactile perfection combined with next-generation digital showroom platforms is JCOPS.
           </p>
           <div className="pt-4">
             <Link href="/about" className="btn-primary inline-flex items-center gap-2 group text-xs">

@@ -15,9 +15,9 @@ export default function ProductInfo({ product }: ProductInfoProps) {
   const specs = pdpExtra.specs;
 
   return (
-    <section className="section-vellora border-t border-border">
+    <section className="section-JCOPS border-t border-border">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-        
+
         {/* Left Editorial: Designer Notes */}
         <div className="lg:col-span-7 space-y-6">
           <AnimatedSection animation="fade-up" className="space-y-4">
@@ -53,7 +53,7 @@ export default function ProductInfo({ product }: ProductInfoProps) {
         {/* Right Info: Craftsmanship Card */}
         <div className="lg:col-span-5">
           <AnimatedSection animation="scale" className="glass p-6 border border-border rounded-sm shadow-md space-y-6">
-            
+
             {/* Title */}
             <div className="flex items-center justify-between">
               <span className="ui-text text-[9px] text-foreground font-bold tracking-widest">Atelier Specifications</span>

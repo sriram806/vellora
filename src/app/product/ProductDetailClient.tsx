@@ -43,21 +43,21 @@ export default function ProductDetailClient({ product, relatedProducts }: Produc
 
   return (
     <div className="relative min-h-screen bg-background text-foreground pb-24 overflow-x-hidden">
-      
+
       {/* Editorial floating background gradient orbs (luxury glassmorphic feel) */}
       <div className="absolute top-[10%] left-[-20%] w-[60%] aspect-square rounded-full bg-gradient-to-tr from-accent/5 to-transparent blur-3xl opacity-60 pointer-events-none select-none" />
       <div className="absolute top-[40%] right-[-20%] w-[50%] aspect-square rounded-full bg-gradient-to-bl from-accent/5 to-transparent blur-3xl opacity-50 pointer-events-none select-none" />
 
       {/* Nav Breadcrumbs */}
-      <Breadcrumbs 
+      <Breadcrumbs
         category={product.category}
         collection={product.collection}
         productName={product.name}
       />
 
       {/* PDP Container */}
-      <div className="container-vellora space-y-6 sm:space-y-12">
-        
+      <div className="container-JCOPS space-y-6 sm:space-y-12">
+
         {/* Phase 2/3 - Core Hero display grid */}
         <ProductHero product={product} />
 
@@ -86,7 +86,7 @@ export default function ProductDetailClient({ product, relatedProducts }: Produc
 
       {/* Phase 6 - Scroll-triggered Sticky Action Bar */}
       <StickyPurchaseBar product={product} />
-      
+
     </div>
   );
 }

@@ -25,8 +25,8 @@ interface IntroContextValue {
 /* Context                                                             */
 /* ------------------------------------------------------------------ */
 const IntroContext = createContext<IntroContextValue>({
-  isIntroPlaying: false,
-  completeIntro: () => {},
+  isIntroPlaying: true,
+  completeIntro: () => { },
   isReady: false,
 });
 
@@ -34,17 +34,18 @@ const IntroContext = createContext<IntroContextValue>({
 /* Provider                                                            */
 /* ------------------------------------------------------------------ */
 export function IntroProvider({ children }: { children: ReactNode }) {
-  const [isIntroPlaying, setIsIntroPlaying] = useState(false);
+  const [isIntroPlaying, setIsIntroPlaying] = useState(true);
   const [isReady, setIsReady] = useState(false);
 
   /* On mount, check if intro was already played this session */
   useEffect(() => {
     try {
-      const played = sessionStorage.getItem('vellora_intro_played');
+      const played = sessionStorage.getItem('JCOPS_intro_played');
       /* Also respect prefers-reduced-motion */
       const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const isHomepage = window.location.pathname === '/';
 
-      if (!played && !reducedMotion) {
+      if (!played && !reducedMotion && isHomepage) {
         setIsIntroPlaying(true);
       }
     } catch {
@@ -56,8 +57,8 @@ export function IntroProvider({ children }: { children: ReactNode }) {
   const completeIntro = useCallback(() => {
     setIsIntroPlaying(false);
     try {
-      sessionStorage.setItem('vellora_intro_played', 'true');
-    } catch {}
+      sessionStorage.setItem('JCOPS_intro_played', 'true');
+    } catch { }
   }, []);
 
   return (

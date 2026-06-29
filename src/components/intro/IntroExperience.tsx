@@ -48,14 +48,18 @@ class IntroSceneErrorBoundary extends Component<
 export default function IntroExperience({ children }: IntroExperienceProps) {
   const { isIntroPlaying, completeIntro, isReady } = useIntro();
   const [phase, setPhase] = useState<IntroPhase>('splash');
-  const [isMobile, setIsMobile] = useState(false);
+  const [isMobile, setIsMobile] = useState<boolean>(() => {
+    if (typeof window !== 'undefined') {
+      return window.innerWidth < 1024;
+    }
+    return false;
+  });
   const overlayRef = useRef<HTMLDivElement>(null);
 
   /* ── Detect mobile / low-end on mount ──────────────────────────── */
   useEffect(() => {
     const checkMobile = () => {
       const width = window.innerWidth;
-      const isTouchDevice = 'ontouchstart' in window;
       /* Check for low-end GPU hint */
       const canvas = document.createElement('canvas');
       const gl = canvas.getContext('webgl');
@@ -67,9 +71,12 @@ export default function IntroExperience({ children }: IntroExperienceProps) {
           isLowEnd = /SwiftShader|llvmpipe|Software/i.test(renderer);
         }
       }
-      setIsMobile(width < 768 || (isTouchDevice && width < 1024) || isLowEnd);
+      // Small and medium devices (below 1024px width) or low end machines
+      setIsMobile(width < 1024 || isLowEnd);
     };
     checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
   /* ── Lock body scroll during intro ─────────────────────────────── */
@@ -84,8 +91,16 @@ export default function IntroExperience({ children }: IntroExperienceProps) {
 
   /* ── Phase transition handlers ─────────────────────────────────── */
   const handleSplashComplete = useCallback(() => {
-    setPhase('showcase');
-  }, []);
+    if (isMobile) {
+      setPhase('transition');
+      setTimeout(() => {
+        setPhase('complete');
+        completeIntro();
+      }, 800);
+    } else {
+      setPhase('showcase');
+    }
+  }, [isMobile, completeIntro]);
 
   const handleShowcaseComplete = useCallback(() => {
     setPhase('transition');
@@ -183,16 +198,16 @@ export default function IntroExperience({ children }: IntroExperienceProps) {
 
             {/* ── Skip button ─────────────────────────────────────── */}
             <motion.button
-              className="fixed bottom-8 right-8 z-[120] px-5 py-2.5 rounded-full border border-white/20 bg-white/5 backdrop-blur-md text-white/60 hover:text-white hover:bg-white/10 transition-colors cursor-pointer"
+              className="fixed bottom-5 right-5 sm:bottom-8 sm:right-8 z-[120] px-4 py-2 sm:px-5 sm:py-2.5 rounded-full border border-white/20 bg-white/5 backdrop-blur-md text-white/60 hover:text-white hover:bg-white/10 transition-colors cursor-pointer"
               style={{
                 fontFamily: 'var(--font-space)',
-                fontSize: '0.65rem',
+                fontSize: '0.6rem',
                 letterSpacing: '0.2em',
-                textTransform: 'uppercase',
+                textTransform: 'uppercase' as const,
               }}
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 2, duration: 0.5 }}
+              transition={{ delay: 0.5, duration: 0.3 }}
               onClick={handleSkip}
               aria-label="Skip intro animation"
             >

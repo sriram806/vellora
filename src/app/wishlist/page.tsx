@@ -19,7 +19,7 @@ export default function WishlistPage() {
     const size = product.sizes?.[0] || 'M';
     const color = product.colors?.[0] || 'Midnight Black';
     addToCart(product, 1, size, color);
-    
+
     toast({
       type: 'success',
       title: 'Added to Bag',
@@ -31,7 +31,7 @@ export default function WishlistPage() {
     e.preventDefault();
     const color = product.colors?.[0] || 'Midnight Black';
     addToCart(product, 1, size, color);
-    
+
     toast({
       type: 'success',
       title: 'Added to Bag',
@@ -47,7 +47,7 @@ export default function WishlistPage() {
   }, []);
 
   return (
-    <main className="container-vellora py-10 sm:py-16 lg:py-20 min-h-[80vh]">
+    <main className="container-JCOPS py-10 sm:py-16 lg:py-20 min-h-[80vh]">
       {/* Page Header */}
       <div className="border-b border-border pb-8 mb-12">
         <span className="label-text text-accent font-semibold">Atelier Saved Creations</span>

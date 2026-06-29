@@ -6,13 +6,12 @@ import productsData from '@/data/products.json';
 import { Product } from '@/types';
 
 import HeroSection from '@/components/home/HeroSection';
-import FeaturedCollection from '@/components/home/FeaturedCollection';
-import ImmersiveShowroom from '@/components/home/ImmersiveShowroom';
-import InfiniteMarquee from '@/components/home/InfiniteMarquee';
-import DigitalDrops from '@/components/home/DigitalDrops';
+import PromoSection from '@/components/home/PromoSection';
+import TrendingNowSection from '@/components/home/TrendingNowSection';
 import FeaturedCategories from '@/components/home/FeaturedCategories';
-import BrandStory from '@/components/home/BrandStory';
-import Testimonials from '@/components/home/Testimonials';
+import JournalHighlight from '@/components/home/JournalHighlight';
+import InfiniteMarquee from '@/components/home/InfiniteMarquee';
+import SocialGrid from '@/components/home/SocialGrid';
 
 const IntroExperience = dynamic(
   () => import('@/components/intro/IntroExperience'),
@@ -22,19 +21,25 @@ const IntroExperience = dynamic(
 const products = productsData as Product[];
 
 export default function Home() {
-  const featuredProducts = products.filter((p) => p.featured).slice(0, 4);
+  const trendingProducts = products.filter((p) => p.trending);
+
+  React.useEffect(() => {
+    if ('scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual';
+    }
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <IntroExperience>
-      <div className="relative w-full bg-background">
+      <div className="relative w-full bg-[#f8f7f4]">
         <HeroSection />
-        <FeaturedCollection featuredProducts={featuredProducts} />
-        <ImmersiveShowroom />
-        <InfiniteMarquee />
-        <DigitalDrops />
+        <PromoSection />
         <FeaturedCategories />
-        <BrandStory />
-        <Testimonials />
+        <TrendingNowSection products={trendingProducts} />
+        <JournalHighlight />
+        <InfiniteMarquee />
+        <SocialGrid />
       </div>
     </IntroExperience>
   );

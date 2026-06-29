@@ -5,8 +5,8 @@ import { Product } from '@/types';
 const products = productsData as Product[];
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://vellora-luxury.vercel.app';
-  
+  const baseUrl = 'https://JCOPS-luxury.vercel.app';
+
   const routes = ['', '/shop', '/collections', '/about', '/contact'].map((route) => ({
     url: `${baseUrl}${route}`,
     lastModified: new Date(),

@@ -35,7 +35,7 @@ function SearchContent() {
   const featuredTerms = ['silk tee', 'pleated trousers', 'cashmere', 'technical cargo'];
 
   return (
-    <div className="container-vellora py-10 sm:py-14 lg:py-16">
+    <div className="container-JCOPS py-10 sm:py-14 lg:py-16">
       <section className="border-b border-border pb-8">
         <span className="label-text text-accent">Search The Atelier</span>
         <div className="mt-3 grid gap-6 lg:grid-cols-[minmax(0,1fr)_420px] lg:items-end">
@@ -44,7 +44,7 @@ function SearchContent() {
               Find Your Piece
             </h1>
             <p className="mt-4 max-w-2xl text-sm leading-7 text-foreground-secondary">
-              Search by garment, collection, fabric, category, or mood across the full Vellora catalogue.
+              Search by garment, collection, fabric, category, or mood across the full JCOPS catalogue.
             </p>
           </div>
 
@@ -76,11 +76,10 @@ function SearchContent() {
             <button
               key={item}
               onClick={() => setCategory(item)}
-              className={`shrink-0 border px-4 py-2 text-[10px] uppercase tracking-[0.16em] transition-colors ${
-                category === item
+              className={`shrink-0 border px-4 py-2 text-[10px] uppercase tracking-[0.16em] transition-colors ${category === item
                   ? 'border-foreground bg-foreground text-background'
                   : 'border-border bg-background text-foreground-secondary hover:border-accent hover:text-accent'
-              }`}
+                }`}
             >
               {item.replace('-', ' ')}
             </button>
@@ -128,7 +127,7 @@ function SearchContent() {
 
 export default function SearchPage() {
   return (
-    <Suspense fallback={<div className="container-vellora py-24 text-center font-mono text-xs uppercase tracking-widest text-foreground-muted">Loading search...</div>}>
+    <Suspense fallback={<div className="container-JCOPS py-24 text-center font-mono text-xs uppercase tracking-widest text-foreground-muted">Loading search...</div>}>
       <SearchContent />
     </Suspense>
   );

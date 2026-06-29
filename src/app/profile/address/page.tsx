@@ -19,7 +19,7 @@ interface SavedProfile {
 export default function AddressPage() {
   const { toast } = useToast();
 
-  const [email, setEmail] = useState('atelier.client@vellora.com');
+  const [email, setEmail] = useState('atelier.client@JCOPS.com');
   const [firstName, setFirstName] = useState('Julian');
   const [lastName, setLastName] = useState('Sartre');
   const [address, setAddress] = useState("84 Rue de l'Université");
@@ -30,7 +30,7 @@ export default function AddressPage() {
 
   useEffect(() => {
     try {
-      const storedProfile = localStorage.getItem('vellora_profile');
+      const storedProfile = localStorage.getItem('JCOPS_profile');
       if (storedProfile) {
         const p: SavedProfile = JSON.parse(storedProfile);
         if (p.email) setEmail(p.email);
@@ -70,8 +70,8 @@ export default function AddressPage() {
       phone,
     };
 
-    localStorage.setItem('vellora_profile', JSON.stringify(updatedProfile));
-    
+    localStorage.setItem('JCOPS_profile', JSON.stringify(updatedProfile));
+
     toast({
       type: 'success',
       title: 'Profile Updated',
@@ -193,8 +193,8 @@ export default function AddressPage() {
           </div>
         </div>
 
-        <button 
-          type="submit" 
+        <button
+          type="submit"
           className="btn-primary py-3.5 px-8 text-[9px] uppercase font-mono tracking-widest flex items-center gap-1.5 cursor-pointer"
         >
           <Save className="w-3.5 h-3.5" />

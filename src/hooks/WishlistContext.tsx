@@ -16,7 +16,7 @@ export const WishlistProvider: React.FC<{ children: React.ReactNode }> = ({ chil
 
   // Load wishlist from LocalStorage on mount
   useEffect(() => {
-    const storedWishlist = localStorage.getItem('vellora_wishlist');
+    const storedWishlist = localStorage.getItem('JCOPS_wishlist');
     if (storedWishlist) {
       try {
         setWishlist(JSON.parse(storedWishlist));
@@ -28,7 +28,7 @@ export const WishlistProvider: React.FC<{ children: React.ReactNode }> = ({ chil
 
   // Save wishlist to LocalStorage whenever it changes
   useEffect(() => {
-    localStorage.setItem('vellora_wishlist', JSON.stringify(wishlist));
+    localStorage.setItem('JCOPS_wishlist', JSON.stringify(wishlist));
   }, [wishlist]);
 
   const toggleWishlist = (product: Product) => {

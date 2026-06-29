@@ -7,15 +7,15 @@ import { motion } from 'framer-motion';
 
 const Interactive360Viewer = dynamic(
   () => import('../three/Interactive360Viewer'),
-  { 
-    ssr: false, 
+  {
+    ssr: false,
     loading: () => (
-      <div className="w-full h-full bg-vellora-deep-black/90 flex flex-col items-center justify-center font-mono text-[9px] uppercase text-zinc-500 gap-4">
+      <div className="w-full h-full bg-JCOPS-deep-black/90 flex flex-col items-center justify-center font-mono text-[9px] uppercase text-zinc-500 gap-4">
         {/* Elegant luxury spinner */}
         <div className="w-8 h-8 border border-accent/20 border-t-accent rounded-full animate-spin" />
         <span>Resolving 3D Garment Model...</span>
       </div>
-    ) 
+    )
   }
 );
 
@@ -28,7 +28,7 @@ export default function Product3DViewer({ category }: Product3DViewerProps) {
   const [activeLighting, setActiveLighting] = useState<'studio' | 'editorial' | 'dramatic'>('studio');
 
   return (
-    <div className="w-full h-full relative group/viewer border border-border/80 bg-vellora-deep-black/95 overflow-hidden flex items-center justify-center">
+    <div className="w-full h-full relative group/viewer border border-border/80 bg-JCOPS-deep-black/95 overflow-hidden flex items-center justify-center">
       {/* 3D Canvas */}
       <div className="w-full h-full absolute inset-0">
         <Interactive360Viewer category={category} />
@@ -67,9 +67,8 @@ export default function Product3DViewer({ category }: Product3DViewerProps) {
             <button
               key={style}
               onClick={() => setActiveLighting(style)}
-              className={`text-[8px] font-mono px-1.5 py-1 rounded-xs uppercase tracking-wider transition-colors ${
-                activeLighting === style ? 'bg-accent/25 text-accent border border-accent/20' : 'text-zinc-400 hover:text-white'
-              }`}
+              className={`text-[8px] font-mono px-1.5 py-1 rounded-xs uppercase tracking-wider transition-colors ${activeLighting === style ? 'bg-accent/25 text-accent border border-accent/20' : 'text-zinc-400 hover:text-white'
+                }`}
               data-cursor="hover"
             >
               {style[0]}

@@ -34,14 +34,14 @@ interface Order {
 }
 
 export default function OrdersPage() {
-  const [email, setEmail] = useState('atelier.client@vellora.com');
+  const [email, setEmail] = useState('atelier.client@JCOPS.com');
   const [orders, setOrders] = useState<Order[]>([]);
   const [expandedOrder, setExpandedOrder] = useState<string | null>(null);
 
   useEffect(() => {
     // Load email
     try {
-      const storedProfile = localStorage.getItem('vellora_profile');
+      const storedProfile = localStorage.getItem('JCOPS_profile');
       if (storedProfile) {
         const p = JSON.parse(storedProfile);
         if (p.email) setEmail(p.email);
@@ -52,7 +52,7 @@ export default function OrdersPage() {
 
     // Load orders
     try {
-      const storedOrders = localStorage.getItem('vellora_orders');
+      const storedOrders = localStorage.getItem('JCOPS_orders');
       if (storedOrders) {
         setOrders(JSON.parse(storedOrders));
       }
@@ -107,7 +107,7 @@ export default function OrdersPage() {
                     {new Date(order.date).toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric', hour: '2-digit', minute: '2-digit' })}
                   </span>
                 </div>
-                
+
                 <div className="flex items-center gap-6">
                   <div className="text-right">
                     <span className="font-mono text-sm font-semibold block text-accent">${order.total}</span>
@@ -115,19 +115,17 @@ export default function OrdersPage() {
                       {order.items.reduce((sum, item) => sum + item.quantity, 0)} pieces
                     </span>
                   </div>
-                  
-                  <span className={`px-2.5 py-1 text-[8px] font-mono uppercase font-bold tracking-widest rounded-full border ${
-                    order.status === 'Pending' ? 'bg-amber-500/5 border-amber-500/20 text-amber-500' :
-                    order.status === 'Processing' ? 'bg-blue-500/5 border-blue-500/20 text-blue-500' :
-                    order.status === 'Shipped' ? 'bg-indigo-500/5 border-indigo-500/20 text-indigo-500 animate-pulse' :
-                    'bg-emerald-500/5 border-emerald-500/20 text-emerald-500'
-                  }`}>
+
+                  <span className={`px-2.5 py-1 text-[8px] font-mono uppercase font-bold tracking-widest rounded-full border ${order.status === 'Pending' ? 'bg-amber-500/5 border-amber-500/20 text-amber-500' :
+                      order.status === 'Processing' ? 'bg-blue-500/5 border-blue-500/20 text-blue-500' :
+                        order.status === 'Shipped' ? 'bg-indigo-500/5 border-indigo-500/20 text-indigo-500 animate-pulse' :
+                          'bg-emerald-500/5 border-emerald-500/20 text-emerald-500'
+                    }`}>
                     {order.status}
                   </span>
-                  
-                  <ChevronRight className={`w-4 h-4 text-foreground-muted transition-transform duration-300 ${
-                    expandedOrder === order.orderId ? 'rotate-90' : ''
-                  }`} />
+
+                  <ChevronRight className={`w-4 h-4 text-foreground-muted transition-transform duration-300 ${expandedOrder === order.orderId ? 'rotate-90' : ''
+                    }`} />
                 </div>
               </div>
 

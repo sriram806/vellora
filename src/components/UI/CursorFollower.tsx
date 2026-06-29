@@ -24,11 +24,13 @@ export default function CursorFollower() {
   const [isTouchDevice, setIsTouchDevice] = useState(false);
 
   useEffect(() => {
-    // Check for touch interface support
+    // Check for touch interface support or reduced motion preference
     const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-    setIsTouchDevice(isTouch);
+    const prefersReducedMotion = typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const isDisabled = isTouch || prefersReducedMotion;
+    setIsTouchDevice(isDisabled);
 
-    if (isTouch) return;
+    if (isDisabled) return;
 
     // Hide default system cursor by adding class to body
     document.body.classList.add('cursor-custom');
@@ -37,6 +39,11 @@ export default function CursorFollower() {
       cursorX.set(e.clientX);
       cursorY.set(e.clientY);
       if (!isVisible) setIsVisible(true);
+      
+      // If native cursor was restored by Tab key, restore custom cursor on mouse movement
+      if (!document.body.classList.contains('cursor-custom')) {
+        document.body.classList.add('cursor-custom');
+      }
     };
 
     const handleMouseLeave = () => setIsVisible(false);
@@ -104,7 +111,14 @@ export default function CursorFollower() {
       setHoveredType(null);
     };
 
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Tab') {
+        document.body.classList.remove('cursor-custom');
+      }
+    };
+
     window.addEventListener('mouseover', handleMouseOver);
+    window.addEventListener('keydown', handleKeyDown);
 
     return () => {
       document.body.classList.remove('cursor-custom');
@@ -114,6 +128,7 @@ export default function CursorFollower() {
       window.removeEventListener('mousedown', handleMouseDown);
       window.removeEventListener('mouseup', handleMouseUp);
       window.removeEventListener('mouseover', handleMouseOver);
+      window.removeEventListener('keydown', handleKeyDown);
     };
   }, [cursorX, cursorY, isVisible]);
 

@@ -21,9 +21,9 @@ export default function ProductHero({ product }: ProductHeroProps) {
   const setIsShareModalOpen = useProductStore((state) => state.setIsShareModalOpen);
 
   return (
-    <section className="section-vellora pt-6">
+    <section className="section-JCOPS pt-6">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start">
-        
+
         {/* Left Column: Premium Gallery (Spans 7 cols on desktop) */}
         <div className="lg:col-span-7 w-full lg:sticky lg:top-24">
           <AnimatedSection animation="fade-up" duration={1.1}>
@@ -37,7 +37,7 @@ export default function ProductHero({ product }: ProductHeroProps) {
 
         {/* Right Column: Checkout Specs (Spans 5 cols on desktop) */}
         <div className="lg:col-span-5 w-full space-y-8">
-          
+
           {/* Breadcrumbs & Badges info */}
           <div className="space-y-3.5">
             <div className="flex flex-wrap gap-2 items-center">
@@ -82,9 +82,8 @@ export default function ProductHero({ product }: ProductHeroProps) {
                 {[1, 2, 3, 4, 5].map((i) => (
                   <Star
                     key={i}
-                    className={`w-3.5 h-3.5 ${
-                      i <= Math.round(product.rating) ? 'fill-accent text-accent' : 'text-zinc-300'
-                    }`}
+                    className={`w-3.5 h-3.5 ${i <= Math.round(product.rating) ? 'fill-accent text-accent' : 'text-zinc-300'
+                      }`}
                   />
                 ))}
               </div>

@@ -17,7 +17,7 @@ export default function MeasurementsPage() {
 
   useEffect(() => {
     try {
-      const stored = localStorage.getItem('vellora_measurements');
+      const stored = localStorage.getItem('JCOPS_measurements');
       if (stored) {
         const m = JSON.parse(stored);
         if (m.height) setHeight(m.height);
@@ -44,7 +44,7 @@ export default function MeasurementsPage() {
       inseam,
     };
 
-    localStorage.setItem('vellora_measurements', JSON.stringify(measurementsData));
+    localStorage.setItem('JCOPS_measurements', JSON.stringify(measurementsData));
 
     toast({
       type: 'success',
@@ -66,14 +66,14 @@ export default function MeasurementsPage() {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-        
+
         {/* Forms column (Col Span 7) */}
         <form onSubmit={handleSaveMeasurements} className="lg:col-span-7 space-y-6 text-xs text-foreground-secondary">
           <div className="border border-border p-6 bg-background rounded-sm space-y-4">
             <h3 className="ui-text text-xs font-semibold border-b border-border pb-3 flex items-center gap-2 text-foreground">
               <Scissors className="w-4 h-4 text-accent" /> Sizing Dimensions (Metric System)
             </h3>
-            
+
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-1.5">
                 <label className="text-[9px] font-mono text-foreground-muted uppercase tracking-widest block font-bold">Height (cm)</label>
@@ -144,8 +144,8 @@ export default function MeasurementsPage() {
             </div>
           </div>
 
-          <button 
-            type="submit" 
+          <button
+            type="submit"
             className="btn-primary py-3.5 px-8 text-[9px] uppercase font-mono tracking-widest flex items-center gap-1.5 cursor-pointer"
           >
             <Save className="w-3.5 h-3.5" />
@@ -158,7 +158,7 @@ export default function MeasurementsPage() {
           <h3 className="ui-text text-xs font-semibold border-b border-border pb-3 flex items-center gap-2 text-foreground">
             <Info className="w-4 h-4 text-accent" /> Measuring Instructions
           </h3>
-          
+
           <div className="space-y-3.5 text-xs text-foreground-secondary leading-relaxed">
             <div className="space-y-1">
               <span className="font-bold text-[10px] uppercase text-foreground">Collar base:</span>

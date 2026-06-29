@@ -104,17 +104,17 @@ interface AlertNotification {
 
 export default function AdminPanel() {
   const { toast } = useToast();
-  
+
   // Navigation State
   const [activeTab, setActiveTab] = useState<'dashboard' | 'products' | 'orders' | 'customers' | 'inbox' | 'settings'>('dashboard');
-  
+
   // Data States
   const [orders, setOrders] = useState<Order[]>([]);
   const [products, setProducts] = useState<Product[]>([]);
   const [inquiries, setInquiries] = useState<Inquiry[]>([]);
-  const [announcementText, setAnnouncementText] = useState('Use Code: VEL15 for 15% off in the digital atelier');
+  const [announcementText, setAnnouncementText] = useState('Use Code: JCOPS15 for 15% off in the digital atelier');
   const [promoCodes, setPromoCodes] = useState<any[]>([]);
-  
+
   // Advanced Features States
   const [priceThreshold, setPriceThreshold] = useState(250); // Warning price limit
   const [selectedProductIds, setSelectedProductIds] = useState<string[]>([]); // Batch Selection
@@ -127,12 +127,12 @@ export default function AdminPanel() {
   // Search & Filter States
   const [productSearch, setProductSearch] = useState('');
   const [orderFilter, setOrderFilter] = useState<'All' | 'Pending' | 'Processing' | 'Shipped' | 'Delivered'>('All');
-  
+
   // Modal / Form States
   const [isAddProductOpen, setIsAddProductOpen] = useState(false);
   const [selectedOrderDetails, setSelectedOrderDetails] = useState<Order | null>(null);
   const [selectedInquiry, setSelectedInquiry] = useState<Inquiry | null>(null);
-  
+
   // Form fields for adding coupon
   const [newPromoCode, setNewPromoCode] = useState('');
   const [newPromoVal, setNewPromoVal] = useState('');
@@ -158,7 +158,7 @@ export default function AdminPanel() {
   // 1. Initial Data Loading
   useEffect(() => {
     // Load Orders
-    const storedOrders = localStorage.getItem('vellora_orders');
+    const storedOrders = localStorage.getItem('JCOPS_orders');
     if (storedOrders) {
       setOrders(JSON.parse(storedOrders));
     } else {
@@ -177,8 +177,8 @@ export default function AdminPanel() {
           },
           items: [
             {
-              id: 'vellora-signature-tee-S-Midnight Black',
-              productId: 'vellora-signature-tee',
+              id: 'JCOPS-signature-tee-S-Midnight Black',
+              productId: 'JCOPS-signature-tee',
               name: 'Signature Silk-Cotton Tee',
               price: 180,
               quantity: 2,
@@ -215,8 +215,8 @@ export default function AdminPanel() {
               image: 'https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=800&auto=format&fit=crop'
             },
             {
-              id: 'vellora-court-sneaker-42-Chalk White',
-              productId: 'vellora-court-sneaker',
+              id: 'JCOPS-court-sneaker-42-Chalk White',
+              productId: 'JCOPS-court-sneaker',
               name: 'Aether Calfskin Court Sneaker',
               price: 490,
               quantity: 1,
@@ -259,11 +259,11 @@ export default function AdminPanel() {
         }
       ];
       setOrders(mockOrders);
-      localStorage.setItem('vellora_orders', JSON.stringify(mockOrders));
+      localStorage.setItem('JCOPS_orders', JSON.stringify(mockOrders));
     }
 
     // Load Products
-    const storedProducts = localStorage.getItem('vellora_products');
+    const storedProducts = localStorage.getItem('JCOPS_products');
     if (storedProducts) {
       setProducts(JSON.parse(storedProducts));
     } else {
@@ -280,17 +280,17 @@ export default function AdminPanel() {
         description: p.description
       }));
       setProducts(typedProducts);
-      localStorage.setItem('vellora_products', JSON.stringify(typedProducts));
+      localStorage.setItem('JCOPS_products', JSON.stringify(typedProducts));
     }
 
     // Load Announcement Text
-    const savedAnnounce = localStorage.getItem('vellora_announcement');
+    const savedAnnounce = localStorage.getItem('JCOPS_announcement');
     if (savedAnnounce) {
       setAnnouncementText(savedAnnounce);
     }
 
     // Load Inquiries
-    const storedInquiries = localStorage.getItem('vellora_inquiries');
+    const storedInquiries = localStorage.getItem('JCOPS_inquiries');
     if (storedInquiries) {
       setInquiries(JSON.parse(storedInquiries));
     } else {
@@ -315,26 +315,26 @@ export default function AdminPanel() {
         }
       ];
       setInquiries(mockInquiries);
-      localStorage.setItem('vellora_inquiries', JSON.stringify(mockInquiries));
+      localStorage.setItem('JCOPS_inquiries', JSON.stringify(mockInquiries));
     }
 
     // Load Promo Codes
-    const storedPromoCodes = localStorage.getItem('vellora_promo_codes');
+    const storedPromoCodes = localStorage.getItem('JCOPS_promo_codes');
     if (storedPromoCodes) {
       setPromoCodes(JSON.parse(storedPromoCodes));
     } else {
       const defaultPromoCodes = [
-        { code: 'VEL15', value: 15, type: 'percentage', active: true },
-        { code: 'VELLORA10', value: 10, type: 'percentage', active: true },
-        { code: 'VELLORA20', value: 20, type: 'percentage', active: true },
+        { code: 'JCOPS15', value: 15, type: 'percentage', active: true },
+        { code: 'JCOPS10', value: 10, type: 'percentage', active: true },
+        { code: 'JCOPS20', value: 20, type: 'percentage', active: true },
         { code: 'LUXURY50', value: 50, type: 'fixed', active: true }
       ];
       setPromoCodes(defaultPromoCodes);
-      localStorage.setItem('vellora_promo_codes', JSON.stringify(defaultPromoCodes));
+      localStorage.setItem('JCOPS_promo_codes', JSON.stringify(defaultPromoCodes));
     }
 
     // Load price threshold warning limit
-    const storedThreshold = localStorage.getItem('vellora_price_threshold');
+    const storedThreshold = localStorage.getItem('JCOPS_price_threshold');
     if (storedThreshold) {
       setPriceThreshold(Number(storedThreshold));
     }
@@ -358,7 +358,7 @@ export default function AdminPanel() {
       { time: new Date(Date.now() - 240000).toLocaleTimeString(), type: 'INFO', message: 'Database connection established: localCache v1.0.4' },
       { time: new Date(Date.now() - 180000).toLocaleTimeString(), type: 'SUCCESS', message: 'Fetched 14 active products from products.json database' },
       { time: new Date(Date.now() - 120000).toLocaleTimeString(), type: 'INFO', message: 'Synchronized orders registry from localStorage' },
-      { time: new Date(Date.now() - 60000).toLocaleTimeString(), type: 'SUCCESS', message: 'Active Client Session verified - julian.s@vellora.com' },
+      { time: new Date(Date.now() - 60000).toLocaleTimeString(), type: 'SUCCESS', message: 'Active Client Session verified - julian.s@JCOPS.com' },
     ];
     setLogs(initialLogs);
 
@@ -395,11 +395,11 @@ export default function AdminPanel() {
 
   // Calculations for Dashboard Stats
   const stats = useMemo(() => {
-    const totalRevenue = orders.reduce((sum, o) => sum + o.total, 0) + 18450; 
-    const totalCount = orders.length + 42; 
+    const totalRevenue = orders.reduce((sum, o) => sum + o.total, 0) + 18450;
+    const totalCount = orders.length + 42;
     const totalCustomers = Array.from(new Set(orders.map(o => o.email))).length + 28;
     const avgOrderValue = Math.round(totalRevenue / totalCount);
-    
+
     return {
       revenue: totalRevenue,
       orders: totalCount,
@@ -423,12 +423,12 @@ export default function AdminPanel() {
     orders.forEach(o => {
       o.items.forEach(item => {
         const cat = item.productId.includes('sneaker') ? 'sneakers' :
-                    item.productId.includes('trousers') || item.productId.includes('denim') ? 'pants' :
-                    item.productId.includes('coat') || item.productId.includes('blazer') ? 'outerwear' : 't-shirts';
+          item.productId.includes('trousers') || item.productId.includes('denim') ? 'pants' :
+            item.productId.includes('coat') || item.productId.includes('blazer') ? 'outerwear' : 't-shirts';
         counts[cat] = (counts[cat] || 0) + item.quantity;
       });
     });
-    
+
     const total = Object.values(counts).reduce((s, v) => s + v, 0);
     return Object.keys(counts).map(key => ({
       name: key,
@@ -455,7 +455,7 @@ export default function AdminPanel() {
   // Customer Directory computation
   const customerDirectory = useMemo(() => {
     const clientsMap: Record<string, { name: string; email: string; phone: string; location: string; ordersCount: number; spent: number }> = {};
-    
+
     clientsMap['helena.v@vogue.fr'] = {
       name: 'Helena Vidal',
       email: 'helena.v@vogue.fr',
@@ -509,7 +509,7 @@ export default function AdminPanel() {
       return p;
     });
     setProducts(updated);
-    localStorage.setItem('vellora_products', JSON.stringify(updated));
+    localStorage.setItem('JCOPS_products', JSON.stringify(updated));
     toast({
       type: 'success',
       title: 'Product Stock Toggled',
@@ -528,8 +528,8 @@ export default function AdminPanel() {
       return p;
     });
     setProducts(updated);
-    localStorage.setItem('vellora_products', JSON.stringify(updated));
-    
+    localStorage.setItem('JCOPS_products', JSON.stringify(updated));
+
     setLogs(prev => [
       { time: new Date().toLocaleTimeString(), type: 'INFO', message: `Catalogue pricing modified: Product ID ${productId} set to $${newPrice}` },
       ...prev
@@ -545,8 +545,8 @@ export default function AdminPanel() {
   const handleDeleteProduct = (productId: string) => {
     const updated = products.filter(p => p.id !== productId);
     setProducts(updated);
-    localStorage.setItem('vellora_products', JSON.stringify(updated));
-    
+    localStorage.setItem('JCOPS_products', JSON.stringify(updated));
+
     setLogs(prev => [
       { time: new Date().toLocaleTimeString(), type: 'WARN', message: `Catalogue item deleted: Product ID ${productId}` },
       ...prev
@@ -578,7 +578,7 @@ export default function AdminPanel() {
     // Split inputs
     const sizes = newProdSizes.split(',').map(s => s.trim()).filter(Boolean);
     const colors = newProdColors.split(',').map(c => c.trim()).filter(Boolean);
-    
+
     const newProduct: Product = {
       id: uniqueId,
       name: newProdName,
@@ -594,7 +594,7 @@ export default function AdminPanel() {
 
     const updated = [newProduct, ...products];
     setProducts(updated);
-    localStorage.setItem('vellora_products', JSON.stringify(updated));
+    localStorage.setItem('JCOPS_products', JSON.stringify(updated));
 
     // Reset Form
     setNewProdName('');
@@ -622,7 +622,7 @@ export default function AdminPanel() {
 
   // Batch Operations
   const handleToggleSelectProduct = (productId: string) => {
-    setSelectedProductIds((prev) => 
+    setSelectedProductIds((prev) =>
       prev.includes(productId) ? prev.filter(id => id !== productId) : [...prev, productId]
     );
   };
@@ -644,7 +644,7 @@ export default function AdminPanel() {
       return p;
     });
     setProducts(updated);
-    localStorage.setItem('vellora_products', JSON.stringify(updated));
+    localStorage.setItem('JCOPS_products', JSON.stringify(updated));
     setSelectedProductIds([]);
 
     toast({
@@ -658,7 +658,7 @@ export default function AdminPanel() {
     if (selectedProductIds.length === 0) return;
     const updated = products.filter(p => !selectedProductIds.includes(p.id));
     setProducts(updated);
-    localStorage.setItem('vellora_products', JSON.stringify(updated));
+    localStorage.setItem('JCOPS_products', JSON.stringify(updated));
     setSelectedProductIds([]);
 
     toast({
@@ -677,8 +677,8 @@ export default function AdminPanel() {
       return o;
     });
     setOrders(updated);
-    localStorage.setItem('vellora_orders', JSON.stringify(updated));
-    
+    localStorage.setItem('JCOPS_orders', JSON.stringify(updated));
+
     setLogs(prev => [
       { time: new Date().toLocaleTimeString(), type: 'SUCCESS', message: `Order ${orderId} logistics status updated to: ${newStatus}` },
       ...prev
@@ -700,8 +700,8 @@ export default function AdminPanel() {
       return i;
     });
     setInquiries(updated);
-    localStorage.setItem('vellora_inquiries', JSON.stringify(updated));
-    
+    localStorage.setItem('JCOPS_inquiries', JSON.stringify(updated));
+
     if (selectedInquiry?.id === inqId) {
       setSelectedInquiry(prev => prev ? { ...prev, status: 'Resolved' } : null);
     }
@@ -716,7 +716,7 @@ export default function AdminPanel() {
   const handleDeleteInquiry = (inqId: string) => {
     const updated = inquiries.filter(i => i.id !== inqId);
     setInquiries(updated);
-    localStorage.setItem('vellora_inquiries', JSON.stringify(updated));
+    localStorage.setItem('JCOPS_inquiries', JSON.stringify(updated));
     setSelectedInquiry(null);
 
     toast({
@@ -732,17 +732,17 @@ export default function AdminPanel() {
 
     const updated = inquiries.map(i => {
       if (i.id === selectedInquiry.id) {
-        return { 
-          ...i, 
-          status: 'Resolved' as const, 
-          reply: inquiryReplyText 
+        return {
+          ...i,
+          status: 'Resolved' as const,
+          reply: inquiryReplyText
         };
       }
       return i;
     });
     setInquiries(updated);
-    localStorage.setItem('vellora_inquiries', JSON.stringify(updated));
-    
+    localStorage.setItem('JCOPS_inquiries', JSON.stringify(updated));
+
     setSelectedInquiry(prev => prev ? { ...prev, status: 'Resolved', reply: inquiryReplyText } : null);
     setInquiryReplyText('');
 
@@ -761,8 +761,8 @@ export default function AdminPanel() {
   // Operations on CMS / settings / promo codes
   const handleSaveCMSAnnounce = (e: React.FormEvent) => {
     e.preventDefault();
-    localStorage.setItem('vellora_announcement', announcementText);
-    
+    localStorage.setItem('JCOPS_announcement', announcementText);
+
     setLogs(prev => [
       { time: new Date().toLocaleTimeString(), type: 'SUCCESS', message: `Broadcast announcement banner string updated` },
       ...prev
@@ -779,8 +779,8 @@ export default function AdminPanel() {
     const val = Number(valStr);
     if (isNaN(val) || val <= 0) return;
     setPriceThreshold(val);
-    localStorage.setItem('vellora_price_threshold', valStr);
-    
+    localStorage.setItem('JCOPS_price_threshold', valStr);
+
     toast({
       type: 'success',
       title: 'Threshold Configured',
@@ -804,8 +804,8 @@ export default function AdminPanel() {
 
     const updated = [...promoCodes, newCode];
     setPromoCodes(updated);
-    localStorage.setItem('vellora_promo_codes', JSON.stringify(updated));
-    
+    localStorage.setItem('JCOPS_promo_codes', JSON.stringify(updated));
+
     setNewPromoCode('');
     setNewPromoVal('');
 
@@ -829,8 +829,8 @@ export default function AdminPanel() {
       return c;
     });
     setPromoCodes(updated);
-    localStorage.setItem('vellora_promo_codes', JSON.stringify(updated));
-    
+    localStorage.setItem('JCOPS_promo_codes', JSON.stringify(updated));
+
     toast({
       type: 'success',
       title: 'Promo Status Updated',
@@ -841,8 +841,8 @@ export default function AdminPanel() {
   const handleDeletePromoCode = (code: string) => {
     const updated = promoCodes.filter(c => c.code !== code);
     setPromoCodes(updated);
-    localStorage.setItem('vellora_promo_codes', JSON.stringify(updated));
-    
+    localStorage.setItem('JCOPS_promo_codes', JSON.stringify(updated));
+
     toast({
       type: 'success',
       title: 'Promo Code Removed',
@@ -851,12 +851,12 @@ export default function AdminPanel() {
   };
 
   const handleResetAtelierData = () => {
-    localStorage.removeItem('vellora_orders');
-    localStorage.removeItem('vellora_products');
-    localStorage.removeItem('vellora_announcement');
-    localStorage.removeItem('vellora_promo_codes');
-    localStorage.removeItem('vellora_inquiries');
-    localStorage.removeItem('vellora_price_threshold');
+    localStorage.removeItem('JCOPS_orders');
+    localStorage.removeItem('JCOPS_products');
+    localStorage.removeItem('JCOPS_announcement');
+    localStorage.removeItem('JCOPS_promo_codes');
+    localStorage.removeItem('JCOPS_inquiries');
+    localStorage.removeItem('JCOPS_price_threshold');
     window.location.reload();
   };
 
@@ -881,7 +881,7 @@ export default function AdminPanel() {
 
   return (
     <main className="min-h-screen bg-background text-foreground flex flex-col lg:flex-row relative">
-      
+
       {/* -------------------- SIDEBAR PANEL (Premium Ivory/Light-Gray Theme) -------------------- */}
       <aside className="w-full lg:w-72 bg-background-secondary border-b lg:border-b-0 lg:border-r border-border p-6 flex flex-col justify-between shrink-0 glass z-40 relative print:hidden">
         <div>
@@ -889,11 +889,11 @@ export default function AdminPanel() {
           <div className="py-4 border-b border-border mb-6 flex justify-between items-center">
             <div>
               <Link href="/" className="font-playfair text-lg font-bold tracking-[0.25em] text-foreground block hover:opacity-85 transition-opacity">
-                VELLORA
+                JCOPS
               </Link>
               <span className="text-[8px] font-mono text-accent uppercase tracking-[0.3em] font-semibold mt-1 block">Atelier Console</span>
             </div>
-            
+
             <span className="text-[7px] font-mono border border-accent/30 text-accent px-1.5 py-0.5 rounded-full font-bold">
               v1.0.8
             </span>
@@ -903,11 +903,10 @@ export default function AdminPanel() {
           <nav className="space-y-1 flex flex-row lg:flex-col overflow-x-auto lg:overflow-x-visible pb-3 lg:pb-0 gap-2 lg:gap-0 scrollbar-none">
             <button
               onClick={() => setActiveTab('dashboard')}
-              className={`flex items-center gap-3 px-4 py-3 text-[10px] uppercase font-mono tracking-widest transition-all rounded-xs w-full whitespace-nowrap cursor-pointer ${
-                activeTab === 'dashboard' 
-                  ? 'bg-background text-accent font-bold border-l-2 border-accent shadow-xs' 
+              className={`flex items-center gap-3 px-4 py-3 text-[10px] uppercase font-mono tracking-widest transition-all rounded-xs w-full whitespace-nowrap cursor-pointer ${activeTab === 'dashboard'
+                  ? 'bg-background text-accent font-bold border-l-2 border-accent shadow-xs'
                   : 'text-foreground-secondary hover:text-foreground hover:bg-border-light'
-              }`}
+                }`}
             >
               <LayoutDashboard className="w-4 h-4 text-accent" />
               <span>Dashboard</span>
@@ -915,11 +914,10 @@ export default function AdminPanel() {
 
             <button
               onClick={() => setActiveTab('products')}
-              className={`flex items-center gap-3 px-4 py-3 text-[10px] uppercase font-mono tracking-widest transition-all rounded-xs w-full whitespace-nowrap cursor-pointer ${
-                activeTab === 'products' 
-                  ? 'bg-background text-accent font-bold border-l-2 border-accent shadow-xs' 
+              className={`flex items-center gap-3 px-4 py-3 text-[10px] uppercase font-mono tracking-widest transition-all rounded-xs w-full whitespace-nowrap cursor-pointer ${activeTab === 'products'
+                  ? 'bg-background text-accent font-bold border-l-2 border-accent shadow-xs'
                   : 'text-foreground-secondary hover:text-foreground hover:bg-border-light'
-              }`}
+                }`}
             >
               <ShoppingBag className="w-4 h-4 text-accent" />
               <span>Catalogue</span>
@@ -927,11 +925,10 @@ export default function AdminPanel() {
 
             <button
               onClick={() => setActiveTab('orders')}
-              className={`flex items-center gap-3 px-4 py-3 text-[10px] uppercase font-mono tracking-widest transition-all rounded-xs w-full whitespace-nowrap cursor-pointer ${
-                activeTab === 'orders' 
-                  ? 'bg-background text-accent font-bold border-l-2 border-accent shadow-xs' 
+              className={`flex items-center gap-3 px-4 py-3 text-[10px] uppercase font-mono tracking-widest transition-all rounded-xs w-full whitespace-nowrap cursor-pointer ${activeTab === 'orders'
+                  ? 'bg-background text-accent font-bold border-l-2 border-accent shadow-xs'
                   : 'text-foreground-secondary hover:text-foreground hover:bg-border-light'
-              }`}
+                }`}
             >
               <FileText className="w-4 h-4 text-accent" />
               <span>Orders</span>
@@ -944,11 +941,10 @@ export default function AdminPanel() {
 
             <button
               onClick={() => setActiveTab('customers')}
-              className={`flex items-center gap-3 px-4 py-3 text-[10px] uppercase font-mono tracking-widest transition-all rounded-xs w-full whitespace-nowrap cursor-pointer ${
-                activeTab === 'customers' 
-                  ? 'bg-background text-accent font-bold border-l-2 border-accent shadow-xs' 
+              className={`flex items-center gap-3 px-4 py-3 text-[10px] uppercase font-mono tracking-widest transition-all rounded-xs w-full whitespace-nowrap cursor-pointer ${activeTab === 'customers'
+                  ? 'bg-background text-accent font-bold border-l-2 border-accent shadow-xs'
                   : 'text-foreground-secondary hover:text-foreground hover:bg-border-light'
-              }`}
+                }`}
             >
               <Users className="w-4 h-4 text-accent" />
               <span>Clients</span>
@@ -956,11 +952,10 @@ export default function AdminPanel() {
 
             <button
               onClick={() => setActiveTab('inbox')}
-              className={`flex items-center gap-3 px-4 py-3 text-[10px] uppercase font-mono tracking-widest transition-all rounded-xs w-full whitespace-nowrap cursor-pointer ${
-                activeTab === 'inbox' 
-                  ? 'bg-background text-accent font-bold border-l-2 border-accent shadow-xs' 
+              className={`flex items-center gap-3 px-4 py-3 text-[10px] uppercase font-mono tracking-widest transition-all rounded-xs w-full whitespace-nowrap cursor-pointer ${activeTab === 'inbox'
+                  ? 'bg-background text-accent font-bold border-l-2 border-accent shadow-xs'
                   : 'text-foreground-secondary hover:text-foreground hover:bg-border-light'
-              }`}
+                }`}
             >
               <Inbox className="w-4 h-4 text-accent" />
               <span>Inbox</span>
@@ -973,11 +968,10 @@ export default function AdminPanel() {
 
             <button
               onClick={() => setActiveTab('settings')}
-              className={`flex items-center gap-3 px-4 py-3 text-[10px] uppercase font-mono tracking-widest transition-all rounded-xs w-full whitespace-nowrap cursor-pointer ${
-                activeTab === 'settings' 
-                  ? 'bg-background text-accent font-bold border-l-2 border-accent shadow-xs' 
+              className={`flex items-center gap-3 px-4 py-3 text-[10px] uppercase font-mono tracking-widest transition-all rounded-xs w-full whitespace-nowrap cursor-pointer ${activeTab === 'settings'
+                  ? 'bg-background text-accent font-bold border-l-2 border-accent shadow-xs'
                   : 'text-foreground-secondary hover:text-foreground hover:bg-border-light'
-              }`}
+                }`}
             >
               <Sliders className="w-4 h-4 text-accent" />
               <span>Privileges</span>
@@ -993,7 +987,7 @@ export default function AdminPanel() {
             </div>
             <div className="min-w-0">
               <span className="text-[10px] font-bold block text-foreground tracking-wide uppercase truncate">Julian Sartre</span>
-              <span className="text-[8px] text-foreground-muted font-mono block truncate">Julian.s@vellora.com</span>
+              <span className="text-[8px] text-foreground-muted font-mono block truncate">Julian.s@JCOPS.com</span>
             </div>
           </div>
           <div className="flex items-center gap-1.5 text-[8px] font-mono text-foreground-muted uppercase tracking-widest">
@@ -1005,7 +999,7 @@ export default function AdminPanel() {
 
       {/* -------------------- MAIN CONTENT AREA -------------------- */}
       <section className="flex-1 p-6 sm:p-10 lg:p-12 overflow-x-hidden space-y-8 bg-background print:p-0">
-        
+
         {/* Top Unique Navbar Header Bar */}
         <header className="border border-border bg-background-secondary p-4 px-6 rounded-sm flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-mono text-foreground-secondary shadow-xs relative print:hidden">
           <div className="flex flex-wrap items-center gap-6 text-[10px] uppercase tracking-widest">
@@ -1038,7 +1032,7 @@ export default function AdminPanel() {
             </button>
 
             {/* Notifications Bell Dropdown button */}
-            <button 
+            <button
               onClick={() => setShowNotifications(!showNotifications)}
               className="p-2 border border-border bg-background hover:border-accent hover:text-accent rounded-full transition-colors cursor-pointer relative"
               aria-label="Toggle notifications"
@@ -1062,22 +1056,21 @@ export default function AdminPanel() {
                 >
                   <div className="flex justify-between items-center pb-2 border-b border-border text-[9px] font-bold text-foreground">
                     <span>ATELIER ALERTS</span>
-                    <button 
+                    <button
                       onClick={handleClearNotifications}
                       className="text-accent hover:underline text-[8px]"
                     >
                       Clear All
                     </button>
                   </div>
-                  
+
                   <div className="space-y-2 max-h-48 overflow-y-auto pr-1">
                     {notifications.map(n => (
-                      <div 
-                        key={n.id} 
+                      <div
+                        key={n.id}
                         onClick={() => handleMarkNotificationRead(n.id)}
-                        className={`p-2.5 rounded-xs border text-left space-y-1 transition-all cursor-pointer ${
-                          n.read ? 'border-border bg-background-secondary/25 opacity-70' : 'border-accent-hover/30 bg-accent-light/10'
-                        }`}
+                        className={`p-2.5 rounded-xs border text-left space-y-1 transition-all cursor-pointer ${n.read ? 'border-border bg-background-secondary/25 opacity-70' : 'border-accent-hover/30 bg-accent-light/10'
+                          }`}
                       >
                         <div className="flex justify-between items-center">
                           <span className="text-[9px] font-bold text-foreground uppercase">{n.title}</span>
@@ -1098,7 +1091,7 @@ export default function AdminPanel() {
 
         {/* TABS CONTAINER */}
         <AnimatePresence mode="wait">
-          
+
           {/* TAB 1: DASHBOARD VIEW */}
           {activeTab === 'dashboard' && (
             <motion.div
@@ -1160,7 +1153,7 @@ export default function AdminPanel() {
 
               {/* Data Representation Row (Multiple Graphs) - Hidden when printing */}
               <div className="grid grid-cols-1 xl:grid-cols-12 gap-6 print:hidden">
-                
+
                 {/* 1. Revenue Analysis Dual-Series Line Chart */}
                 <div className="xl:col-span-8 border border-border p-6 bg-background rounded-xs space-y-4 shadow-sm">
                   <div className="flex justify-between items-center pb-3 border-b border-border">
@@ -1192,14 +1185,14 @@ export default function AdminPanel() {
                       <line x1="0" y1="50" x2="500" y2="50" stroke="#e5e5e5" strokeWidth="0.5" strokeDasharray="4" />
                       <line x1="0" y1="100" x2="500" y2="100" stroke="#e5e5e5" strokeWidth="0.5" strokeDasharray="4" />
                       <line x1="0" y1="150" x2="500" y2="150" stroke="#e5e5e5" strokeWidth="0.5" strokeDasharray="4" />
-                      
+
                       {/* Gradient Area */}
                       <path
                         d={`M 0,200 L ${revenuePointsThisMonth} L 480,200 Z`}
                         fill="url(#chart-glow-accent-light)"
                         stroke="none"
                       />
-                      
+
                       {/* Prior Period (Dashed) */}
                       <polyline
                         fill="none"
@@ -1208,7 +1201,7 @@ export default function AdminPanel() {
                         strokeDasharray="4 4"
                         points={revenuePointsLastMonth}
                       />
-                      
+
                       {/* Current Period (Solid) */}
                       <polyline
                         fill="none"
@@ -1216,7 +1209,7 @@ export default function AdminPanel() {
                         strokeWidth="2.5"
                         points={revenuePointsThisMonth}
                       />
-                      
+
                       {/* dots */}
                       <circle cx="0" cy="150" r="4.5" fill="#ffffff" stroke="var(--color-accent)" strokeWidth="2.5" />
                       <circle cx="80" cy="140" r="4.5" fill="#ffffff" stroke="var(--color-accent)" strokeWidth="2.5" />
@@ -1227,7 +1220,7 @@ export default function AdminPanel() {
                       <circle cx="480" cy="10" r="4.5" fill="#ffffff" stroke="var(--color-accent)" strokeWidth="2.5" />
                     </svg>
                   </div>
-                  
+
                   <div className="flex justify-between items-center text-[9px] font-mono text-foreground-muted uppercase tracking-widest pt-2 border-t border-border-light">
                     <span>Jan</span>
                     <span>Feb</span>
@@ -1248,22 +1241,22 @@ export default function AdminPanel() {
                   <div className="flex justify-center items-center py-6 relative">
                     <svg width="140" height="140" viewBox="0 0 42 42" className="transform -rotate-90">
                       <circle cx="21" cy="21" r="15.915" fill="transparent" stroke="#e5e5e5" strokeWidth="3" />
-                      
+
                       {/* T-shirts: 35% */}
-                      <circle cx="21" cy="21" r="15.915" fill="transparent" stroke="var(--color-accent)" strokeWidth="4.5" 
-                              strokeDasharray="35 65" strokeDashoffset="0" />
+                      <circle cx="21" cy="21" r="15.915" fill="transparent" stroke="var(--color-accent)" strokeWidth="4.5"
+                        strokeDasharray="35 65" strokeDashoffset="0" />
                       {/* Pants: 28% */}
-                      <circle cx="21" cy="21" r="15.915" fill="transparent" stroke="#a1a1a9" strokeWidth="3.5" 
-                              strokeDasharray="28 72" strokeDashoffset="-35" />
+                      <circle cx="21" cy="21" r="15.915" fill="transparent" stroke="#a1a1a9" strokeWidth="3.5"
+                        strokeDasharray="28 72" strokeDashoffset="-35" />
                       {/* Sneakers: 18% */}
-                      <circle cx="21" cy="21" r="15.915" fill="transparent" stroke="#71717a" strokeWidth="3" 
-                              strokeDasharray="18 82" strokeDashoffset="-63" />
+                      <circle cx="21" cy="21" r="15.915" fill="transparent" stroke="#71717a" strokeWidth="3"
+                        strokeDasharray="18 82" strokeDashoffset="-63" />
                       {/* Outerwear: 14% */}
-                      <circle cx="21" cy="21" r="15.915" fill="transparent" stroke="#18181b" strokeWidth="2.5" 
-                              strokeDasharray="14 86" strokeDashoffset="-81" />
+                      <circle cx="21" cy="21" r="15.915" fill="transparent" stroke="#18181b" strokeWidth="2.5"
+                        strokeDasharray="14 86" strokeDashoffset="-81" />
                       {/* Accessories: 5% */}
-                      <circle cx="21" cy="21" r="15.915" fill="transparent" stroke="#d4b97e" strokeWidth="2" 
-                              strokeDasharray="5 95" strokeDashoffset="-95" />
+                      <circle cx="21" cy="21" r="15.915" fill="transparent" stroke="#d4b97e" strokeWidth="2"
+                        strokeDasharray="5 95" strokeDashoffset="-95" />
                     </svg>
 
                     <div className="absolute text-center flex flex-col justify-center items-center">
@@ -1321,7 +1314,7 @@ export default function AdminPanel() {
                       />
                     </svg>
                   </div>
-                  
+
                   <div className="flex justify-between items-center text-[8px] font-mono text-foreground-muted uppercase tracking-widest pt-1">
                     <span>08:00</span>
                     <span>11:00</span>
@@ -1353,11 +1346,10 @@ export default function AdminPanel() {
                           </div>
                           <div className="text-right pl-4 shrink-0 font-mono">
                             <span className="text-xs font-bold text-accent">${order.total}</span>
-                            <span className={`text-[8px] uppercase tracking-widest font-semibold block mt-0.5 ${
-                              order.status === 'Pending' ? 'text-amber-500' :
-                              order.status === 'Processing' ? 'text-blue-500' :
-                              order.status === 'Shipped' ? 'text-indigo-500' : 'text-emerald-500'
-                            }`}>
+                            <span className={`text-[8px] uppercase tracking-widest font-semibold block mt-0.5 ${order.status === 'Pending' ? 'text-amber-500' :
+                                order.status === 'Processing' ? 'text-blue-500' :
+                                  order.status === 'Shipped' ? 'text-indigo-500' : 'text-emerald-500'
+                              }`}>
                               {order.status}
                             </span>
                           </div>
@@ -1455,13 +1447,13 @@ export default function AdminPanel() {
                     >
                       <span className="text-accent">{selectedProductIds.length} Selected</span>
                       <div className="w-px h-4 bg-border mx-2" />
-                      <button 
+                      <button
                         onClick={handleBatchToggleStock}
                         className="hover:text-accent border border-border bg-background px-2 py-1 cursor-pointer transition-colors"
                       >
                         Toggle Stock
                       </button>
-                      <button 
+                      <button
                         onClick={handleBatchArchive}
                         className="hover:text-rose-500 border border-border bg-background px-2 py-1 text-rose-500 cursor-pointer transition-colors"
                       >
@@ -1478,7 +1470,7 @@ export default function AdminPanel() {
                   <thead>
                     <tr className="bg-background-secondary text-foreground-muted border-b border-border uppercase font-mono tracking-widest text-[8px] font-bold">
                       <th className="p-4 pl-6 w-12 text-center">
-                        <input 
+                        <input
                           type="checkbox"
                           checked={selectedProductIds.length === filteredProducts.length && filteredProducts.length > 0}
                           onChange={handleSelectAllProducts}
@@ -1500,7 +1492,7 @@ export default function AdminPanel() {
                       return (
                         <tr key={product.id} className={`hover:bg-background-secondary/25 transition-colors ${isChecked ? 'bg-accent-light/5' : ''}`}>
                           <td className="p-4 pl-6 text-center">
-                            <input 
+                            <input
                               type="checkbox"
                               checked={isChecked}
                               onChange={() => handleToggleSelectProduct(product.id)}
@@ -1553,13 +1545,12 @@ export default function AdminPanel() {
                           <td className="p-4">
                             <button
                               onClick={() => toggleStockStatus(product.id)}
-                              className={`px-3 py-1.5 text-[8px] font-mono uppercase tracking-widest font-semibold rounded-full border cursor-pointer transition-colors ${
-                                product.inStock !== false
+                              className={`px-3 py-1.5 text-[8px] font-mono uppercase tracking-widest font-semibold rounded-full border cursor-pointer transition-colors ${product.inStock !== false
                                   ? 'bg-emerald-500/5 border-emerald-500/20 text-emerald-600'
                                   : 'bg-rose-500/5 border-rose-500/20 text-rose-500'
-                              }`}
+                                }`}
                             >
-                                {product.inStock !== false ? 'In Stock' : 'Out of Stock'}
+                              {product.inStock !== false ? 'In Stock' : 'Out of Stock'}
                             </button>
                           </td>
                           <td className="p-4 pr-6 text-right whitespace-nowrap">
@@ -1603,16 +1594,15 @@ export default function AdminPanel() {
                   <span className="text-[10px] tracking-[0.3em] text-accent uppercase font-mono font-bold">DHL Logistics Status Control</span>
                   <h1 className="heading-serif text-3xl sm:text-4xl uppercase tracking-wider mt-1">Creations Sales Orders</h1>
                 </div>
-                
+
                 {/* Orders filtering tabs */}
                 <div className="flex flex-wrap border border-border p-1 bg-background-secondary/60 rounded-xs font-mono text-[9px] uppercase tracking-wider self-start sm:self-auto">
                   {(['All', 'Pending', 'Processing', 'Shipped', 'Delivered'] as const).map((status) => (
                     <button
                       key={status}
                       onClick={() => setOrderFilter(status)}
-                      className={`px-3 py-1.5 rounded-xs transition-colors cursor-pointer ${
-                        orderFilter === status ? 'bg-background text-accent font-bold shadow-xs' : 'text-foreground-secondary hover:text-foreground'
-                      }`}
+                      className={`px-3 py-1.5 rounded-xs transition-colors cursor-pointer ${orderFilter === status ? 'bg-background text-accent font-bold shadow-xs' : 'text-foreground-secondary hover:text-foreground'
+                        }`}
                     >
                       {status}
                     </button>
@@ -1753,7 +1743,7 @@ export default function AdminPanel() {
               </div>
 
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-                
+
                 {/* Left Column: Messages List */}
                 <div className="lg:col-span-5 border border-border bg-background rounded-sm shadow-xs divide-y divide-border-light">
                   <div className="p-4 bg-background-secondary uppercase font-mono tracking-widest text-[8px] font-bold text-foreground-muted">
@@ -1770,9 +1760,8 @@ export default function AdminPanel() {
                             setSelectedInquiry(inq);
                             setInquiryReplyText('');
                           }}
-                          className={`p-4 transition-colors cursor-pointer text-left space-y-2 ${
-                            isActive ? 'bg-background-secondary/40 border-l-2 border-accent' : 'hover:bg-background-secondary/20'
-                          }`}
+                          className={`p-4 transition-colors cursor-pointer text-left space-y-2 ${isActive ? 'bg-background-secondary/40 border-l-2 border-accent' : 'hover:bg-background-secondary/20'
+                            }`}
                         >
                           <div className="flex justify-between items-center">
                             <span className="text-[10px] font-bold text-foreground uppercase truncate max-w-[150px]">{inq.name}</span>
@@ -1781,11 +1770,10 @@ export default function AdminPanel() {
                           <span className="text-[9px] uppercase font-mono text-accent block font-semibold truncate max-w-[200px]">{inq.inquiryType}</span>
                           <p className="text-[11px] text-foreground-secondary line-clamp-1">{inq.message}</p>
                           <div className="flex items-center justify-between pt-1">
-                            <span className={`text-[7px] font-mono uppercase tracking-widest font-semibold px-2 py-0.5 rounded-full border ${
-                              inq.status === 'Resolved' 
-                                ? 'bg-emerald-500/5 border-emerald-500/20 text-emerald-600' 
+                            <span className={`text-[7px] font-mono uppercase tracking-widest font-semibold px-2 py-0.5 rounded-full border ${inq.status === 'Resolved'
+                                ? 'bg-emerald-500/5 border-emerald-500/20 text-emerald-600'
                                 : 'bg-amber-500/5 border-amber-500/20 text-amber-500 animate-pulse'
-                            }`}>
+                              }`}>
                               {inq.status}
                             </span>
                             {inq.reply && <span className="text-[7px] font-mono text-foreground-muted">REPLIED ✓</span>}
@@ -1899,7 +1887,7 @@ export default function AdminPanel() {
               </div>
 
               <div className="grid grid-cols-1 xl:grid-cols-12 gap-8 items-start">
-                
+
                 {/* Left Area (Col Span 7) */}
                 <div className="xl:col-span-7 space-y-8">
                   {/* Announcement Banner editor */}
@@ -1914,7 +1902,7 @@ export default function AdminPanel() {
                         rows={2}
                         value={announcementText}
                         onChange={(e) => setAnnouncementText(e.target.value)}
-                        placeholder="Use Code: VEL15 for 15% off in the digital atelier"
+                        placeholder="Use Code: JCOPS15 for 15% off in the digital atelier"
                         className="border border-border focus:border-accent bg-transparent p-3 text-xs outline-none w-full resize-none font-sans text-foreground"
                       />
                     </div>
@@ -1957,11 +1945,10 @@ export default function AdminPanel() {
                       {logs.map((log, idx) => (
                         <div key={idx} className="flex gap-3 leading-relaxed">
                           <span className="text-foreground-muted">[{log.time}]</span>
-                          <span className={`font-bold shrink-0 ${
-                            log.type === 'SUCCESS' ? 'text-emerald-600' :
-                            log.type === 'WARN' ? 'text-amber-600' :
-                            log.type === 'ERROR' ? 'text-rose-500' : 'text-blue-500'
-                          }`}>
+                          <span className={`font-bold shrink-0 ${log.type === 'SUCCESS' ? 'text-emerald-600' :
+                              log.type === 'WARN' ? 'text-amber-600' :
+                                log.type === 'ERROR' ? 'text-rose-500' : 'text-blue-500'
+                            }`}>
                             [{log.type}]
                           </span>
                           <span className="text-foreground-secondary break-all">{log.message}</span>
@@ -1990,19 +1977,18 @@ export default function AdminPanel() {
                               {c.type === 'percentage' ? `${c.value}% discount` : `$${c.value} flat deduction`}
                             </span>
                           </div>
-                          
+
                           <div className="flex items-center gap-2 shrink-0">
                             <button
                               onClick={() => togglePromoCodeStatus(c.code)}
-                              className={`px-2 py-0.5 text-[8px] font-mono uppercase tracking-widest font-semibold rounded-full border cursor-pointer transition-colors ${
-                                c.active 
-                                  ? 'bg-emerald-500/5 border-emerald-500/20 text-emerald-600' 
+                              className={`px-2 py-0.5 text-[8px] font-mono uppercase tracking-widest font-semibold rounded-full border cursor-pointer transition-colors ${c.active
+                                  ? 'bg-emerald-500/5 border-emerald-500/20 text-emerald-600'
                                   : 'bg-zinc-200 border-zinc-300 text-foreground-muted'
-                              }`}
+                                }`}
                             >
                               {c.active ? 'Active' : 'Inactive'}
                             </button>
-                            
+
                             <button
                               onClick={() => handleDeletePromoCode(c.code)}
                               className="text-foreground-muted hover:text-rose-500 transition-colors p-1"
@@ -2023,7 +2009,7 @@ export default function AdminPanel() {
                     {/* Add Promo Code Form */}
                     <form onSubmit={handleAddPromoCode} className="space-y-3.5 text-xs text-foreground-secondary">
                       <span className="text-[9px] font-mono text-foreground-muted uppercase tracking-widest block font-bold">Generate New Coupon</span>
-                      
+
                       <div className="space-y-1">
                         <label className="text-[9px] font-mono text-foreground-muted uppercase tracking-widest">Coupon Code</label>
                         <input
@@ -2269,7 +2255,7 @@ export default function AdminPanel() {
             <hr className="border-border" />
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-xs leading-relaxed text-foreground-secondary">
-              
+
               {/* Shipping address */}
               <div className="space-y-3">
                 <h4 className="text-[9px] font-mono text-foreground-muted uppercase tracking-widest border-b border-border pb-1.5 font-bold">Delivery Address</h4>

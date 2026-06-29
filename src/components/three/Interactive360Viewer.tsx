@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useRef, useMemo, useState } from 'react';
+import React, { useRef, useMemo, useState, useEffect } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
 import * as THREE from 'three';
@@ -11,11 +11,29 @@ interface ViewerProps {
 
 function PointCloud({ category }: ViewerProps) {
   const pointsRef = useRef<THREE.Points>(null);
+  const [particleTexture, setParticleTexture] = useState<THREE.Texture | undefined>(undefined);
   const count = 2500;
+
+  useEffect(() => {
+    const canvas = document.createElement('canvas');
+    canvas.width = 16;
+    canvas.height = 16;
+    const ctx = canvas.getContext('2d');
+    if (ctx) {
+      const gradient = ctx.createRadialGradient(8, 8, 0, 8, 8, 8);
+      gradient.addColorStop(0, 'rgba(255, 255, 255, 1)');
+      gradient.addColorStop(0.5, 'rgba(255, 255, 255, 0.5)');
+      gradient.addColorStop(1, 'rgba(255, 255, 255, 0)');
+      ctx.fillStyle = gradient;
+      ctx.fillRect(0, 0, 16, 16);
+    }
+    const texture = new THREE.CanvasTexture(canvas);
+    setParticleTexture(texture);
+  }, []);
 
   const positions = useMemo(() => {
     const pos = new Float32Array(count * 3);
-    
+
     const randomInCylinder = (radius: number, height: number, centerY: number, centerX: number = 0) => {
       const angle = Math.random() * Math.PI * 2;
       const r = Math.sqrt(Math.random()) * radius;
@@ -116,12 +134,14 @@ function PointCloud({ category }: ViewerProps) {
         <bufferAttribute attach="attributes-position" args={[positions, 3]} />
       </bufferGeometry>
       <pointsMaterial
-        size={3.0}
+        size={0.045}
         color="#C9A96E"
         transparent
         opacity={0.8}
         sizeAttenuation
+        depthWrite={false}
         blending={THREE.AdditiveBlending}
+        map={particleTexture}
       />
     </points>
   );
@@ -132,7 +152,7 @@ export default function Interactive360Viewer({ category }: ViewerProps) {
 
   return (
     <div
-      className="w-full h-full relative cursor-grab active:cursor-grabbing border border-border bg-vellora-deep-black/60 rounded"
+      className="w-full h-full relative cursor-grab active:cursor-grabbing border border-border bg-JCOPS-deep-black/60 rounded"
       data-cursor="drag"
       onMouseDown={() => setIsDragging(true)}
       onMouseUp={() => setIsDragging(false)}

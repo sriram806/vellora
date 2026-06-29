@@ -118,7 +118,7 @@ export default function MobileIntroScene({ onComplete }: MobileIntroSceneProps) 
             letterSpacing: '0.3em',
           }}
         >
-          VELLORA
+          JCOPS
         </span>
       </motion.div>
 

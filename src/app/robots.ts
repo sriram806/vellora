@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: ['/cart', '/wishlist'],
     },
-    sitemap: 'https://vellora-luxury.vercel.app/sitemap.xml',
+    sitemap: 'https://JCOPS-luxury.vercel.app/sitemap.xml',
   };
 }

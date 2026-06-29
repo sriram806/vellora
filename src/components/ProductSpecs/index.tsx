@@ -123,9 +123,9 @@ export default function ProductSpecs({ product }: ProductSpecsProps) {
   };
 
   return (
-    <section className="section-vellora border-t border-border select-none">
-      <div className="container-vellora space-y-8">
-        
+    <section className="section-JCOPS border-t border-border select-none">
+      <div className="container-JCOPS space-y-8">
+
         {/* Title */}
         <div className="max-w-md">
           <span className="ui-text text-[9px] text-accent tracking-[0.25em] font-semibold">Garment Spec Log</span>
@@ -142,11 +142,10 @@ export default function ProductSpecs({ product }: ProductSpecsProps) {
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
-                className={`py-3 pl-4 text-left border-l-2 -ml-[1px] transition-colors ${
-                  activeTab === tab.id 
-                    ? 'border-accent text-accent font-bold bg-accent-light/5' 
+                className={`py-3 pl-4 text-left border-l-2 -ml-[1px] transition-colors ${activeTab === tab.id
+                    ? 'border-accent text-accent font-bold bg-accent-light/5'
                     : 'border-transparent hover:text-foreground'
-                }`}
+                  }`}
                 data-cursor="hover"
               >
                 {tab.label}
@@ -163,7 +162,7 @@ export default function ProductSpecs({ product }: ProductSpecsProps) {
         {/* Accordion view: Mobile */}
         <div className="md:hidden space-y-3.5">
           {tabs.map((tab) => (
-            <details 
+            <details
               key={tab.id}
               className="group border border-border bg-background [&_summary::-webkit-details-marker]:hidden"
             >

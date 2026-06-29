@@ -51,7 +51,7 @@ export default function ProductCard({ product }: ProductCardProps) {
         transition-all
         duration-500
         hover:-translate-y-1.5
-        hover:border-accent/40
+        hover:border-[#C9A96E]/40
         hover:shadow-[0_25px_60px_rgba(201,169,110,0.08)]
       "
     >
@@ -150,7 +150,7 @@ export default function ProductCard({ product }: ProductCardProps) {
                 tracking-[0.2em]
                 font-mono
                 font-bold
-                text-vellora-white
+                text-JCOPS-white
                 backdrop-blur-md
               "
             >
@@ -188,11 +188,10 @@ export default function ProductCard({ product }: ProductCardProps) {
           aria-label="Save to wishlist"
         >
           <Heart
-            className={`h-3.5 w-3.5 transition-all ${
-              isSaved
-                ? 'fill-accent text-accent'
-                : 'text-foreground hover:text-accent'
-            }`}
+            className={`h-3.5 w-3.5 transition-all ${isSaved
+                ? 'fill-[#C9A96E] text-[#C9A96E]'
+                : 'text-foreground hover:text-[#C9A96E]'
+              }`}
           />
         </button>
 
@@ -245,7 +244,7 @@ export default function ProductCard({ product }: ProductCardProps) {
         <p className="mb-1 text-[9px] uppercase tracking-[0.25em] text-foreground-muted font-mono">
           {product.collection}
         </p>
- 
+
         {/* Product Title */}
         <Link href={`/product/${product.id}`} className="block">
           <h3
@@ -258,18 +257,18 @@ export default function ProductCard({ product }: ProductCardProps) {
               tracking-wide
               text-foreground
               transition-colors
-              hover:text-accent
+              hover:text-[#C9A96E]
             "
           >
             {product.name}
           </h3>
         </Link>
- 
+
         {/* Category */}
         <p className="mt-0.5 text-[10px] uppercase tracking-widest text-foreground-muted/75 font-mono">
           {product.category}
         </p>
- 
+
         {/* Swatch Color Circles */}
         {product.colors?.length > 0 && (
           <div className="mt-3 flex gap-1.5">
@@ -292,11 +291,11 @@ export default function ProductCard({ product }: ProductCardProps) {
             ))}
           </div>
         )}
- 
+
         {/* Pricing Detail */}
         <div className="mt-4 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <span className="font-mono text-sm font-semibold text-accent">
+            <span className="font-mono text-sm font-semibold text-[#C9A96E]">
               ${product.price}
             </span>
             {product.originalPrice && product.originalPrice > product.price && (
@@ -308,7 +307,7 @@ export default function ProductCard({ product }: ProductCardProps) {
 
           <Link
             href={`/product/${product.id}`}
-            className="text-[9px] uppercase tracking-widest font-semibold text-foreground hover:text-accent font-mono transition-colors flex items-center gap-1"
+            className="text-[9px] uppercase tracking-widest font-semibold text-foreground hover:text-[#C9A96E] font-mono transition-colors flex items-center gap-1"
           >
             <span>View Edit</span>
             <ChevronRight className="w-3 h-3" />

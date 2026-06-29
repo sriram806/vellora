@@ -32,17 +32,17 @@ export default function Footer() {
 
       {/* Large Background Brand Text */}
       <div className="absolute inset-0 flex items-center justify-center overflow-hidden pointer-events-none">
-        <h1 className="text-[14vw] pl-20 font-bold tracking-[0.4em] text-white/3 whitespace-nowrap">
+        <h1 className="text-[25vw] sm:text-[14vw] font-bold tracking-[0.2em] sm:tracking-[0.4em] text-white/3 whitespace-nowrap">
           JCOPS
         </h1>
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-10 py-16 sm:py-20 lg:py-24">
         {/* Grid Columns */}
-        <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr_1fr] gap-12 sm:gap-16 pb-16 border-b border-zinc-900">
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-12 lg:gap-16 pb-12 sm:pb-16 border-b border-zinc-900">
           
           {/* Newsletter Column */}
-          <div className="space-y-4 max-w-md">
+          <div className="space-y-4 max-w-md lg:col-span-2">
             <span className="text-[9px] font-mono uppercase tracking-[0.2em] text-[#D4AF37] font-semibold">Atelier Newsletter</span>
             <h3 className="font-serif text-xl sm:text-2xl uppercase tracking-wide">
               Join the Digital Atelier
@@ -69,68 +69,71 @@ export default function Footer() {
             </form>
           </div>
 
-          {/* Navigation Links Column */}
-          <div className="space-y-4">
-            <span className="text-[9px] font-mono uppercase tracking-[0.25em] text-zinc-500 font-semibold">Atelier Services</span>
-            <ul className="space-y-2 text-xs text-zinc-400">
-              <li>
-                <Link href="/shop" className="hover:text-[#D4AF37] transition-colors uppercase tracking-wider text-[10px] font-mono">Shop Catalogue</Link>
-              </li>
-              <li>
-                <Link href="/collections" className="hover:text-[#D4AF37] transition-colors uppercase tracking-wider text-[10px] font-mono">Collections</Link>
-              </li>
-              <li>
-                <Link href="/profile" className="hover:text-[#D4AF37] transition-colors uppercase tracking-wider text-[10px] font-mono">Client Profile</Link>
-              </li>
-              <li>
-                <Link href="/admin" className="hover:text-[#D4AF37] transition-colors uppercase tracking-wider text-[10px] font-mono">Atelier Console</Link>
-              </li>
-            </ul>
-          </div>
+          {/* Sub-grid for Services and Information (2 columns on mobile, tablet, and desktop wrapper) */}
+          <div className="grid grid-cols-2 gap-8 lg:col-span-2">
+            {/* Navigation Links Column */}
+            <div className="space-y-4">
+              <span className="text-[9px] font-mono uppercase tracking-[0.25em] text-zinc-500 font-semibold">Atelier Services</span>
+              <ul className="space-y-2 text-xs text-zinc-400">
+                <li>
+                  <Link href="/shop" className="hover:text-[#D4AF37] transition-colors uppercase tracking-wider text-[10px] font-mono">Shop Catalogue</Link>
+                </li>
+                <li>
+                  <Link href="/collections" className="hover:text-[#D4AF37] transition-colors uppercase tracking-wider text-[10px] font-mono">Collections</Link>
+                </li>
+                <li>
+                  <Link href="/profile" className="hover:text-[#D4AF37] transition-colors uppercase tracking-wider text-[10px] font-mono">Client Profile</Link>
+                </li>
+                <li>
+                  <Link href="/admin" className="hover:text-[#D4AF37] transition-colors uppercase tracking-wider text-[10px] font-mono">Atelier Console</Link>
+                </li>
+              </ul>
+            </div>
 
-          {/* Information & Socials Column */}
-          <div className="space-y-4">
-            <span className="text-[9px] font-mono uppercase tracking-[0.25em] text-zinc-500 font-semibold">Information</span>
-            <ul className="space-y-2 text-xs text-zinc-400">
-              <li>
-                <Link href="/privacy" className="hover:text-[#D4AF37] transition-colors uppercase tracking-wider text-[10px] font-mono">Privacy Policy</Link>
-              </li>
-              <li>
-                <Link href="/terms" className="hover:text-[#D4AF37] transition-colors uppercase tracking-wider text-[10px] font-mono">Terms & Conditions</Link>
-              </li>
-            </ul>
+            {/* Information & Socials Column */}
+            <div className="space-y-4">
+              <span className="text-[9px] font-mono uppercase tracking-[0.25em] text-zinc-500 font-semibold">Information</span>
+              <ul className="space-y-2 text-xs text-zinc-400">
+                <li>
+                  <Link href="/privacy" className="hover:text-[#D4AF37] transition-colors uppercase tracking-wider text-[10px] font-mono">Privacy Policy</Link>
+                </li>
+                <li>
+                  <Link href="/terms" className="hover:text-[#D4AF37] transition-colors uppercase tracking-wider text-[10px] font-mono">Terms & Conditions</Link>
+                </li>
+              </ul>
 
-            {/* Social Icons Inline */}
-            <div className="flex items-center gap-4 pt-4">
-              <a
-                href="https://instagram.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group h-8 w-8 rounded-full border border-zinc-800 flex items-center justify-center transition-all duration-300 hover:border-[#D4AF37] hover:bg-[#D4AF37]/10"
-                aria-label="Instagram link"
-              >
-                <FaInstagram className="text-sm text-zinc-550 group-hover:text-[#D4AF37] transition-colors" />
-              </a>
+              {/* Social Icons Inline */}
+              <div className="flex items-center gap-4 pt-4">
+                <a
+                  href="https://instagram.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group h-8 w-8 rounded-full border border-zinc-800 flex items-center justify-center transition-all duration-300 hover:border-[#D4AF37] hover:bg-[#D4AF37]/10"
+                  aria-label="Instagram link"
+                >
+                  <FaInstagram className="text-sm text-zinc-550 group-hover:text-[#D4AF37] transition-colors" />
+                </a>
 
-              <a
-                href="https://twitter.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group h-8 w-8 rounded-full border border-zinc-800 flex items-center justify-center transition-all duration-300 hover:border-[#D4AF37] hover:bg-[#D4AF37]/10"
-                aria-label="Twitter link"
-              >
-                <FaXTwitter className="text-sm text-zinc-550 group-hover:text-[#D4AF37] transition-colors" />
-              </a>
+                <a
+                  href="https://twitter.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group h-8 w-8 rounded-full border border-zinc-800 flex items-center justify-center transition-all duration-300 hover:border-[#D4AF37] hover:bg-[#D4AF37]/10"
+                  aria-label="Twitter link"
+                >
+                  <FaXTwitter className="text-sm text-zinc-550 group-hover:text-[#D4AF37] transition-colors" />
+                </a>
 
-              <a
-                href="https://facebook.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group h-8 w-8 rounded-full border border-zinc-800 flex items-center justify-center transition-all duration-300 hover:border-[#D4AF37] hover:bg-[#D4AF37]/10"
-                aria-label="Facebook link"
-              >
-                <FaFacebookF className="text-sm text-zinc-550 group-hover:text-[#D4AF37] transition-colors" />
-              </a>
+                <a
+                  href="https://facebook.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group h-8 w-8 rounded-full border border-zinc-800 flex items-center justify-center transition-all duration-300 hover:border-[#D4AF37] hover:bg-[#D4AF37]/10"
+                  aria-label="Facebook link"
+                >
+                  <FaFacebookF className="text-sm text-zinc-550 group-hover:text-[#D4AF37] transition-colors" />
+                </a>
+              </div>
             </div>
           </div>
 

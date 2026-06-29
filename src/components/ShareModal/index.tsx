@@ -81,7 +81,7 @@ export default function ShareModal({ productName }: ShareModalProps) {
               {/* Share Options */}
               <div className="grid grid-cols-3 gap-2">
                 <a
-                  href={`https://twitter.com/intent/tweet?text=Explore%20the%20${encodeURIComponent(productName)}%20on%20Vellora&url=${encodeURIComponent(shareUrl)}`}
+                  href={`https://twitter.com/intent/tweet?text=Explore%20the%20${encodeURIComponent(productName)}%20on%20JCOPS&url=${encodeURIComponent(shareUrl)}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex flex-col items-center justify-center p-4 border border-border bg-background-tertiary hover:border-accent hover:text-accent transition-colors gap-2"
@@ -101,7 +101,7 @@ export default function ShareModal({ productName }: ShareModalProps) {
                   <span className="ui-text text-[8px] tracking-wider">Facebook</span>
                 </a>
                 <a
-                  href={`mailto:?subject=Luxury%20Fashion%20Inspiration%20-%20Vellora&body=Take%20a%20look%20at%20this%20exquisite%20piece%20I%20found:%20${encodeURIComponent(shareUrl)}`}
+                  href={`mailto:?subject=Luxury%20Fashion%20Inspiration%20-%20JCOPS&body=Take%20a%20look%20at%20this%20exquisite%20piece%20I%20found:%20${encodeURIComponent(shareUrl)}`}
                   className="flex flex-col items-center justify-center p-4 border border-border bg-background-tertiary hover:border-accent hover:text-accent transition-colors gap-2"
                   data-cursor="hover"
                 >

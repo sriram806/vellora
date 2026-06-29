@@ -3,12 +3,12 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { 
-  Sparkles, 
-  ChevronRight, 
-  ShoppingBag, 
-  User, 
-  Scissors, 
+import {
+  Sparkles,
+  ChevronRight,
+  ShoppingBag,
+  User,
+  Scissors,
   Activity,
   ArrowRight
 } from 'lucide-react';
@@ -29,7 +29,7 @@ interface Order {
 }
 
 export default function ProfileDashboard() {
-  const [email, setEmail] = useState('atelier.client@vellora.com');
+  const [email, setEmail] = useState('atelier.client@JCOPS.com');
   const [profile, setProfile] = useState<SavedProfile | null>(null);
   const [orders, setOrders] = useState<Order[]>([]);
   const [hasMeasurements, setHasMeasurements] = useState(false);
@@ -37,7 +37,7 @@ export default function ProfileDashboard() {
   useEffect(() => {
     // Load profile
     try {
-      const storedProfile = localStorage.getItem('vellora_profile');
+      const storedProfile = localStorage.getItem('JCOPS_profile');
       if (storedProfile) {
         const p = JSON.parse(storedProfile);
         setProfile(p);
@@ -49,7 +49,7 @@ export default function ProfileDashboard() {
 
     // Load orders
     try {
-      const storedOrders = localStorage.getItem('vellora_orders');
+      const storedOrders = localStorage.getItem('JCOPS_orders');
       if (storedOrders) {
         setOrders(JSON.parse(storedOrders));
       }
@@ -58,7 +58,7 @@ export default function ProfileDashboard() {
     }
 
     // Load measurements check
-    const storedMeas = localStorage.getItem('vellora_measurements');
+    const storedMeas = localStorage.getItem('JCOPS_measurements');
     if (storedMeas) {
       setHasMeasurements(true);
     }
@@ -88,14 +88,14 @@ export default function ProfileDashboard() {
 
       {/* Grid: Member Card & Quick Stats */}
       <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
-        
+
         {/* Virtual Membership Card (Col Span 5) */}
         <div className="md:col-span-5 relative border border-accent/25 bg-gradient-to-tr from-[#12100d] via-[#1a1a1a] to-[#252119] rounded-sm p-6 text-white overflow-hidden shadow-md flex flex-col justify-between aspect-video select-none group">
           <div className="absolute inset-0 bg-radial-gold opacity-15 pointer-events-none" />
-          
+
           <div className="flex justify-between items-start">
             <div>
-              <h4 className="font-playfair text-lg font-bold tracking-widest uppercase text-white">Vellora Elite</h4>
+              <h4 className="font-playfair text-lg font-bold tracking-widest uppercase text-white">JCOPS Elite</h4>
               <span className="text-[7px] font-mono text-accent uppercase tracking-widest mt-1 block">Atelier Privilege Card</span>
             </div>
             <Sparkles className="w-4 h-4 text-accent animate-pulse" />
@@ -146,7 +146,7 @@ export default function ProfileDashboard() {
 
       {/* Grid: Recent Orders & Quick actions */}
       <div className="grid grid-cols-1 xl:grid-cols-[1fr_300px] gap-6">
-        
+
         {/* Recent Orders Overview */}
         <div className="border border-border p-6 rounded-sm space-y-4 bg-background">
           <div className="flex justify-between items-center pb-3 border-b border-border">
@@ -168,11 +168,10 @@ export default function ProfileDashboard() {
                 </div>
                 <div className="text-right pl-4">
                   <span className="font-mono text-xs font-bold text-accent">${order.total}</span>
-                  <span className={`text-[8px] font-mono uppercase tracking-widest font-semibold block mt-0.5 ${
-                    order.status === 'Pending' ? 'text-amber-500' :
-                    order.status === 'Processing' ? 'text-blue-500' :
-                    order.status === 'Shipped' ? 'text-indigo-500' : 'text-emerald-500'
-                  }`}>
+                  <span className={`text-[8px] font-mono uppercase tracking-widest font-semibold block mt-0.5 ${order.status === 'Pending' ? 'text-amber-500' :
+                      order.status === 'Processing' ? 'text-blue-500' :
+                        order.status === 'Shipped' ? 'text-indigo-500' : 'text-emerald-500'
+                    }`}>
                     {order.status}
                   </span>
                 </div>
@@ -191,9 +190,9 @@ export default function ProfileDashboard() {
         <div className="border border-border p-6 rounded-sm bg-background flex flex-col justify-between gap-6">
           <div className="space-y-4">
             <h3 className="text-xs font-bold uppercase tracking-wider text-foreground pb-3 border-b border-border">Quick Coordinates</h3>
-            
+
             <div className="space-y-2">
-              <Link 
+              <Link
                 href="/profile/address"
                 className="flex justify-between items-center p-3 border border-border hover:border-accent bg-background-secondary/25 hover:bg-background rounded-xs text-[10px] uppercase font-mono tracking-wider transition-colors cursor-pointer group"
               >
@@ -204,7 +203,7 @@ export default function ProfileDashboard() {
                 <ArrowRight className="w-3.5 h-3.5 text-foreground-muted group-hover:text-accent group-hover:translate-x-0.5 transition-all" />
               </Link>
 
-              <Link 
+              <Link
                 href="/profile/measurements"
                 className="flex justify-between items-center p-3 border border-border hover:border-accent bg-background-secondary/25 hover:bg-background rounded-xs text-[10px] uppercase font-mono tracking-wider transition-colors cursor-pointer group"
               >
